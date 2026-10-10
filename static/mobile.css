@@ -1,0 +1,25 @@
+/* Native-style web app: top bar + scrolling screen + fixed bottom tab bar. */
+body{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:calc(68px + env(safe-area-inset-bottom));background:var(--bg)}
+@media (min-width:521px){body{border-left:1px solid var(--line);border-right:1px solid var(--line)}}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 16px;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-weight:700}
+.top a{font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+main{padding:20px 16px}
+h1{font-size:28px;line-height:1.2;margin:0 0 4px}.role{color:var(--accent);font-weight:600;margin:0 0 12px}
+h2{font-size:15px;color:var(--ink2);margin:26px 0 10px;font-weight:600}
+.lead{color:var(--ink2);font-size:16px}
+.list{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.item{display:flex;gap:12px;align-items:center;padding:14px 14px;text-decoration:none;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .bar{flex:none;width:5px;align-self:stretch;border-radius:3px;background:var(--c,var(--accent))}
+.item b{display:block;font-size:16px}.item small{color:var(--ink2);font-size:13px}
+.item .go{margin-left:auto;color:var(--ink2)}
+.block{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.block h3{margin:0;font-size:17px}.block p{margin:6px 0;color:var(--ink2);font-size:15px}
+.block ul{margin:8px 0 0 1.1rem;padding:0}.block li{margin:3px 0;font-size:15px}
+.dates{color:var(--ink2);font-size:13px}
+.links a{display:inline-block;margin:6px 10px 0 0;color:var(--accent);font-weight:600;text-decoration:none}
+.pill{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none;background:var(--ink);color:var(--bg);margin:6px 8px 0 0}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0 7px;font-size:11px;font-weight:600;text-decoration:none;color:var(--ink2)}
+.tabs a svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabs a[aria-current]{color:var(--accent)}

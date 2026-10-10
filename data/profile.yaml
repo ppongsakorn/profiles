@@ -21,6 +21,33 @@ summaries:
   ai:
     en: TODO — emphasise AI agents, vector search, fraud detection.
 
+# 6 focus areas -> วงล้อบนหน้าแรกและรายการบนมือถือ (ลำดับ = สี c1..c6)
+focus:
+  - slug: data
+    short: {en: Data, th: Data}
+    title: {en: Data Platform, th: แพลตฟอร์มข้อมูล}
+    desc: {en: "Azure Databricks lakehouse on Azure Data Lake.", th: "Lakehouse บน Azure Databricks และ Azure Data Lake"}
+  - slug: pipeline
+    short: {en: Pipeline, th: Pipeline}
+    title: {en: Pipelines & SLA, th: Pipeline & SLA}
+    desc: {en: "Azure Data Factory orchestration with measurable SLA.", th: "Orchestration ด้วย Azure Data Factory พร้อม SLA ที่วัดได้"}
+  - slug: bi
+    short: {en: Dashboard, th: Dashboard}
+    title: {en: Dashboards & Behaviour, th: Dashboard & Behaviour}
+    desc: {en: "Superset 4 on Databricks SQL Serverless; Matomo tracking.", th: "Superset 4 บน Databricks SQL Serverless และ Matomo"}
+  - slug: fraud
+    short: {en: Fraud, th: Fraud}
+    title: {en: Fraud Detection, th: ตรวจจับ Fraud}
+    desc: {en: "Python on AKS over MySQL, MSSQL and Azure Table.", th: "Python บน AKS จาก MySQL, MSSQL, Azure Table"}
+  - slug: ai
+    short: {en: AI Agent, th: AI Agent}
+    title: {en: AI Agents, th: AI Agent}
+    desc: {en: "Microsoft Foundry: agents, vector search, bots.", th: "Microsoft Foundry: Agent, Vector Search, Bot"}
+  - slug: cost
+    short: {en: Cost, th: Cost}
+    title: {en: Cost & Performance, th: Cost & Performance}
+    desc: {en: "Make spend and speed visible, then reduce both.", th: "ทำให้เห็นต้นทุนและความเร็ว แล้วลดค่า Query/Storage"}
+
 skills:
   - group: Data Platform
     tags: [data, platform]

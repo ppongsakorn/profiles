@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="{{ lang }}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>try{if(matchMedia('(max-width:640px)').matches&&localStorage.getItem('fullweb')!=='1')location.replace('{{ link(prefix ~ "m/") }}')}catch(e){}</script>
+<title>{{ b.name }} — {{ b.label }}</title>
+<meta name="description" content="{{ summary | truncate(150) }}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}">
+</head><body>
+<header class="site-header"><div class="wrap">
+ <a class="brand" href="#top">{{ b.name }}</a>
+ <nav class="nav">
+  <a href="#focus">{{ ui.focus }}</a><a href="#experience">{{ ui.experience }}</a><a href="#projects">{{ ui.projects }}</a><a href="#resume">{{ ui.resume }}</a><a href="#contact">{{ ui.contact }}</a>
+  <a class="to-mobile" href="{{ link(prefix ~ 'm/') }}" onclick="try{localStorage.removeItem('fullweb')}catch(e){}">{{ ui.mobile_ver }}</a>
+  <a class="lang" href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a>
+ </nav></div></header>
+<main id="top" class="wrap">
+ <div class="hero">
+  <div><h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p><p>{{ summary }}</p>
+   <div class="btns"><a class="btn primary" href="#resume">{{ ui.cta_resume }} →</a><a class="btn" href="#contact">{{ ui.cta_contact }}</a></div></div>
+  {{ wheel }}
+ </div>
+ <section id="focus"><h2>{{ ui.focus }}</h2><div class="grid3">
+  {% for f in focus %}<div class="focus-card f{{ loop.index }}" id="f-{{ f.slug }}"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p></div>{% endfor %}
+ </div></section>
+ <section id="experience"><h2>{{ ui.experience }}</h2>
+  {% for e in experience %}<div class="card job"><div class="row"><h3>{{ e.role }} — {{ e.company }}</h3><span class="muted">{{ e.start }} – {{ e.end }}</span></div>
+   <ul>{% for x in e.bullets %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endfor %}</section>
+ <section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
+  {% for p in projects %}<div class="card proj"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
+ </div></section>
+ <section id="resume"><h2>{{ ui.resume }}</h2><div class="card">
+  {% for r in resumes %}<div class="resume-row"><b>{{ r.title }}</b><span>{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</span></div>{% endfor %}
+ </div></section>
+ <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p></section>
+</main>
+<footer id="contact"><div class="wrap"><h2>{{ ui.contact }}</h2>
+ <p>{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p></div></footer>
+</body></html>

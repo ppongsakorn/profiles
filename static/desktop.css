@@ -16,7 +16,7 @@
 .btn.primary{background:var(--ink);color:var(--bg)}
 .wheel{width:100%;max-width:400px;justify-self:center;height:auto}
 .wheel a path{transition:opacity .15s}.wheel a:hover path{opacity:.85}
-.wheel text{fill:#fff;font:600 12px "IBM Plex Sans Thai",sans-serif;pointer-events:none}
+.wheel text{fill:var(--on-c);font:600 12px "IBM Plex Sans Thai",sans-serif;pointer-events:none}
 .wheel .core{fill:var(--paper)}.wheel .t1{fill:var(--ink);font-size:17px}.wheel .t2{fill:var(--ink2);font-size:12px;font-weight:400}
 section{padding:36px 0}
 h2{font-size:24px;margin:0 0 18px}

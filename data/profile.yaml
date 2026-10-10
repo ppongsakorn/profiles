@@ -55,31 +55,61 @@ focus:
     desc: {en: "Make spend and speed visible, then reduce both.", th: "ทำให้เห็นต้นทุนและความเร็ว แล้วลดค่า Query/Storage"}
 
 skills:
-  - group: Data Platform
+  - group: {en: Data Platform, th: แพลตฟอร์มข้อมูล}
     tags: [data, pipeline]
     items: [Azure Databricks, Databricks SQL Serverless, Azure Data Lake, Azure Data Factory, Azure Synapse, Data Governance, Data Operations, SQL, Microsoft SQL Server, MySQL, MongoDB]
-  - group: BI & Analytics
+  - group: {en: BI & Analytics, th: BI และ Analytics}
     tags: [bi]
     items: [Apache Superset 4, Matomo Web Analytics]
-  - group: AI & Agents
+  - group: {en: AI & Agents, th: AI และ Agent}
     tags: [ai]
     items: [Artificial Intelligence, Machine Learning, LLM, Local LLMs, Agentic AI, Agentic Automation, CrewAI, Microsoft Foundry, Vector Search, Bot Service, Databricks Genie, Claude]
-  - group: Fraud & Security
+  - group: {en: Fraud & Security, th: Fraud และความปลอดภัย}
     tags: [fraud]
     items: [Python, Docker, Information Security]
-  - group: Cloud & Infrastructure
+  - group: {en: Cloud & Infrastructure, th: Cloud และโครงสร้างพื้นฐาน}
     tags: [data, pipeline]
     items: [Microsoft Azure, "Kubernetes (AKS)", Azure App Service, Redis, Azure Container Registry, Linux, Cloud Computing, DevOps, SaaS]
-  - group: Operations
+  - group: {en: Operations, th: การปฏิบัติการ}
     tags: [cost, pipeline]
     items: [Cost Management, SLA, Performance tuning]
-  - group: Software Engineering
+  - group: {en: Software Engineering, th: วิศวกรรมซอฟต์แวร์}
     tags: [software]
     items: ["C#", ".NET", ASP.NET, Java, JavaScript, PHP, HTML, jQuery, Web Services, Visual Studio, Windows Phone, Universal Windows App, Full Stack Web Development]
-  - group: Management & Delivery
+  - group: {en: Management & Delivery, th: การบริหารและส่งมอบงาน}
     tags: [leadership]
     items: [Management, Software Project Management, Agile / Scrum, Application Lifecycle Management]
 
+# เรื่องเล่าเส้นทางอาชีพ: 5 ช่วง (ใช้เป็นแถบสรุปบนสุดของ Timeline) — entry ผูกกับช่วงด้วย `era`
+eras:
+  - id: study
+    label: {en: Study, th: เรียน}
+    headline: {en: "Computer Engineering degree, then contests and research papers.", th: "ปริญญาตรีวิศวกรรมคอมพิวเตอร์ ตามด้วยการแข่งขันและงานวิจัย"}
+  - id: dev
+    label: {en: Full-stack developer, th: นักพัฒนา Full-stack}
+    headline: {en: "A hotel booking engine, a social network and the infrastructure under them.", th: "ระบบจองโรงแรม โซเชียลเน็ตเวิร์ก และโครงสร้างพื้นฐานที่รองรับ"}
+  - id: evangelist
+    label: {en: Microsoft evangelist, th: Microsoft Evangelist}
+    headline: {en: "Developer evangelist for ISVs; manager at Microsoft Innovation Center, Bangkok.", th: "Developer Evangelist สำหรับ ISV และผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}
+  - id: mobile
+    label: {en: Mobile team lead, th: หัวหน้าทีม Mobile}
+    headline: {en: "Led the carmate.biz mobile team and ran Scrum; taught on the side.", th: "นำทีมแอป carmate.biz และเป็น Scrum Master พร้อมสอนควบคู่"}
+  - id: dataai
+    label: {en: Data & AI, th: Data & AI}
+    headline: {en: "From senior data scientist to leading the Data & AI team at Buzzebees.", th: "จาก Senior Data Scientist สู่หัวหน้าทีม Data & AI ที่ Buzzebees"}
+
+# ภาพรวมสำหรับ recruiter / head hunter (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
+# จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่
+snapshot:
+  open_to: TODO                  # เช่น "Head of Data & AI · Data Platform Lead" (ว่าง = ไม่แสดง)
+  scope: TODO                    # ขอบเขต เช่น ขนาดทีม/ปริมาณข้อมูล/งบประมาณ (ยืนยันกับเจ้าของ)
+  stack: [Azure Databricks, Azure Data Factory, Databricks SQL Serverless, Azure Data Lake, AKS, Apache Superset, Microsoft Foundry, Python, Matomo]
+  highlights:
+    - {en: "Leads a Data & AI team end to end: pipelines, cost and performance, SLA, fraud detection and AI agents.", th: "นำทีม Data & AI ครบวงจร: pipeline, ต้นทุนและประสิทธิภาพ, SLA, ตรวจจับ Fraud และ AI Agent"}
+    - {en: "Hands-on with the Azure data stack: Databricks, Data Factory, SQL Serverless, AKS and Superset.", th: "ลงมือจริงกับ Azure data stack: Databricks, Data Factory, SQL Serverless, AKS และ Superset"}
+    - {en: "{years}+ years across the whole path: developer, Microsoft evangelist, mobile team head, data scientist, Data & AI lead.", th: "ประสบการณ์ {years}+ ปีตลอดเส้นทาง: นักพัฒนา, Microsoft Evangelist, หัวหน้าทีม Mobile, Data Scientist, หัวหน้า Data & AI"}
+
+# th ของ bullets/คำบรรยายด้านล่าง = ร่างแปลโดย Claude (ศัพท์เทคนิคคงเป็นอังกฤษ) รอเจ้าของตรวจ
 # ที่มา: LinkedIn Positions.csv (ถ้อยคำของเจ้าของ แก้คำสะกดผิด/เรียบเรียงเป็นประโยคสั้น) · ยังไม่มีตัวเลขผลลัพธ์ → ดู TODO (draft)
 experience:
   - company: Buzzebees
@@ -88,13 +118,19 @@ experience:
     start: "2024-02"
     end: Present
     tags: [data, pipeline, bi, fraud, ai, cost, leadership]
+    era: dataai
+    highlight: true
+    headline: {en: "Leads the Data & AI team end to end: pipelines, cost and performance, SLA, fraud detection and AI agents.", th: "นำทีม Data & AI ครบวงจร: pipeline, ต้นทุนและประสิทธิภาพ, SLA, ตรวจจับ Fraud และ AI Agent"}
+    stack: [Azure Databricks, Azure Data Factory, Databricks SQL Serverless, Azure Data Lake, AKS, Apache Superset, Microsoft Foundry, Claude, Matomo]
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Lead the team to operational excellence in Data & AI routines: data pipeline, transformation, migration, visualization, validation, analytics and governance, designed and executed end-to-end with AI.", tags: [data, pipeline]}
-      - {text: "Lead the team building and operating Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) as the backbone for all data and AI workloads.", tags: [data, pipeline]}
-      - {text: "Lead Data & AI cost and performance optimisation across Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM and Data Lake storage, with continuous focus on cost visibility, query optimisation and storage efficiency.", tags: [cost]}
-      - {text: "Lead adoption of an AI-first operating model: Claude for planning, coding, architecture and decision support; Databricks Genie for natural-language data access; AI agents on Microsoft Foundry (Vector Search, Bot Service) for automated reporting, monitoring and alerting.", tags: [ai]}
-      - {text: "Lead the team to achieve the committed SLA across data pipeline, transformation, visualization, validation and data quality.", tags: [pipeline]}
-      - {text: "Lead the team building fraud prediction and detection systems: Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo.", tags: [fraud]}
+      - {text: {en: "Lead the team to operational excellence in Data & AI routines: data pipeline, transformation, migration, visualization, validation, analytics and governance, designed and executed end-to-end with AI.", th: "นำทีมสู่ความเป็นเลิศในงานประจำด้าน Data & AI: data pipeline, transformation, migration, visualization, validation, analytics และ governance ออกแบบและดำเนินการครบวงจรร่วมกับ AI"}, tags: [data, pipeline]}
+      - {text: {en: "Lead the team building and operating Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) as the backbone for all data and AI workloads.", th: "นำทีมสร้างและดูแลโครงสร้างพื้นฐานบน Azure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) ซึ่งเป็นกระดูกสันหลังของงาน data และ AI ทั้งหมด"}, tags: [data, pipeline]}
+      - {text: {en: "Lead Data & AI cost and performance optimisation across Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM and Data Lake storage, with continuous focus on cost visibility, query optimisation and storage efficiency.", th: "นำการปรับต้นทุนและประสิทธิภาพของงาน Data & AI ทั้ง Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM และ storage ของ Data Lake โดยเน้นต่อเนื่องที่การมองเห็นต้นทุน การปรับ query และประสิทธิภาพของ storage"}, tags: [cost]}
+      - {text: {en: "Lead adoption of an AI-first operating model: Claude for planning, coding, architecture and decision support; Databricks Genie for natural-language data access; AI agents on Microsoft Foundry (Vector Search, Bot Service) for automated reporting, monitoring and alerting.", th: "นำการใช้โมเดลการทำงานแบบ AI-first: ใช้ Claude ช่วยวางแผน เขียนโค้ด ออกแบบสถาปัตยกรรม และสนับสนุนการตัดสินใจ; ใช้ Databricks Genie ให้เข้าถึงข้อมูลด้วยภาษาธรรมชาติ; และใช้ AI Agent บน Microsoft Foundry (Vector Search, Bot Service) ทำ Reporting, Monitoring และ Alerting อัตโนมัติ"}, tags: [ai]}
+      - {text: {en: "Lead the team to achieve the committed SLA across data pipeline, transformation, visualization, validation and data quality.", th: "นำทีมให้บรรลุ SLA ที่ตกลงไว้ ครอบคลุม data pipeline, transformation, visualization, validation และคุณภาพข้อมูล"}, tags: [pipeline]}
+      - {text: {en: "Lead the team building fraud prediction and detection systems: Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo.", th: "นำทีมสร้างระบบทำนายและตรวจจับ Fraud: Python worker บน AKS ดึงข้อมูลจาก MySQL, MSSQL และ Azure Table พร้อมสัญญาณพฤติกรรมจาก Matomo"}, tags: [fraud]}
       - {text: "TODO: measurable results (cost saved, query/pipeline time, SLA achieved, fraud caught)", tags: [cost, pipeline, fraud], status: draft}
   - company: Buzzebees
     role: Senior Data Scientist
@@ -102,28 +138,45 @@ experience:
     start: "2020-10"
     end: "2024-02"
     tags: [data, pipeline, bi, fraud, ai]
+    era: dataai
+    highlight: true
+    headline: {en: "Built AI orchestration, fraud detection, real-time tracking and monitoring, and the modern data platform on Azure.", th: "สร้าง AI orchestration, ระบบตรวจจับ Fraud, real-time tracking/monitoring และ modern data platform บน Azure"}
+    stack: [Semantic Kernel, Azure OpenAI, Azure Bot Service, Azure Databricks, Azure Synapse, Azure Data Factory, AKS, Azure Event Hubs, Matomo, Grafana, Azure Application Insights]
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Built an AI chain with automatic orchestration using Semantic Kernel and Azure OpenAI.", tags: [ai]}
-      - {text: "Designed, built and managed a fraud detection system using AI/ML, with real-time detection and scoring.", tags: [fraud, ai]}
-      - {text: "Azure Bot Service performance reports in Microsoft Teams, and automatic report generation from Databricks.", tags: [ai, bi]}
-      - {text: "Real-time user-tracking analytics on Azure Kubernetes Service, Azure Event Hubs and Matomo.", tags: [bi, data]}
-      - {text: "Real-time monitoring (internal tool) with Grafana, alerts and notifications, and Azure Application Insights (Azure Monitor).", tags: [pipeline]}
-      - {text: "Modern data platform on Azure Databricks, Azure Synapse and Azure Data Factory.", tags: [data, pipeline]}
+      - {text: {en: "Built an AI chain with automatic orchestration using Semantic Kernel and Azure OpenAI.", th: "สร้าง AI chain ที่ orchestrate อัตโนมัติด้วย Semantic Kernel และ Azure OpenAI"}, tags: [ai]}
+      - {text: {en: "Designed, built and managed a fraud detection system using AI/ML, with real-time detection and scoring.", th: "ออกแบบ สร้าง และดูแลระบบตรวจจับ Fraud ด้วย AI/ML ตรวจจับและให้คะแนนแบบ real-time"}, tags: [fraud, ai]}
+      - {text: {en: "Azure Bot Service performance reports in Microsoft Teams, and automatic report generation from Databricks.", th: "รายงานประสิทธิภาพผ่าน Azure Bot Service ใน Microsoft Teams และสร้างรายงานอัตโนมัติจาก Databricks"}, tags: [ai, bi]}
+      - {text: {en: "Real-time user-tracking analytics on Azure Kubernetes Service, Azure Event Hubs and Matomo.", th: "Analytics ติดตามผู้ใช้แบบ real-time บน Azure Kubernetes Service, Azure Event Hubs และ Matomo"}, tags: [bi, data]}
+      - {text: {en: "Real-time monitoring (internal tool) with Grafana, alerts and notifications, and Azure Application Insights (Azure Monitor).", th: "ระบบ monitoring แบบ real-time (เครื่องมือภายใน) ด้วย Grafana, การแจ้งเตือน และ Azure Application Insights (Azure Monitor)"}, tags: [pipeline]}
+      - {text: {en: "Modern data platform on Azure Databricks, Azure Synapse and Azure Data Factory.", th: "Modern data platform บน Azure Databricks, Azure Synapse และ Azure Data Factory"}, tags: [data, pipeline]}
   - company: EMCS THAI CO. LTD
     role: CX and RD (AI & Deep Learning) Lead
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
     start: "2020-03"
     end: "2020-10"
     tags: [ai, bi]
+    era: dataai
+    headline: {en: "Customer experience and research in AI and machine learning, data platform, data visualization and UX/UI.", th: "งาน Customer Experience และวิจัยด้าน AI/Machine Learning, data platform, data visualization และ UX/UI"}
+    stack: []
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Customer experience: listen and learn from customers, find hidden needs, build potential UX/UI, and track and follow up behaviour.", tags: [bi]}
-      - {text: "Research areas: AI and machine learning, data platform, data visualization, UX/UI.", tags: [ai, data]}
+      - {text: {en: "Customer experience: listen and learn from customers, find hidden needs, build potential UX/UI, and track and follow up behaviour.", th: "Customer Experience: รับฟังและเรียนรู้จากลูกค้า ค้นหาความต้องการที่ซ่อนอยู่ สร้าง UX/UI ที่มีศักยภาพ และติดตามพฤติกรรม"}, tags: [bi]}
+      - {text: {en: "Research areas: AI and machine learning, data platform, data visualization, UX/UI.", th: "หัวข้อวิจัย: AI และ machine learning, data platform, data visualization, UX/UI"}, tags: [ai, data]}
   - company: inclass.in.th
     role: Mathematics & Computer Teacher (weekend job)
     location: {en: "Nakhon Ratchasima, Thailand", th: "นครราชสีมา"}
     start: "2015-03"
     end: "2020-10"
     tags: [teaching]
+    era: mobile
+    side: true
+    headline: {en: "Weekend teaching of mathematics and computer.", th: "สอนคณิตศาสตร์และคอมพิวเตอร์วันหยุดสุดสัปดาห์"}
+    stack: []
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets: []
   - company: EMCS THAI CO. LTD
     role: Head of Mobile Application Team
@@ -131,37 +184,60 @@ experience:
     start: "2016-04"
     end: "2020-03"
     tags: [software, leadership, ai]
+    era: mobile
+    highlight: true
+    headline: {en: "Led the mobile application team behind carmate.biz: native apps, backend, real-time chat and Scrum delivery.", th: "นำทีมแอปมือถือเบื้องหลัง carmate.biz: native app, backend, real-time chat และการส่งงานแบบ Scrum"}
+    stack: [Native iOS, Native Android, .NET Core, Node.js, WebRTC, Next.js, Vue.js, Azure DevOps, AWS, TensorFlow]
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", tags: [software, leadership]}
-      - {text: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", tags: [leadership]}
-      - {text: "Cloud on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", tags: [software]}
-      - {text: "Machine-learning image recognition with TensorFlow.", tags: [ai]}
+      - {text: {en: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, leadership]}
+      - {text: {en: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", th: "Scrum Master บน Microsoft Azure DevOps: Git workflow, วางแผน sprint และบริหารทรัพยากร, จัดการ task และ bug, burn-down และ Kanban, build และ release อัตโนมัติ"}, tags: [leadership]}
+      - {text: {en: "Cloud on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", th: "Cloud บน Amazon AWS และ Microsoft Azure (EC2, S3, RDS, Lambda)"}, tags: [software]}
+      - {text: {en: "Machine-learning image recognition with TensorFlow.", th: "Image recognition ด้วย machine learning บน TensorFlow"}, tags: [ai]}
   - company: Prince of Songkla University, Phuket Campus
     role: Lecturer (ASP.NET MVC)
     location: {en: "Phuket, Thailand", th: "ภูเก็ต"}
     start: "2015-07"
     end: "2015-10"
     tags: [teaching, software]
+    era: mobile
+    side: true
+    headline: {en: "Taught web development with ASP.NET MVC.", th: "สอนการพัฒนาเว็บด้วย ASP.NET MVC"}
+    stack: [ASP.NET MVC, jQuery, Bootstrap, TypeScript, AngularJS, Web API, Windows Azure]
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", tags: [teaching, software]}
+      - {text: {en: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", th: "การพัฒนาเว็บด้วย ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript และ AngularJS 2.0, Web API, Windows Azure"}, tags: [teaching, software]}
   - company: Microsoft
     role: ISV Developer Evangelist
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
     start: "2009-11"
     end: "2015-02"
     tags: [software, leadership]
+    era: evangelist
+    highlight: true
+    headline: {en: "Developer evangelist for ISVs, and manager at Microsoft Innovation Center, Bangkok.", th: "Developer Evangelist สำหรับ ISV และผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}
+    stack: []
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Manager at Microsoft Innovation Center, Bangkok.", tags: [leadership]}
+      - {text: {en: "Manager at Microsoft Innovation Center, Bangkok.", th: "ผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}, tags: [leadership]}
   - company: A2Z Professional Travel Co, Ltd.
     role: Full Stack Developer
     location: {en: "Thailand", th: "ประเทศไทย"}
     start: "2006-01"
     end: "2009-10"
     tags: [software]
+    era: dev
+    headline: {en: "Full-stack developer: a hotel booking engine, a social network and the infrastructure under them.", th: "Full-stack developer: ระบบจองโรงแรม โซเชียลเน็ตเวิร์ก และโครงสร้างพื้นฐานที่รองรับ"}
+    stack: [PHP, Oracle, MySQL, Java, SOAP, Linux, Apache, Windows/IIS]
+    impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
+    learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", tags: [software]}
-      - {text: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", tags: [software]}
-      - {text: "Developed a social network with PHP and MySQL.", tags: [software]}
+      - {text: {en: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", th: "ดูแลและติดตั้งโครงสร้างพื้นฐาน: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java"}, tags: [software]}
+      - {text: {en: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", th: "พัฒนา booking engine สำหรับโรงแรม (PHP, Oracle) พร้อมเชื่อมต่อ SOAP web service กับซัพพลายเออร์โรงแรม"}, tags: [software]}
+      - {text: {en: "Developed a social network with PHP and MySQL.", th: "พัฒนาโซเชียลเน็ตเวิร์กด้วย PHP และ MySQL"}, tags: [software]}
 
 # 1 โปรเจกต์ = 1 หน้า case study (/work/<slug>/). slug ต้องไม่ซ้ำ, เป็น kebab-case
 projects:
@@ -281,7 +357,9 @@ education:
     field: {en: Computer Engineering, th: วิศวกรรมคอมพิวเตอร์}
     start: "2001"
     end: "2005"
-    status: draft
+    era: study
+    headline: {en: "Bachelor's degree in Computer Engineering.", th: "ปริญญาตรีวิศวกรรมคอมพิวเตอร์"}
+    learned: []     # TODO: สิ่งที่ได้จากช่วงเรียน (วิชา/โปรเจกต์/งานวิจัยที่ภูมิใจ)
 
 certifications:
   - {name: Microsoft Certified Application Developer (MCAD), issuer: Microsoft}
@@ -289,30 +367,30 @@ certifications:
 
 # result: ผลการแข่งขัน (LinkedIn ไม่ได้ระบุอันดับของ 3 รายการแรก — ห้ามเดา)
 honors:
-  - {title: "3rd NSC 2005, organized by NECTEC, Thailand", description: "Siam Ecatalog (web service contest)", date: "2005", result: TODO}
-  - {title: "3rd Imagine Cup 2005, organized by Microsoft Corporation, Thailand", description: "My Hero Project: tablet app with stylus, .NET C#", date: "2005", result: TODO}
-  - {title: "4th NSC 2006, organized by NECTEC, Thailand", description: "Intelligent Parking System: RFID technology, .NET C# desktop app, Flash app", date: "2006", result: TODO}
-  - {title: "1st OTPC App Hackathon in Khon Kaen", description: "Education app (writing, speaking, listening, content creation) built with Apache Cordova in Visual Studio", date: "2013-03", result: "Best App & Best Presentation"}
+  - {title: "3rd NSC 2005, organized by NECTEC, Thailand", description: {en: "Siam Ecatalog (web service contest)", th: "Siam Ecatalog (การแข่งขัน web service)"}, date: "2005", result: TODO}
+  - {title: "3rd Imagine Cup 2005, organized by Microsoft Corporation, Thailand", description: {en: "My Hero Project: tablet app with stylus, .NET C#", th: "My Hero Project: แอปบนแท็บเล็ตที่ใช้ปากกา stylus, .NET C#"}, date: "2005", result: TODO}
+  - {title: "4th NSC 2006, organized by NECTEC, Thailand", description: {en: "Intelligent Parking System: RFID technology, .NET C# desktop app, Flash app", th: "Intelligent Parking System: เทคโนโลยี RFID, desktop app ด้วย .NET C#, Flash app"}, date: "2006", result: TODO}
+  - {title: "1st OTPC App Hackathon in Khon Kaen", description: {en: "Education app (writing, speaking, listening, content creation) built with Apache Cordova in Visual Studio", th: "แอปการศึกษา (เขียน พูด ฟัง สร้างเนื้อหา) พัฒนาด้วย Apache Cordova ใน Visual Studio"}, date: "2013-03", result: "Best App & Best Presentation"}
 
 # ผู้เขียนร่วมไม่ใส่ชื่อ (บุคคลที่สาม) — role ตามที่ปรากฏในรายชื่อผู้เขียน
 publications:
   - title: "Fingerprint pattern asymmetry and complexity index in male Thai schizophrenia: a case-control study"
     venue: "The 2nd WFSBP Asia-Pacific Congress and 30th Annual Meeting of JSBP, Toyama, Japan, 11-13 September 2008"
     date: "2008-09-11"
-    role: Co-author
+    role: {en: Co-author, th: ผู้เขียนร่วม}
   - title: "An Application of Automated Inkless Fingerprint Imaging Software in Fingerprint Collection and Pattern Analysis"
     venue: "The Second International Conference on Innovative Computing, Information and Control, Kumamoto, Japan, 5-7 September 2007"
     date: "2007-09-05"
-    role: Co-author and speaker
+    role: {en: Co-author and speaker, th: ผู้เขียนร่วมและผู้นำเสนอ}
   - title: "Imaging Software for Automated Inkless Fingerprinting"
     venue: "The First International Conference on Science and Technology for Sustainable Development of the Greater Mekong Sub-region, Khon Kaen, Thailand, 15-16 August 2006"
     date: "2006-08-15"
-    role: Co-author
+    role: {en: Co-author, th: ผู้เขียนร่วม}
 
 patents:
   - title: Inkless Automated Fingerprint Software
-    description: "Automated inkless fingerprint imaging software invented by the authors, patented by the Department of Intellectual Property, Thailand."
-    issuer: "Department of Intellectual Property, Thailand"
+    description: {en: "Automated inkless fingerprint imaging software invented by the authors, patented by the Department of Intellectual Property, Thailand.", th: "ซอฟต์แวร์ถ่ายภาพลายนิ้วมืออัตโนมัติแบบไม่ใช้หมึกที่ผู้เขียนคิดค้น ได้รับสิทธิบัตรจากกรมทรัพย์สินทางปัญญา ประเทศไทย"}
+    issuer: {en: "Department of Intellectual Property, Thailand", th: "กรมทรัพย์สินทางปัญญา ประเทศไทย"}
     number: TODO          # เลขที่สิทธิบัตร/วันที่ ไม่มีในไฟล์ LinkedIn
     url: "http://www.mat.or.th/journal/files/Vol91_No.1_82_1022.pdf"
 
@@ -320,8 +398,16 @@ languages:
   - {name: {en: English, th: อังกฤษ}, level: {en: Professional working proficiency, th: ใช้งานในระดับมืออาชีพ}}
   - {name: {en: Thai, th: ไทย}, level: {en: Native or bilingual proficiency, th: ภาษาแม่}}
 
+# งานอดิเรก (เจ้าของบอกเอง) — ชื่อภาษาอังกฤษเป็นร่างแปลโดย Claude. public: false = ไม่แสดง
+hobbies:
+  - {slug: badminton, name: {en: Badminton, th: แบดมินตัน}}
+  - {slug: table-tennis, name: {en: Table tennis, th: ปิงปอง}}
+  - {slug: cycling, name: {en: Cycling, th: ปั่นจักรยาน}}
+  - {slug: food-hunting, name: {en: Food hunting, th: ตะเวนกิน}}
+  - {slug: bar-hopping, name: {en: Bar hopping, th: ตะเวนดื่ม}}
+
 interests:
-  - AI agents & workflow automation
-  - Vector search / RAG
-  - Databricks cost & query optimisation
-  - Dashboard storytelling
+  - {en: AI agents & workflow automation, th: AI Agent และ workflow อัตโนมัติ}
+  - {en: Vector search / RAG, th: Vector Search / RAG}
+  - {en: Databricks cost & query optimisation, th: ลดต้นทุน Databricks และ query}
+  - {en: Dashboard storytelling, th: เล่าเรื่องด้วย Dashboard}

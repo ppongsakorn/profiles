@@ -6,26 +6,28 @@
 <title>{{ b.name }} — {{ ui[screen] }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/mobile.css') }}">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/mobile.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}">
 {{ jsonld }}
 <link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
 <script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
+<script defer src="{{ link('assets/timeline.js') }}"></script>
 </head><body>
 <div class="top"><span>{{ b.name }}</span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></div>
 <main>
 {% if screen == 'home' %}
  <h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p><p class="lead">{{ summary }}</p>
+ <h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}
  <h2>{{ ui.focus }}</h2>
  <div class="list">{% for f in focus %}<div class="item f{{ loop.index }}"><span class="bar"></span><span><b>{{ f.title }}</b><small>{{ f.desc }}</small></span></div>{% endfor %}</div>
  <p><a class="pill" href="{{ link(prefix ~ 'm/resume/') }}">{{ ui.cta_resume }}</a><a class="pill" href="{{ link(prefix ~ 'm/contact/') }}">{{ ui.cta_contact }}</a></p>
 {% elif screen == 'work' %}
- <h2>{{ ui.experience }}</h2>
- {% for e in experience %}<div class="block"><h3>{{ e.role }}</h3><div class="dates">{{ e.company }} · {{ e.start }} – {{ e.end }}</div>
-  <ul>{% for x in e.bullets %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endfor %}
+ <h2>{{ ui.story }}</h2>{% include "_story.html.j2" %}
  {% if projects %}<h2>{{ ui.projects }}</h2>{% endif %}
  {% for p in projects %}<div class="block"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  <h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>
+ {% if hobbies %}<h2>{{ ui.hobbies }}</h2><p>{% for h in hobbies %}<span class="chip">{{ h }}</span>{% endfor %}</p>{% endif %}
 {% elif screen == 'resume' %}
+ <h2>{{ ui.docs_title }}</h2>{% include "_docs_links.html.j2" %}
  <h2>{{ ui.resume }}</h2>
  {% for r in resumes %}<div class="block"><h3>{{ r.title }}</h3><div class="links">{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</div></div>{% endfor %}
 {% else %}

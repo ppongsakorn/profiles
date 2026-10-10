@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ lang }}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ b.name }} — {{ b.label }} · {{ doc_title }}</title>
+<meta name="description" content="{{ summary | truncate(150) }}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/doc.css') }}">
+{{ jsonld }}
+{% if mode == 'full' %}<script defer src="{{ link('assets/timeline.js') }}"></script>{% endif %}
+</head><body class="doc {{ mode }}">
+<nav class="docnav no-print"><a href="{{ link(prefix) }}">← {{ b.name }}</a>
+ <span><a href="{{ link(prefix ~ 'profile/') }}"{% if mode == 'one' %} aria-current="page"{% endif %}>{{ ui.one_page }}</a>
+ <a href="{{ link(prefix ~ 'profile/full/') }}"{% if mode == 'full' %} aria-current="page"{% endif %}>{{ ui.full_profile }}</a>
+ {% if pdf_built %}<a href="{{ link(prefix ~ ('profile/one-page.pdf' if mode == 'one' else 'profile/full.pdf')) }}">{{ ui.pdf }}</a>{% endif %}
+ <a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></span></nav>
+<main class="sheet">
+<header class="dh"><h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p>
+ <p class="meta">{{ [b.email, story.snapshot.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p></header>
+<p class="sum">{{ summary }}</p>
+<section><h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}</section>
+{% if mode == 'one' %}
+<section><h2>{{ ui.glance }}</h2>
+ <ul class="glance">{% for e in story.eras | reverse %}<li><span class="yrs">{{ e.years }}</span><span><b>{{ e.label }}</b> {{ e.headline }}</span></li>{% endfor %}</ul></section>
+<section class="two"><div><h2>{{ ui.skills_short }}</h2>{% for g in skills %}<p class="sk"><b>{{ g.group }}:</b> {{ g.list | join(', ') }}</p>{% endfor %}</div>
+ {% if story.cred.certs or story.cred.patents %}<div><h2>{{ ui.cred }}</h2><ul class="cr">{% for c in story.cred.certs %}<li>{{ c.name }}</li>{% endfor %}{% for p in story.cred.patents %}<li>{{ ui.patent }}: {{ p.title }}</li>{% endfor %}</ul></div>{% endif %}</section>
+{% if hobbies %}<p class="sk"><b>{{ ui.hobbies }}:</b> {{ hobbies | join(' · ') }}</p>{% endif %}
+<p class="more no-print"><a href="{{ link(prefix ~ 'profile/full/') }}">{{ ui.read_full }} →</a></p>
+{% else %}
+<section><h2>{{ ui.story }}</h2>{% include "_story.html.j2" %}</section>
+{% if hobbies %}<section><h2>{{ ui.hobbies }}</h2><p>{% for h in hobbies %}<span class="chip">{{ h }}</span>{% endfor %}</p></section>{% endif %}
+{% if projects %}<section><h2>{{ ui.projects }}</h2>{% for p in projects %}<div class="pj"><b>{{ p.name }}</b> <span class="muted">{{ p.stack | join(' · ') }}</span><p>{{ p.summary }}</p></div>{% endfor %}</section>{% endif %}
+{% endif %}
+</main></body></html>

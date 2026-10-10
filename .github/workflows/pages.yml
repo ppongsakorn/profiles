@@ -23,6 +23,7 @@ jobs:
       - run: python scripts/validate_data.py
       - run: python build.py --pdf
       - run: python scripts/check_webmcp.py
+      - run: python scripts/check_site.py
       - uses: actions/upload-pages-artifact@v3
         with: {path: dist}
   deploy:

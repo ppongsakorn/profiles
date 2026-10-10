@@ -30,6 +30,15 @@
 | `certifications` | name, issuer, date, url, status |
 | `interests` | รายการข้อความ |
 
+### ฟิลด์เล่าเรื่อง (experience / education)
+`era` (ผูกกับ `eras`), `headline` (สรุปบรรทัดเดียว), `highlight: true` (ติดป้ายไฮไลต์), `side: true` (งานควบคู่),
+`stack[]` (เทคโนโลยี), `bullets` (สิ่งที่ได้สร้างและส่งมอบ), `impact[]` (ผลลัพธ์ที่วัดได้ — **รอเจ้าของ**), `learned[]` (ความรู้/ประสบการณ์ที่ได้ — **รอเจ้าของ**)
+- `eras` = 5 ช่วงอาชีพบนแถบสรุป · `snapshot` = ภาพรวมสำหรับ recruiter (`highlights` ใช้ `{years}` ได้, `stack`, `open_to`, `scope`; ค่า `TODO` ไม่แสดง)
+- `hobbies[]` = {slug, name, public}
+
+### สองภาษา
+ข้อความบรรยายต้องมีทั้ง `en` และ `th` · ชื่อบริษัท/ตำแหน่ง/ศัพท์เทคนิคคงเป็นอังกฤษ · validator เตือนถ้าขาดภาษาใดภาษาหนึ่ง
+
 `sanitized: true` หมายถึงเจ้าของตรวจแล้วว่าไม่มีชื่อลูกค้า ตัวเลขภายใน หรือข้อมูลลับ — validator จะเตือนผลงานที่ publish แล้วแต่ยังเป็น `false`
 
 ## PII: ห้ามเข้า Git (repo นี้เป็น public)

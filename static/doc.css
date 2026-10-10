@@ -1,0 +1,29 @@
+/* Standalone profile documents: One Page (fits one A4 sheet) and Full. */
+body.doc{background:var(--bg);margin:0}
+.docnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:860px;margin:0 auto;padding:14px 16px;font-size:14px}
+.docnav a{color:var(--ink2);text-decoration:none;margin-left:12px}.docnav a:first-child{margin-left:0;color:var(--ink)}
+.docnav a[aria-current]{color:var(--accent);font-weight:600}
+.sheet{max-width:860px;margin:0 auto 40px;padding:28px 32px;background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.dh h1{margin:0;font-size:30px;line-height:1.15}.dh .role{margin:2px 0 4px;color:var(--accent);font-weight:600;font-size:18px}
+.dh .meta{margin:0;color:var(--ink2);font-size:13.5px}.dh a{color:var(--accent)}
+.sum{margin:12px 0 4px;color:var(--ink2)}
+.sheet section{margin-top:18px}.sheet h2{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.glance{list-style:none;margin:0;padding:0;display:grid;gap:6px}.glance li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.45}
+.glance .yrs{color:var(--accent);font-weight:600;font-size:13px}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px}
+.sk{margin:0 0 4px;font-size:13.5px;line-height:1.45}.cr{margin:0 0 0 1.1rem;padding:0;font-size:13.5px}
+.more{margin:18px 0 0;text-align:right}.more a{color:var(--accent);font-weight:600}
+.pj{margin:0 0 8px}.pj p{margin:2px 0 0;color:var(--ink2);font-size:14px}.muted{color:var(--ink2)}
+@media (max-width:640px){.sheet{padding:18px 16px;border-radius:0;border-left:0;border-right:0}.two{grid-template-columns:minmax(0,1fr)}.glance li{grid-template-columns:minmax(0,1fr);gap:0}}
+@page{size:A4;margin:11mm}
+@media print{
+ :root{color-scheme:light}
+ body.doc{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11.5px;line-height:1.4}
+ .sheet{max-width:none;margin:0;padding:0;border:0;border-radius:0}
+ .dh h1{font-size:24px}.dh .role{font-size:14px}
+ .doc.one .sum{margin:6px 0 0;font-size:11.5px}.doc.one .sheet section{margin-top:9px}.doc.one .hl{gap:3px}.doc.one .hl li{font-size:11.5px}
+ .facts{grid-template-columns:repeat(3,minmax(0,1fr))!important}.doc.one .facts{gap:6px}.doc.one .fact{padding:5px 8px}.doc.one .fact dd b{font-size:12px}.doc.one .fact dd span:not(.chip){font-size:10.5px}
+ .doc.one .chip{font-size:10px;padding:0 6px}.doc.one .glance{gap:3px}.doc.one .glance li{font-size:11px;grid-template-columns:78px 1fr}
+ .doc.one .sk,.doc.one .cr{font-size:10.5px}.sheet h2{font-size:10px;margin-bottom:4px}
+ .tl-item{break-inside:avoid}.eras a{break-inside:avoid}
+}

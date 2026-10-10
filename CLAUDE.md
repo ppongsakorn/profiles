@@ -18,12 +18,18 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   (`templates/mobile.html.j2`: Home / Work / Resume / Contact + "เว็บเต็ม"). Desktop redirects small screens to `m/`
   before paint unless `localStorage.fullweb === '1'`.
 - CSS is plain, in `static/` (`base.css` tokens + dark mode, `desktop.css`, `mobile.css`). No CSS framework.
+- AI-readable surface (WebMCP + fallbacks): `static/webmcp.js` registers 8 read-only tools on `document.modelContext`
+  (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, get_contact),
+  fetching `profile.json` lazily. `build.py` also emits `profile.json`, `llms.txt` and a schema.org `Person` JSON-LD block.
+  All of it is public page content only: never add private or non-displayed data there. When adding/removing a tool,
+  update `EXPECTED` in `scripts/check_webmcp.py` and the list above.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
 
 ## Commands
 - `pip install -r requirements.txt`
 - `python build.py` (html + md) · `python build.py --pdf` (needs Chromium; set `CHROMIUM_PATH` if not on the default path)
 - Preview: `python -m http.server -d dist`
+- `python scripts/check_webmcp.py` (after build; also runs in CI) calls every WebMCP tool with a fake `document.modelContext`.
 - Playwright checks that matter: no horizontal overflow at 360–390px, phone viewport redirects `/` → `/m/`, light and dark.
 
 ## Gotchas

@@ -19,6 +19,7 @@ jobs:
         with: {python-version: "3.12", cache: pip}
       - run: pip install -r requirements.txt && playwright install --with-deps chromium
       - run: python build.py --pdf
+      - run: python scripts/check_webmcp.py
       - uses: actions/upload-pages-artifact@v3
         with: {path: dist}
   deploy:

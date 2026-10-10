@@ -12,6 +12,7 @@
 - ✅ `build.py` → `dist/` : เว็บ + Resume (HTML / MD / PDF)
 - ✅ เว็บ 2 เวอร์ชัน: desktop (default) + mobile web app (`/m/`, แถบเมนูล่าง, redirect จอเล็ก, ปุ่ม "เว็บเต็ม")
 - ✅ 2 ภาษา: ไทย (root) / อังกฤษ (`/en/`) · dark mode ตามระบบ
+- ✅ WebMCP (8 tools แบบ read-only) + `profile.json`, `llms.txt`, JSON-LD สำหรับ AI ที่เข้ามา scan
 - ✅ GitHub Actions deploy ไป Pages (`.github/workflows/pages.yml`)
 
 ## Phase 1 — เนื้อหาจริง 🟡 (สำคัญที่สุด)
@@ -24,6 +25,7 @@
 ## Phase 2 — Deploy ⬜
 - ⬜ รวมเข้า `main` และตั้งค่า Settings → Pages → Source = GitHub Actions
 - ⬜ ตรวจบนเว็บจริงด้วย Playwright: overflow 360–390px, redirect มือถือ, ลิงก์ Resume ทุกแบบ, light/dark
+- ⬜ ทดสอบ WebMCP กับเบราว์เซอร์/agent จริงที่รองรับ (ตอนนี้ทดสอบกับ `modelContext` จำลองเท่านั้น)
 - ⬜ เพิ่ม favicon และ Open Graph image (ให้ลิงก์สวยเวลาแชร์)
 - ⬜ (ถ้าต้องการ) custom domain
 
@@ -46,6 +48,7 @@
 | Stack | Python + Jinja สร้าง static HTML; Next.js เก็บไว้ถ้าต้องการฟีเจอร์ที่ใช้ server |
 | เวอร์ชันเว็บ | desktop เป็น default, mobile เป็น web app แยก (`/m/`) |
 | ภาษา | ไทยเป็นหลัก, อังกฤษที่ `/en/` |
+| AI เข้ามา scan | WebMCP (draft, บางเบราว์เซอร์) + ช่องทางสำรองที่ทุก crawler อ่านได้: `profile.json`, `llms.txt`, JSON-LD |
 
 ## เรื่องที่ยังต้องตัดสินใจ
 - [ ] สี accent (ตอนนี้ใช้น้ำเงิน `#245fa6` เหมือน repo ที่ผ่านมา)

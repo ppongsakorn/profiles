@@ -7,6 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/mobile.css') }}">
+{{ jsonld }}
+<link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
+<script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
 </head><body>
 <div class="top"><span>{{ b.name }}</span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></div>
 <main>

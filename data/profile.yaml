@@ -105,7 +105,7 @@ eras:
     label: {en: Data & AI, th: Data & AI}
     headline: {en: "From senior data scientist to leading the Data & AI team at Buzzebees.", th: "จาก Senior Data Scientist สู่หัวหน้าทีม Data & AI ที่ Buzzebees"}
 
-# ภาพรวมสำหรับ recruiter / head hunter (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
+# ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่
 snapshot:
   open_to: TODO                  # เช่น "Head of Data & AI · Data Platform Lead" (ว่าง = ไม่แสดง)

@@ -22,7 +22,7 @@
  <h2>{{ ui.experience }}</h2>
  {% for e in experience %}<div class="block"><h3>{{ e.role }}</h3><div class="dates">{{ e.company }} · {{ e.start }} – {{ e.end }}</div>
   <ul>{% for x in e.bullets %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endfor %}
- <h2>{{ ui.projects }}</h2>
+ {% if projects %}<h2>{{ ui.projects }}</h2>{% endif %}
  {% for p in projects %}<div class="block"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  <h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>
 {% elif screen == 'resume' %}

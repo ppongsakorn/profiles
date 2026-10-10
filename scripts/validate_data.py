@@ -35,6 +35,17 @@ def date(where, v, allow_present=False):
     if not (isinstance(v, str) and DATE.match(v)):
         E(f"{where}: date must be YYYY-MM{' or Present' if allow_present else ''}, got {v!r}")
 
+def edu_date(where, v):
+    if isinstance(v, int) or (isinstance(v, str) and re.match(r"^\d{4}$", v)):
+        return
+    date(where, v)
+
+def flex_date(where, v):
+    if v in (None, "") or (isinstance(v, str) and v.startswith("TODO")):
+        return
+    if not re.match(r"^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$", str(v)):
+        E(f"{where}: date must be YYYY, YYYY-MM or YYYY-MM-DD, got {v!r}")
+
 def bilingual(where, v):
     if isinstance(v, dict) and set(v) <= {"en", "th"} and v and len(v) < 2:
         W(f"{where}: only {next(iter(v))} given (the other language falls back)")
@@ -72,7 +83,21 @@ for k in ("education", "certifications"):
     for i, x in enumerate(data.get(k, [])):
         status(f"{k}[{i}]", x)
         for f in ("start", "end", "date"):
-            date(f"{k}[{i}].{f}", x.get(f))
+            (edu_date if k == "education" else date)(f"{k}[{i}].{f}", x.get(f))
+for i, n in enumerate(data.get("notes", [])):
+    date(f"notes[{i}].date", n.get("date"))
+for k in ("honors", "publications"):
+    for i, x in enumerate(data.get(k, [])):
+        status(f"{k}[{i}]", x); flex_date(f"{k}[{i}].date", x.get("date"))
+        if not x.get("title"):
+            E(f"{k}[{i}]: title is required")
+for i, x in enumerate(data.get("patents", [])):
+    status(f"patents[{i}]", x)
+    if not x.get("title"):
+        E(f"patents[{i}]: title is required")
+for i, x in enumerate(data.get("languages", [])):
+    if not x.get("name"):
+        E(f"languages[{i}]: name is required")
 
 used = {t for k in ("projects", "experience", "notes") for x in data.get(k, []) if x.get("status", "published") == "published" for t in x.get("tags", [])}
 for f in focus:

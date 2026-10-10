@@ -31,7 +31,10 @@ with sync_playwright() as p:
             prof = call("get_profile"); check(prof["name"] and len(prof["focus_areas"]) == 6, "get_profile name + 6 focus areas")
             check(len(call("list_focus_areas")) == 6, "list_focus_areas = 6")
             check(call("get_experience")["experience"][0]["company"] == "Buzzebees", "get_experience first = Buzzebees")
-            r = call("list_projects", {"tech": "databricks"}); check(r["count"] >= 1, f"list_projects tech=databricks -> {r['count']}")
+            allp = call("list_projects"); check(allp["count"] >= 1, f"list_projects -> {allp['count']} published")
+            tech = allp["projects"][0]["stack"][0]
+            r = call("list_projects", {"tech": tech}); check(r["count"] >= 1, f"list_projects tech={tech} -> {r['count']}")
+            check(call("list_projects", {"tech": "zzz-no-such-tech"})["count"] == 0, "list_projects unknown tech -> 0")
             check(len(call("get_skills")) >= 3, "get_skills groups")
             rs = call("list_resumes"); check(len(rs) == 3 and rs[0]["links"]["md"].startswith("http"), "list_resumes absolute links")
             s = call("search_profile", {"query": "databricks cost"}); check(s["count"] >= 1, f"search_profile 'databricks cost' -> {s['count']}")

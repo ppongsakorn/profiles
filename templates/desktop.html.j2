@@ -30,9 +30,9 @@
  <section id="experience"><h2>{{ ui.experience }}</h2>
   {% for e in experience %}<div class="card job"><div class="row"><h3>{{ e.role }} — {{ e.company }}</h3><span class="muted">{{ e.start }} – {{ e.end }}</span></div>
    <ul>{% for x in e.bullets %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endfor %}</section>
- <section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
+ {% if projects %}<section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
   {% for p in projects %}<div class="card proj"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
- </div></section>
+ </div></section>{% endif %}
  <section id="resume"><h2>{{ ui.resume }}</h2><div class="card">
   {% for r in resumes %}<div class="resume-row"><b>{{ r.title }}</b><span>{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</span></div>{% endfor %}
  </div></section>

@@ -18,7 +18,10 @@
 ## Phase 1 — ข้อมูลจริง 🟡 (สำคัญที่สุด)
 - ✅ โครงข้อมูล: tag ตรงกับ 6 focus, ฟิลด์ case study, `status: draft` กันข้อมูลที่ยังไม่ตรวจหลุดขึ้นเว็บ (`docs/DATA.md`)
 - ✅ `scripts/validate_data.py` (รันใน CI) และ `scripts/import_linkedin.py` (ไฟล์ดิบเก็บใน `private/` นอก git)
-- ⬜ รับ LinkedIn export → import เป็น draft → ตรวจทีละรายการ → publish
+- ✅ รับ LinkedIn export 4 ชุด → จัดกลุ่ม/ความสัมพันธ์ → ลง `data/profile.yaml` (ประสบการณ์ 8 ตำแหน่ง, skills, honors, publications, patents, languages)
+- ✅ ด่าน PII: `scripts/check_pii.py` + pre-commit hook + CI (ตรวจ history แล้วสะอาด)
+- ⬜ เจ้าของตรวจ: ชื่อสถาบันการศึกษา, อีเมลสาธารณะ, ตำแหน่ง "Lead" vs "Team Lead", ผลลัพธ์ของ honors 3 รายการแรก, เลขสิทธิบัตร
+- ⬜ เขียน case study 5 ชิ้นที่เป็น draft (problem → actions → result + ตัวเลข)
 - ⬜ ข้อมูลติดต่อ (email, LinkedIn) และ summary 3–4 บรรทัด
 - ⬜ ประสบการณ์: ช่วงเวลา + ผลลัพธ์เป็นตัวเลข (ลดต้นทุน %, เวลา pipeline, SLA)
 - ⬜ ผลงานอย่างน้อย 5 ชิ้น ตามหัวข้อ: Lakehouse, Fraud on AKS, Superset, Cost/Performance, AI Agent (โจทย์ → สิ่งที่ทำ → ผลลัพธ์ → เทคโนโลยี)

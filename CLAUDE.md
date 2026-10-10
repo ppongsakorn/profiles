@@ -28,6 +28,12 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   update `EXPECTED` in `scripts/check_webmcp.py` and the list above.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
 
+## PII policy (public repo)
+- Never commit personal data: personal e-mail, phone, address, birth date, IP, IDs, receipts, other people's names/contacts, signed LinkedIn media URLs. The only intentional exception is `basics.email` in `data/profile.yaml`, and only after the owner chooses an address.
+- `scripts/check_pii.py` enforces this (pre-commit hook via `sh scripts/install_hooks.sh`, and CI). Do not weaken or bypass it; if it blocks a commit, remove the data.
+- Do not open export files that are PII or third-party data (Connections, Invitations, Messages, Email Addresses, PhoneNumbers, Receipts, Registration, Ad_Targeting). Say so and skip them. When summarising, never repeat private values back in chat.
+- Omit third-party names (co-authors, customers, contacts) from published data; use roles.
+
 ## LinkedIn / personal data intake
 - Raw LinkedIn exports live only in `private/` (gitignored) and are deleted after use; never commit them or paste contact lists/emails into the repo.
 - `python scripts/import_linkedin.py private/<dir>` writes a draft fragment (`status: draft`, empty tags). Review each item with the owner,
@@ -38,6 +44,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - `pip install -r requirements.txt`
 - `python build.py` (html + md) · `python build.py --pdf` (needs Chromium; set `CHROMIUM_PATH` if not on the default path)
 - Preview: `python -m http.server -d dist`
+- `python scripts/check_pii.py` (also `--staged`, `--history`; runs in CI and as pre-commit hook) blocks PII from entering git.
 - `python scripts/validate_data.py` checks tags, slugs, dates, statuses and variants (errors fail CI; warnings list TODOs and unsanitised projects).
 - `python scripts/check_webmcp.py` (after build; also runs in CI) calls every WebMCP tool with a fake `document.modelContext`.
 - Playwright checks that matter: no horizontal overflow at 360–390px, phone viewport redirects `/` → `/m/`, light and dark.

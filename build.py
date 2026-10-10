@@ -5,7 +5,7 @@
   python build.py --pdf      # also PDF (needs: pip install playwright; Chromium)
   python build.py --only ai-lead-th
 """
-import argparse, glob, os, shutil, sys
+import argparse, glob, os, re, shutil, sys
 import yaml
 from jinja2 import Environment, FileSystemLoader
 
@@ -106,6 +106,18 @@ def build_agent_files(data, resumes):
     open(os.path.join(DIST, "llms.txt"), "w", encoding="utf-8").write("\n".join(lines))
 
 
+MONTHS = {"en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(),
+          "th": "ม.ค. ก.พ. มี.ค. เม.ย. พ.ค. มิ.ย. ก.ค. ส.ค. ก.ย. ต.ค. พ.ย. ธ.ค.".split()}
+
+
+def fmt_date(v, lang):
+    """'2024-02' -> 'Feb 2024' (th: 'ก.พ. 2024', CE year); 'Present' -> 'ปัจจุบัน' in Thai; anything else unchanged."""
+    m = re.match(r"^(\d{4})-(\d{2})$", str(v))
+    if m and 1 <= int(m.group(2)) <= 12:
+        return f"{MONTHS.get(lang, MONTHS['en'])[int(m.group(2)) - 1]} {m.group(1)}"
+    return "ปัจจุบัน" if v == "Present" and lang == "th" else v
+
+
 def tr(x, lang):
     """Resolve {en:..., th:...} to a string, falling back to en then any value."""
     if isinstance(x, dict) and x and set(x) <= {"en", "th"}:
@@ -127,7 +139,7 @@ def published(data):
     """Drop items marked `status: draft` (unreviewed imports never reach the site, resumes or profile.json)."""
     ok = lambda x: not (isinstance(x, dict) and x.get("status") == "draft")
     out = dict(data)
-    for k in ("skills", "experience", "projects", "notes", "education", "certifications"):
+    for k in ("skills", "experience", "projects", "notes", "education", "certifications", "honors", "publications", "patents", "languages"):
         out[k] = [x for x in data.get(k, []) if ok(x)]
     out["experience"] = [{**e, "bullets": [b for b in e.get("bullets", []) if ok(b)]} for e in out["experience"]]
     return out
@@ -146,8 +158,9 @@ def select(data, v):
         if not match(e.get("tags"), want):
             continue
         bl = [x for x in rank([x if isinstance(x, dict) else {"text": x} for x in e.get("bullets", [])]) if match(x.get("tags"), want)]
-        exp.append({**{k: tr(val, lang) for k, val in e.items() if k != "bullets"},
-                    "bullets": [tr(x["text"], lang) for x in bl[: v.get("max_bullets", 99)]]})
+        item = {k: tr(val, lang) for k, val in e.items() if k != "bullets"}
+        item["start"], item["end"] = fmt_date(item.get("start", ""), lang), fmt_date(item.get("end", ""), lang)
+        exp.append({**item, "bullets": [tr(x["text"], lang) for x in bl[: v.get("max_bullets", 99)]]})
     prj = [{**p, **{k: tr(p.get(k, ""), lang) for k in ("name", "summary", "problem", "result", "role", "period")},
             "actions": tr(p.get("actions", []), lang)}
            for p in rank(data.get("projects", [])) if match(p.get("tags"), want)][: v.get("max_projects", 99)]

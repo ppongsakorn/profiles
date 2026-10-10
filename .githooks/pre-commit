@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commits that contain PII. Enable once per clone: sh scripts/install_hooks.sh
+python3 scripts/check_pii.py --staged || { echo "Commit blocked: remove the PII above (or move it to private/, which is gitignored)."; exit 1; }

@@ -21,12 +21,56 @@
 | `skills` | group, tags, items[] |
 | `experience` | company, role, location, start, end, tags, status, bullets[{text, tags, status}] |
 | `projects` | **slug** (kebab-case, ไม่ซ้ำ), name, period, role, tags, summary, problem, actions[], result, metrics[{label,value}], stack[], links[{label,url}], **sanitized**, status |
-| `notes` | slug, title, tags, status (ยังไม่แสดงบนเว็บ) |
-| `education` | school, degree, start, end, status |
+| `honors` | title, description, date (`YYYY`/`YYYY-MM`), result, status |
+| `publications` | title, venue, date, role, status (**ไม่เก็บชื่อผู้เขียนร่วม**) |
+| `patents` | title, description, issuer, number, url, status |
+| `languages` | name, level |
+| `notes` | slug, title, kind (topic/event), date, summary, tags, source, status (ยังไม่แสดงบนเว็บ) |
+| `education` | school, degree, field, start, end (ปีเดียว `YYYY` ได้), status |
 | `certifications` | name, issuer, date, url, status |
 | `interests` | รายการข้อความ |
 
 `sanitized: true` หมายถึงเจ้าของตรวจแล้วว่าไม่มีชื่อลูกค้า ตัวเลขภายใน หรือข้อมูลลับ — validator จะเตือนผลงานที่ publish แล้วแต่ยังเป็น `false`
+
+## PII: ห้ามเข้า Git (repo นี้เป็น public)
+**ห้ามอยู่ใน repo:** อีเมลส่วนตัว เบอร์โทร ที่อยู่ วันเกิด IP address เลขบัตร/ใบเสร็จ รายชื่อและข้อความของบุคคลอื่น
+(Connections, Invitations, Messages) ข้อมูลโฆษณา และ URL รูปภาพที่มี token ของ LinkedIn
+
+- **อีเมลสาธารณะ** มีได้ที่เดียวคือ `basics.email` ใน `data/profile.yaml` เมื่อเจ้าของเลือกเผยแพร่เอง (ตอนนี้ยังเป็น `TODO`)
+- ไฟล์ export ดิบเก็บใน `private/` เท่านั้น (gitignore) แล้วลบทิ้งเมื่อเสร็จ
+- **ด่านอัตโนมัติ** `scripts/check_pii.py` จับ: ไฟล์ `*.csv/*.zip/*.vcf/*.xlsx`, อีเมล, เบอร์โทร (ไทย/สากล), IPv4, เลข 13 หลัก, URL รูป LinkedIn
+  - local: pre-commit hook บล็อก commit (เปิดครั้งเดียวต่อเครื่อง: `sh scripts/install_hooks.sh`)
+  - CI: รันก่อน build ทุกครั้ง · ตรวจ history ย้อนหลัง: `python scripts/check_pii.py --history`
+- ข้อมูลของ**บุคคลที่สาม** (ผู้เขียนร่วม ลูกค้า คอนเนกชัน) ไม่ใส่ชื่อ ใช้บทบาทแทน
+
+## แผนที่ข้อมูลจาก LinkedIn export
+| ไฟล์ | การตัดสินใจ | ลงที่ |
+|---|---|---|
+| Positions | **ใช้** (8 ตำแหน่ง 2006-ปัจจุบัน เรียบเรียงเป็น bullets + tags) | `experience` |
+| Profile | **ใช้บางส่วน**: headline, summary, เมืองระดับเขต/จังหวัด | `summaries`, `basics.location` |
+| Skills (50) | **ใช้** จัดกลุ่มใหม่ 8 กลุ่ม ตัดคำกว้างเกินไป | `skills` |
+| Education | **ใช้** (รอชื่อสถาบัน) | `education` |
+| Certifications | **ใช้** (MCAD, SCJP; ไม่มีวันที่) | `certifications` |
+| Honors | **ใช้** (4 รางวัล/การแข่งขัน; ไม่เดาอันดับ) | `honors` |
+| Publications / Patents | **ใช้** ไม่ใส่ชื่อผู้เขียนร่วม | `publications`, `patents` |
+| Languages | **ใช้** | `languages` |
+| Rich_Media | **ใช้บางส่วน**: เนื้อหาโพสต์งาน Databricks → `notes` (draft); ไม่ใช้ URL รูป/ชื่อบุคคลอื่น | `notes` |
+| Company_Follows | **ไม่ใช้** (รายการติดตามเป็นข้อมูลส่วนตัว/ไม่ใช่ผลงาน) | - |
+| Causes_You_Care_About | **ยังไม่ใช้** (รอเจ้าของตัดสินใจ) | - |
+| Email_Addresses, PhoneNumbers, Whatsapp, Registration (IP), Receipts, Ad_Targeting | **ห้ามใช้ (PII)** | - |
+| Connections, Invitations, Messages, Notes | **ห้ามใช้** (ข้อมูลบุคคลอื่น) ผมไม่เปิดอ่าน | - |
+| Profile_Summary, Organizations | ว่าง | - |
+
+## ความสัมพันธ์ (tag เป็นตัวเชื่อม)
+```
+focus (data · pipeline · bi · fraud · ai · cost)
+   ├─ experience.bullets ─┐
+   ├─ projects ───────────┼─► Resume variants (กรองด้วย tag)
+   ├─ skills ─────────────┤
+   └─ notes ──────────────┘
+extra_tags: leadership · software (ยุค developer 2006–2020) · teaching
+ไม่มี tag โฟกัส: honors · publications · patents · education · certifications · languages  → ส่วน "เบื้องหลัง/หลักฐานเสริม"
+```
 
 ## คำสั่ง
 ```bash
@@ -42,4 +86,4 @@ python build.py --drafts            # ดูรวม draft (เฉพาะใ�
 4. ตรวจทีละรายการ: จัด tag, ตัดข้อมูลลับ, เขียน problem/actions/result, แล้วย้ายเข้า `data/profile.yaml` และเปลี่ยนเป็น `published`
 5. ลบโฟลเดอร์ใน `private/` เมื่อเสร็จ
 
-ตัวนำเข้าอ่านเฉพาะ 6 ไฟล์ข้างต้น ไม่เปิด Connections, Messages, Email Addresses หรือ Phone Numbers
+ตัวนำเข้าอ่านเฉพาะไฟล์ในตาราง "ใช้" ข้างบน (และจากไฟล์ Profile อ่านแค่ headline/summary/เมือง) ไม่เปิด Connections, Invitations, Messages, Email Addresses, Phone Numbers หรือไฟล์ PII อื่น

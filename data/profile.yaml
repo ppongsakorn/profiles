@@ -6,36 +6,37 @@
 # รายละเอียดฟิลด์ทั้งหมดดู docs/DATA.md
 
 basics:
-  name: Pongsakorn P.
+  name: Pongsakorn P.          # TODO: ใช้ชื่อเต็มหรือไม่ (LinkedIn แสดงชื่อเต็มอยู่แล้ว)
   label: {en: Data & AI Team Lead, th: หัวหน้าทีม Data & AI}
-  email: TODO
-  location: TODO
+  email: TODO                  # เลือกอีเมลที่จะแสดงสาธารณะ (ยังไม่ใส่)
+  location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ ประเทศไทย"}
   links:
     - {label: GitHub, url: "https://github.com/ppongsakorn"}
     # - {label: LinkedIn, url: "TODO"}
 
 # summary แยกตาม key; variant เลือกด้วย `summary: <key>` (ไม่เจอจะใช้ default)
+# ที่มา: Summary บน LinkedIn ของเจ้าของ (ถ้อยคำเดิม) · th = ร่างแปลโดย Claude รอตรวจ
 summaries:
   default:
-    en: TODO — 3-4 lines about who you are and what you deliver.
-    th: TODO — แนะนำตัว 3-4 บรรทัด
+    en: "Data & AI Team Lead building end-to-end, AI-first data operations that run all day, all night, with excellent output. Azure Databricks and Data Factory pipelines, Superset dashboards, fraud detection on AKS, AI agents on Microsoft Foundry, and tight control of cost and performance."
+    th: "หัวหน้าทีม Data & AI ผู้สร้างงานข้อมูลแบบ AI-first ครบวงจร ทำงานได้ทั้งวันทั้งคืนด้วยผลลัพธ์ที่ยอดเยี่ยม ครอบคลุม pipeline บน Azure Databricks และ Data Factory, Dashboard ด้วย Superset, ระบบตรวจจับ Fraud บน AKS, AI Agent บน Microsoft Foundry และการควบคุมต้นทุนกับประสิทธิภาพ"
   data-platform:
-    en: TODO — emphasise Databricks / ADF / cost & performance.
+    en: "Data & AI Team Lead running Azure Databricks and Azure Data Factory pipelines (Bronze to Silver to Gold) on Azure Data Lake, with automated quality gates that protect the SLA and cost control that starts with visibility, then tuning, then savings."
   ai:
-    en: TODO — emphasise AI agents, vector search, fraud detection.
+    en: "Data & AI Team Lead running an AI-first operating model: Claude as the team's daily co-pilot, Databricks Genie for natural-language data access, AI agents on Microsoft Foundry for reporting, monitoring and alerting, and fraud detection with Python workers on AKS."
 
-extra_tags: [leadership]
+extra_tags: [leadership, software, teaching]
 
 # 6 focus areas -> วงล้อบนหน้าแรกและรายการบนมือถือ (ลำดับ = สี c1..c6)
 focus:
   - slug: data
     short: {en: Data, th: Data}
     title: {en: Data Platform, th: แพลตฟอร์มข้อมูล}
-    desc: {en: "Azure Databricks lakehouse on Azure Data Lake.", th: "Lakehouse บน Azure Databricks และ Azure Data Lake"}
+    desc: {en: "Lakehouse on Azure Databricks and Azure Data Lake, running on Azure infrastructure (App Service, AKS, VM, Redis, Container Registry).", th: "Lakehouse บน Azure Databricks และ Azure Data Lake บนโครงสร้าง Azure (App Service, AKS, VM, Redis, Container Registry)"}
   - slug: pipeline
     short: {en: Pipeline, th: Pipeline}
     title: {en: Pipelines & SLA, th: Pipeline & SLA}
-    desc: {en: "Azure Data Factory orchestration with measurable SLA.", th: "Orchestration ด้วย Azure Data Factory พร้อม SLA ที่วัดได้"}
+    desc: {en: "Azure Data Factory orchestration, with automated data-validation gates that protect the SLA.", th: "Orchestration ด้วย Azure Data Factory พร้อมด่านตรวจคุณภาพข้อมูลอัตโนมัติที่ปกป้อง SLA"}
   - slug: bi
     short: {en: Dashboard, th: Dashboard}
     title: {en: Dashboards & Behaviour, th: Dashboard & Behaviour}
@@ -47,7 +48,7 @@ focus:
   - slug: ai
     short: {en: AI Agent, th: AI Agent}
     title: {en: AI Agents, th: AI Agent}
-    desc: {en: "Microsoft Foundry: agents, vector search, bots.", th: "Microsoft Foundry: Agent, Vector Search, Bot"}
+    desc: {en: "AI-first operating model: Claude as daily co-pilot, Databricks Genie, and agents on Microsoft Foundry for reporting, monitoring and alerting.", th: "AI-first operating model: Claude เป็น co-pilot ประจำวัน, Databricks Genie และ Agent บน Microsoft Foundry สำหรับ Reporting, Monitoring, Alerting"}
   - slug: cost
     short: {en: Cost, th: Cost}
     title: {en: Cost & Performance, th: Cost & Performance}
@@ -56,70 +57,205 @@ focus:
 skills:
   - group: Data Platform
     tags: [data, pipeline]
-    items: [Azure Databricks, Azure Data Lake, Databricks SQL Serverless, Azure Data Factory]
+    items: [Azure Databricks, Databricks SQL Serverless, Azure Data Lake, Azure Data Factory, Azure Synapse, Data Governance, Data Operations, SQL, Microsoft SQL Server, MySQL, MongoDB]
   - group: BI & Analytics
     tags: [bi]
-    items: [Apache Superset 4, Matomo 5.x]
-  - group: AI & Fraud
-    tags: [ai, fraud]
-    items: [Microsoft Foundry, AI Agent, Vector Search, Bot Service, "Python / Docker / AKS"]
+    items: [Apache Superset 4, Matomo Web Analytics]
+  - group: AI & Agents
+    tags: [ai]
+    items: [Artificial Intelligence, Machine Learning, LLM, Local LLMs, Agentic AI, Agentic Automation, CrewAI, Microsoft Foundry, Vector Search, Bot Service, Databricks Genie, Claude]
+  - group: Fraud & Security
+    tags: [fraud]
+    items: [Python, Docker, Information Security]
+  - group: Cloud & Infrastructure
+    tags: [data, pipeline]
+    items: [Microsoft Azure, "Kubernetes (AKS)", Azure App Service, Redis, Azure Container Registry, Linux, Cloud Computing, DevOps, SaaS]
   - group: Operations
     tags: [cost, pipeline]
-    items: [Cost control, Performance tuning, SLA management]
+    items: [Cost Management, SLA, Performance tuning]
+  - group: Software Engineering
+    tags: [software]
+    items: ["C#", ".NET", ASP.NET, Java, JavaScript, PHP, HTML, jQuery, Web Services, Visual Studio, Windows Phone, Universal Windows App, Full Stack Web Development]
+  - group: Management & Delivery
+    tags: [leadership]
+    items: [Management, Software Project Management, Agile / Scrum, Application Lifecycle Management]
 
+# ที่มา: LinkedIn Positions.csv (ถ้อยคำของเจ้าของ แก้คำสะกดผิด/เรียบเรียงเป็นประโยคสั้น) · ยังไม่มีตัวเลขผลลัพธ์ → ดู TODO (draft)
 experience:
   - company: Buzzebees
-    role: Data & AI Team Lead
-    location: TODO
-    start: TODO          # YYYY-MM
-    end: Present         # YYYY-MM | Present
+    role: Data & AI Lead          # LinkedIn ใช้ "Data & AI Lead" — TODO: ยืนยันว่าใช้ "Team Lead" หรือไม่
+    location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
+    start: "2024-02"
+    end: Present
     tags: [data, pipeline, bi, fraud, ai, cost, leadership]
     bullets:
-      - {text: "TODO: measurable result (e.g. cut Databricks cost by X%)", tags: [cost]}
-      - {text: "TODO: pipeline / SLA achievement", tags: [pipeline, data]}
-      - {text: "TODO: AI / fraud detection result", tags: [ai, fraud]}
+      - {text: "Lead the team to operational excellence in Data & AI routines: data pipeline, transformation, migration, visualization, validation, analytics and governance, designed and executed end-to-end with AI.", tags: [data, pipeline]}
+      - {text: "Lead the team building and operating Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) as the backbone for all data and AI workloads.", tags: [data, pipeline]}
+      - {text: "Lead Data & AI cost and performance optimisation across Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM and Data Lake storage, with continuous focus on cost visibility, query optimisation and storage efficiency.", tags: [cost]}
+      - {text: "Lead adoption of an AI-first operating model: Claude for planning, coding, architecture and decision support; Databricks Genie for natural-language data access; AI agents on Microsoft Foundry (Vector Search, Bot Service) for automated reporting, monitoring and alerting.", tags: [ai]}
+      - {text: "Lead the team to achieve the committed SLA across data pipeline, transformation, visualization, validation and data quality.", tags: [pipeline]}
+      - {text: "Lead the team building fraud prediction and detection systems: Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo.", tags: [fraud]}
+      - {text: "TODO: measurable results (cost saved, query/pipeline time, SLA achieved, fraud caught)", tags: [cost, pipeline, fraud], status: draft}
+  - company: Buzzebees
+    role: Senior Data Scientist
+    location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
+    start: "2020-10"
+    end: "2024-02"
+    tags: [data, pipeline, bi, fraud, ai]
+    bullets:
+      - {text: "Built an AI chain with automatic orchestration using Semantic Kernel and Azure OpenAI.", tags: [ai]}
+      - {text: "Designed, built and managed a fraud detection system using AI/ML, with real-time detection and scoring.", tags: [fraud, ai]}
+      - {text: "Azure Bot Service performance reports in Microsoft Teams, and automatic report generation from Databricks.", tags: [ai, bi]}
+      - {text: "Real-time user-tracking analytics on Azure Kubernetes Service, Azure Event Hubs and Matomo.", tags: [bi, data]}
+      - {text: "Real-time monitoring (internal tool) with Grafana, alerts and notifications, and Azure Application Insights (Azure Monitor).", tags: [pipeline]}
+      - {text: "Modern data platform on Azure Databricks, Azure Synapse and Azure Data Factory.", tags: [data, pipeline]}
+  - company: EMCS THAI CO. LTD
+    role: CX and RD (AI & Deep Learning) Lead
+    location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
+    start: "2020-03"
+    end: "2020-10"
+    tags: [ai, bi]
+    bullets:
+      - {text: "Customer experience: listen and learn from customers, find hidden needs, build potential UX/UI, and track and follow up behaviour.", tags: [bi]}
+      - {text: "Research areas: AI and machine learning, data platform, data visualization, UX/UI.", tags: [ai, data]}
+  - company: inclass.in.th
+    role: Mathematics & Computer Teacher (weekend job)
+    location: {en: "Nakhon Ratchasima, Thailand", th: "นครราชสีมา"}
+    start: "2015-03"
+    end: "2020-10"
+    tags: [teaching]
+    bullets: []
+  - company: EMCS THAI CO. LTD
+    role: Head of Mobile Application Team
+    location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
+    start: "2016-04"
+    end: "2020-03"
+    tags: [software, leadership, ai]
+    bullets:
+      - {text: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", tags: [software, leadership]}
+      - {text: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", tags: [leadership]}
+      - {text: "Cloud on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", tags: [software]}
+      - {text: "Machine-learning image recognition with TensorFlow.", tags: [ai]}
+  - company: Prince of Songkla University, Phuket Campus
+    role: Lecturer (ASP.NET MVC)
+    location: {en: "Phuket, Thailand", th: "ภูเก็ต"}
+    start: "2015-07"
+    end: "2015-10"
+    tags: [teaching, software]
+    bullets:
+      - {text: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", tags: [teaching, software]}
+  - company: Microsoft
+    role: ISV Developer Evangelist
+    location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
+    start: "2009-11"
+    end: "2015-02"
+    tags: [software, leadership]
+    bullets:
+      - {text: "Manager at Microsoft Innovation Center, Bangkok.", tags: [leadership]}
+  - company: A2Z Professional Travel Co, Ltd.
+    role: Full Stack Developer
+    location: {en: "Thailand", th: "ประเทศไทย"}
+    start: "2006-01"
+    end: "2009-10"
+    tags: [software]
+    bullets:
+      - {text: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", tags: [software]}
+      - {text: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", tags: [software]}
+      - {text: "Developed a social network with PHP and MySQL.", tags: [software]}
 
 # 1 โปรเจกต์ = 1 หน้า case study (/work/<slug>/). slug ต้องไม่ซ้ำ, เป็น kebab-case
 projects:
-  - slug: lakehouse-databricks
-    name: TODO Lakehouse on Azure Databricks
-    period: TODO
-    role: TODO
-    tags: [data, pipeline]
-    summary: "TODO — one line: problem → outcome"
-    problem: TODO
-    actions: [TODO]
-    result: TODO
-    metrics: []          # เช่น [{label: Query cost, value: "-X%"}]
-    stack: [Databricks, ADLS, ADF]
-    links: []            # [{label: ..., url: ...}]
-    sanitized: false     # true = ปรับถ้อยคำ/ตัวเลขให้เผยแพร่ได้แล้ว
-  - slug: fraud-detection-aks
-    name: TODO Fraud Detection on AKS
+  # ผลงานที่ยืนยันได้จริงและเผยแพร่แล้ว
+  - slug: management-framework
+    name: {en: "Management Framework Learning Hub + AI Advisor", th: "เข็มทิศกรอบความคิด (Management Framework Learning Hub + AI Advisor)"}
+    period: "2026"
+    role: {en: "Creator", th: "ผู้สร้าง"}
+    tags: [ai, data]
+    summary: {en: "A free, public site that groups 61 management frameworks by the question an executive is asking, each with steps, an example and a diagram, plus an optional AI advisor.", th: "เว็บสาธารณะที่รวม 61 กรอบความคิดด้านการบริหาร จัดกลุ่มตามคำถามที่ผู้บริหารกำลังถาม พร้อมขั้นตอน ตัวอย่าง แผนภาพ และที่ปรึกษา AI (เลือกใช้ได้)"}
+    problem: {en: "People know many frameworks but not which one to use in the situation they are in.", th: "คนรู้จัก framework เยอะ แต่ไม่รู้ว่าตอนนี้ควรใช้ตัวไหน"}
+    actions:
+      - {en: "Organised 61 frameworks by the executive's question, not by theory.", th: "จัด 61 framework ตามคำถามของผู้บริหาร ไม่ใช่ตามทฤษฎี"}
+      - {en: "Gave every framework five steps, a worked example and a generated diagram.", th: "ทุก framework มี 5 ขั้นตอน ตัวอย่าง และแผนภาพที่สร้างจากข้อมูล"}
+      - {en: "Added situation-based search and an AI advisor (server mode), plus read-only WebMCP tools for AI agents.", th: "เพิ่มการค้นหาด้วยสถานการณ์ ที่ปรึกษา AI (โหมด server) และเครื่องมือ WebMCP สำหรับ AI agent"}
+    result: {en: "Published on GitHub Pages as an open learning hub.", th: "เผยแพร่บน GitHub Pages เป็นแหล่งเรียนรู้เปิด"}
+    metrics:
+      - {label: Frameworks, value: "61"}
+    stack: [Next.js, React, TypeScript, Claude, WebMCP, GitHub Pages]
+    links:
+      - {label: Website, url: "https://ppongsakorn.github.io/management-framework/"}
+      - {label: GitHub, url: "https://github.com/ppongsakorn/management-framework"}
+    sanitized: true
+  # ร่างจาก Positions.csv: ยังไม่มี problem/actions/result จริง → draft (ไม่ขึ้นเว็บ)
+  - slug: fraud-detection-system
+    name: Fraud detection system
     period: TODO
     role: TODO
     tags: [fraud, ai]
-    summary: TODO
+    summary: "Real-time fraud detection and scoring. Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo."
     problem: TODO
     actions: [TODO]
     result: TODO
     metrics: []
-    stack: [Python, Docker, AKS, MySQL, MSSQL, Azure Table]
+    stack: [Python, AKS, MySQL, MSSQL, Azure Table, Matomo]
     links: []
     sanitized: false
-  - slug: superset-dashboards
-    name: TODO Superset Dashboards
+    status: draft
+  - slug: modern-data-platform
+    name: Modern data platform on Azure
     period: TODO
     role: TODO
-    tags: [bi, data]
-    summary: TODO
+    tags: [data, pipeline]
+    summary: "Bronze to Silver to Gold on Azure Databricks and Azure Data Factory over Azure Data Lake, with Databricks Genie for natural-language data access."
     problem: TODO
     actions: [TODO]
     result: TODO
     metrics: []
-    stack: [Superset 4, Databricks SQL Serverless]
+    stack: [Azure Databricks, Azure Data Factory, Azure Data Lake, Databricks Genie]
     links: []
     sanitized: false
+    status: draft
+  - slug: superset-dashboards
+    name: Dashboards with Apache Superset
+    period: TODO
+    role: TODO
+    tags: [bi]
+    summary: "Apache Superset on Databricks SQL Serverless, focused on dashboard storytelling, not just charts."
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []
+    stack: [Apache Superset 4, Databricks SQL Serverless]
+    links: []
+    sanitized: false
+    status: draft
+  - slug: ai-first-operating-model
+    name: AI-first operating model
+    period: TODO
+    role: TODO
+    tags: [ai]
+    summary: "Claude as the team's daily co-pilot; AI agents on Microsoft Foundry (Vector Search, Bot Service) handling reporting, monitoring and alerting."
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []
+    stack: [Claude, Microsoft Foundry, Vector Search, Bot Service]
+    links: []
+    sanitized: false
+    status: draft
+  - slug: cost-performance-control
+    name: Cost and performance control
+    period: TODO
+    role: TODO
+    tags: [cost]
+    summary: "Visibility first, then tuning, then savings across Databricks, Data Factory, AKS and storage."
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []
+    stack: [Azure Databricks, Databricks SQL Serverless, Azure Data Factory, AKS]
+    links: []
+    sanitized: false
+    status: draft
 
 # บันทึก/หัวข้อที่กำลังสนใจ (ยังไม่แสดงบนเว็บ จนกว่าจะตัดสินใจเรื่อง IA)
 notes:
@@ -127,9 +263,62 @@ notes:
   - {slug: vector-search, title: {en: Vector search / RAG, th: Vector Search / RAG}, tags: [ai]}
   - {slug: databricks-cost, title: {en: Databricks cost & query optimisation, th: ลดต้นทุน Databricks และ Query}, tags: [cost, data]}
   - {slug: dashboard-storytelling, title: {en: Dashboard storytelling, th: เล่าเรื่องด้วย Dashboard}, tags: [bi]}
+  # จากโพสต์ LinkedIn ของเจ้าของเอง (ต.ค. 2025). ไม่ใส่ชื่อบุคคล/องค์กรอื่น. ตรวจแล้วจึงเปลี่ยนเป็น published
+  - slug: databricks-data-intelligence-day-2025
+    kind: event
+    date: 2025-10
+    title: {en: "Databricks Data Intelligence Day 2025, Bangkok", th: "Databricks Data Intelligence Day 2025 กรุงเทพฯ"}
+    summary:
+      en: "Takeaways: building trusted generative AI applications with Mosaic AI while keeping governance and control; practical RAG pipelines, vector search and AI agent frameworks for enterprise use; real-world stories from large organisations on scaling data and AI."
+      th: "ข้อสรุป: สร้างแอป Generative AI ที่เชื่อถือได้ด้วย Mosaic AI พร้อมคุม governance; RAG pipeline, vector search และ AI agent framework สำหรับองค์กร; กรณีศึกษาจริงจากองค์กรขนาดใหญ่ในการขยาย data และ AI"
+    tags: [ai, data]
+    source: LinkedIn post, 2025-10
+    status: draft
 
-education: []            # [{school: ..., degree: ..., start: YYYY-MM, end: YYYY-MM}]
-certifications: []       # [{name: ..., issuer: ..., date: YYYY-MM, url: ...}]
+education:
+  - school: TODO         # ชื่อสถาบัน (ช่องนี้ว่างในไฟล์ LinkedIn)
+    degree: {en: "Bachelor's degree", th: ปริญญาตรี}
+    field: {en: Computer Engineering, th: วิศวกรรมคอมพิวเตอร์}
+    start: "2001"
+    end: "2005"
+    status: draft
+
+certifications:
+  - {name: Microsoft Certified Application Developer (MCAD), issuer: Microsoft}
+  - {name: Sun Certified Java Programmer (SCJP), issuer: Sun Microsystems}
+
+# result: ผลการแข่งขัน (LinkedIn ไม่ได้ระบุอันดับของ 3 รายการแรก — ห้ามเดา)
+honors:
+  - {title: "3rd NSC 2005, organized by NECTEC, Thailand", description: "Siam Ecatalog (web service contest)", date: "2005", result: TODO}
+  - {title: "3rd Imagine Cup 2005, organized by Microsoft Corporation, Thailand", description: "My Hero Project: tablet app with stylus, .NET C#", date: "2005", result: TODO}
+  - {title: "4th NSC 2006, organized by NECTEC, Thailand", description: "Intelligent Parking System: RFID technology, .NET C# desktop app, Flash app", date: "2006", result: TODO}
+  - {title: "1st OTPC App Hackathon in Khon Kaen", description: "Education app (writing, speaking, listening, content creation) built with Apache Cordova in Visual Studio", date: "2013-03", result: "Best App & Best Presentation"}
+
+# ผู้เขียนร่วมไม่ใส่ชื่อ (บุคคลที่สาม) — role ตามที่ปรากฏในรายชื่อผู้เขียน
+publications:
+  - title: "Fingerprint pattern asymmetry and complexity index in male Thai schizophrenia: a case-control study"
+    venue: "The 2nd WFSBP Asia-Pacific Congress and 30th Annual Meeting of JSBP, Toyama, Japan, 11-13 September 2008"
+    date: "2008-09-11"
+    role: Co-author
+  - title: "An Application of Automated Inkless Fingerprint Imaging Software in Fingerprint Collection and Pattern Analysis"
+    venue: "The Second International Conference on Innovative Computing, Information and Control, Kumamoto, Japan, 5-7 September 2007"
+    date: "2007-09-05"
+    role: Co-author and speaker
+  - title: "Imaging Software for Automated Inkless Fingerprinting"
+    venue: "The First International Conference on Science and Technology for Sustainable Development of the Greater Mekong Sub-region, Khon Kaen, Thailand, 15-16 August 2006"
+    date: "2006-08-15"
+    role: Co-author
+
+patents:
+  - title: Inkless Automated Fingerprint Software
+    description: "Automated inkless fingerprint imaging software invented by the authors, patented by the Department of Intellectual Property, Thailand."
+    issuer: "Department of Intellectual Property, Thailand"
+    number: TODO          # เลขที่สิทธิบัตร/วันที่ ไม่มีในไฟล์ LinkedIn
+    url: "http://www.mat.or.th/journal/files/Vol91_No.1_82_1022.pdf"
+
+languages:
+  - {name: {en: English, th: อังกฤษ}, level: {en: Professional working proficiency, th: ใช้งานในระดับมืออาชีพ}}
+  - {name: {en: Thai, th: ไทย}, level: {en: Native or bilingual proficiency, th: ภาษาแม่}}
 
 interests:
   - AI agents & workflow automation

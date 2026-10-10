@@ -1,0 +1,15 @@
+{% set sn = story.snapshot %}
+<div class="snap">
+ {% if sn.highlights %}<ul class="hl">{% for h in sn.highlights %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
+ <dl class="facts">
+  {% if sn.now %}<div class="fact"><dt>{{ ui.f_now }}</dt><dd><b>{{ sn.now.title }}</b><span>{{ sn.now.org }} · {{ ui.since }} {{ sn.now.since }}</span></dd></div>{% endif %}
+  {% if sn.years %}<div class="fact"><dt>{{ ui.f_years }}</dt><dd><b>{{ sn.years }}+ {{ ui.years }}</b><span>{{ story.eras | map(attribute='label') | join(' → ') }}</span></dd></div>{% endif %}
+  {% if sn.open_to %}<div class="fact"><dt>{{ ui.f_open }}</dt><dd><b>{{ sn.open_to }}</b></dd></div>{% endif %}
+  {% if sn.scope %}<div class="fact"><dt>{{ ui.f_scope }}</dt><dd><b>{{ sn.scope }}</b></dd></div>{% endif %}
+  {% if sn.stack %}<div class="fact wide"><dt>{{ ui.f_stack }}</dt><dd>{% for s in sn.stack %}<span class="chip">{{ s }}</span>{% endfor %}</dd></div>{% endif %}
+  {% if sn.edu %}<div class="fact"><dt>{{ ui.f_edu }}</dt><dd><b>{{ sn.edu }}</b></dd></div>{% endif %}
+  {% if sn.certs %}<div class="fact"><dt>{{ ui.f_cert }}</dt><dd><b>{{ sn.certs | join(' · ') }}</b></dd></div>{% endif %}
+  {% if sn.languages %}<div class="fact"><dt>{{ ui.f_lang }}</dt><dd><b>{{ sn.languages | join(' · ') }}</b></dd></div>{% endif %}
+  {% if sn.location %}<div class="fact"><dt>{{ ui.f_loc }}</dt><dd><b>{{ sn.location }}</b></dd></div>{% endif %}
+ </dl>
+</div>

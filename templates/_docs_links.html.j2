@@ -1,0 +1,5 @@
+<div class="btns doclinks no-print">
+ <a class="btn primary" href="{{ link(prefix ~ 'profile/') }}">{{ ui.one_page }}</a>
+ <a class="btn" href="{{ link(prefix ~ 'profile/full/') }}">{{ ui.full_profile }}</a>
+ {% if pdf_built %}<a class="btn" href="{{ link(prefix ~ 'profile/one-page.pdf') }}">{{ ui.one_page }} · {{ ui.pdf }}</a><a class="btn" href="{{ link(prefix ~ 'profile/full.pdf') }}">{{ ui.full_profile }} · {{ ui.pdf }}</a>{% endif %}
+</div>

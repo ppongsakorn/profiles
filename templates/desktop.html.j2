@@ -6,10 +6,11 @@
 <meta name="description" content="{{ summary | truncate(150) }}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}">
 {{ jsonld }}
 <link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
 <script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
+<script defer src="{{ link('assets/timeline.js') }}"></script>
 </head><body>
 <header class="site-header"><div class="wrap">
  <a class="brand" href="#top">{{ b.name }}</a>
@@ -24,19 +25,18 @@
    <div class="btns"><a class="btn primary" href="#resume">{{ ui.cta_resume }} →</a><a class="btn" href="#contact">{{ ui.cta_contact }}</a></div></div>
   {{ wheel }}
  </div>
+ <section id="snapshot"><h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}{% include "_docs_links.html.j2" %}</section>
  <section id="focus"><h2>{{ ui.focus }}</h2><div class="grid3">
   {% for f in focus %}<div class="focus-card f{{ loop.index }}" id="f-{{ f.slug }}"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p></div>{% endfor %}
  </div></section>
- <section id="experience"><h2>{{ ui.experience }}</h2>
-  {% for e in experience %}<div class="card job"><div class="row"><h3>{{ e.role }} — {{ e.company }}</h3><span class="muted">{{ e.start }} – {{ e.end }}</span></div>
-   <ul>{% for x in e.bullets %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endfor %}</section>
+ <section id="experience"><h2>{{ ui.story }}</h2><p class="sub">{{ ui.story_sub }}</p>{% include "_story.html.j2" %}</section>
  {% if projects %}<section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
   {% for p in projects %}<div class="card proj"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  </div></section>{% endif %}
  <section id="resume"><h2>{{ ui.resume }}</h2><div class="card">
   {% for r in resumes %}<div class="resume-row"><b>{{ r.title }}</b><span>{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</span></div>{% endfor %}
  </div></section>
- <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p></section>
+ <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>{% if hobbies %}<h2 style="margin-top:22px">{{ ui.hobbies }}</h2><p>{% for h in hobbies %}<span class="chip">{{ h }}</span>{% endfor %}</p>{% endif %}</section>
 </main>
 <footer id="contact"><div class="wrap"><h2>{{ ui.contact }}</h2>
  <p>{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>

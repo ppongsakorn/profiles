@@ -95,6 +95,11 @@ for i, x in enumerate(data.get("patents", [])):
     status(f"patents[{i}]", x)
     if not x.get("title"):
         E(f"patents[{i}]: title is required")
+for i, x in enumerate(data.get("hobbies", [])):
+    if not x.get("slug") or not KEBAB.match(str(x["slug"])):
+        E(f"hobbies[{i}]: slug must be kebab-case")
+    if not x.get("name"):
+        E(f"hobbies[{i}]: name is required")
 for i, x in enumerate(data.get("languages", [])):
     if not x.get("name"):
         E(f"languages[{i}]: name is required")
@@ -116,6 +121,48 @@ for f in sorted(glob.glob(os.path.join(ROOT, "variants/*.yaml"))):
     for s in v.get("sections", []):
         if s not in ("summary", "skills", "experience", "projects", "interests"):
             E(f"{w}: unknown section '{s}'")
+
+# ---- bilingual coverage: narrative text on published items must exist in BOTH languages ----
+THAI = re.compile(r"[\u0E00-\u0E7F]")
+gaps = {"th": [], "en": []}
+
+def lang_gap(path, val):
+    if isinstance(val, list):
+        for i, x in enumerate(val):
+            lang_gap(f"{path}[{i}]", x)
+    elif isinstance(val, dict) and val and set(val) <= {"en", "th"}:
+        for l in ("en", "th"):
+            if not val.get(l):
+                gaps[l].append(path)
+    elif isinstance(val, str) and len(val) > 12 and not val.startswith("TODO"):
+        gaps["en" if THAI.search(val) else "th"].append(path)   # plain string reads as one language only
+
+pub = lambda x: x.get("status", "published") == "published"
+for i, e in enumerate(data.get("experience", [])):
+    if not pub(e):
+        continue
+    for k in ("headline", "learned", "impact"):
+        lang_gap(f"experience[{i}].{k}", e.get(k))
+    for j, b in enumerate(e.get("bullets", [])):
+        if isinstance(b, dict) and pub(b):
+            lang_gap(f"experience[{i}].bullets[{j}]", b.get("text"))
+for i, p in enumerate(data.get("projects", [])):
+    if pub(p):
+        for k in ("summary", "problem", "actions", "result", "role"):
+            lang_gap(f"projects[{i}].{k}", p.get(k))
+for k, fields in (("honors", ("description",)), ("publications", ("role",)), ("patents", ("description", "issuer"))):
+    for i, x in enumerate(data.get(k, [])):
+        if pub(x):
+            for f in fields:
+                lang_gap(f"{k}[{i}].{f}", x.get(f))
+lang_gap("interests", data.get("interests", []))
+for i, e in enumerate(data.get("eras", [])):
+    lang_gap(f"eras[{i}].headline", e.get("headline"))
+lang_gap("snapshot.highlights", data.get("snapshot", {}).get("highlights", []))
+lang_gap("summaries.default", data.get("summaries", {}).get("default"))
+for l, name in (("th", "Thai"), ("en", "English")):
+    if gaps[l]:
+        W(f"i18n: {len(gaps[l])} text field(s) missing {name}: " + ", ".join(gaps[l][:6]) + (" ..." if len(gaps[l]) > 6 else ""))
 
 todo = open(os.path.join(ROOT, "data/profile.yaml"), encoding="utf-8").read().count("TODO")
 if todo:

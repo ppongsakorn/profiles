@@ -1,0 +1,46 @@
+<ol class="eras" aria-label="{{ ui.glance }}">
+ {% for e in story.eras %}<li><a href="#{{ e.first_id }}"><span class="yrs">{{ e.years }}</span><b>{{ e.label }}</b><span class="eh">{{ e.headline }}</span></a></li>{% endfor %}
+</ol>
+{% if not story.static %}
+<div class="tl-tools no-print">
+ <div class="chipsrow" role="group" aria-label="filter">
+  <button type="button" class="chipbtn" data-act="filter" data-tag="" aria-pressed="true">{{ ui.filter_all }}</button>
+  {% for t, label in story.filters %}<button type="button" class="chipbtn" data-act="filter" data-tag="{{ t }}" aria-pressed="false">{{ label }}</button>{% endfor %}
+ </div>
+ <div class="chipsrow">
+  <button type="button" class="linkbtn" data-act="expand">{{ ui.expand_all }}</button>
+  <button type="button" class="linkbtn" data-act="collapse">{{ ui.collapse_all }}</button>
+  <button type="button" class="linkbtn" data-act="order" aria-pressed="false" data-off="{{ ui.order_new }}" data-on="{{ ui.order_old }}">{{ ui.order_new }}</button>
+ </div>
+</div>
+{% endif %}
+<ol class="tl{% if story.static %} static{% endif %}">
+{% for it in story.entries %}
+ {% if it.kind == 'milestone' %}
+ <li class="ms" data-kind="milestone"><span class="yr">{{ it.year }}</span><span>{{ it.title }}{% if it.sub %}<small>{{ it.sub }}</small>{% endif %}</span></li>
+ {% else %}
+ <li class="tl-item {{ it.kind }}{% if it.current %} current{% endif %}{% if it.side %} side{% endif %}{% if it.highlight %} hi{% endif %}" id="{{ it.id }}" data-kind="{{ it.kind }}" data-tags="{{ it.tags | join(' ') }}">
+  {% set head %}
+   <span class="when">{{ it.when }}{% if it.highlight %}<span class="badge">{{ ui.highlight }}</span>{% endif %}{% if it.side %}<span class="badge soft">{{ ui.side_job }}</span>{% endif %}</span>
+   <span class="title">{{ it.title }}</span>{% if it.org %}<span class="org">{{ it.org }}</span>{% endif %}
+   {% if it.headline %}<span class="head">{{ it.headline }}</span>{% endif %}
+  {% endset %}
+  {% if it.body %}
+  <details{% if it.current or story.open_all %} open{% endif %}><summary>{{ head }}</summary>
+   <div class="body">
+    {% if it.bullets %}<h4>{{ ui.built }}</h4><ul>{% for x in it.bullets %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    {% if it.impact %}<h4>{{ ui.impact }}</h4><ul>{% for x in it.impact %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    {% if it.learned %}<h4>{{ ui.learned }}</h4><ul>{% for x in it.learned %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    {% if it.stack %}<h4>{{ ui.tech }}</h4><p>{% for s in it.stack %}<span class="chip">{{ s }}</span>{% endfor %}</p>{% endif %}
+   </div></details>
+  {% else %}<div class="plain">{{ head }}</div>{% endif %}
+ </li>
+ {% endif %}
+{% endfor %}
+</ol>
+{% if story.cred.certs or story.cred.patents %}
+<div class="cred"><h3>{{ ui.cred }}</h3><ul>
+ {% for c in story.cred.certs %}<li>{{ c.name }}{% if c.issuer %}<small> — {{ c.issuer }}</small>{% endif %}</li>{% endfor %}
+ {% for p in story.cred.patents %}<li>{{ ui.patent }}: {% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}{% if p.issuer %}<small> — {{ p.issuer }}</small>{% endif %}</li>{% endfor %}
+</ul></div>
+{% endif %}

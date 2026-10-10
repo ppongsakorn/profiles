@@ -6,8 +6,12 @@ from playwright.sync_api import sync_playwright
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dist")
 h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=ROOT); h.log_message = lambda *a: None
-srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), h); threading.Thread(target=srv.serve_forever, daemon=True).start()
-B = f"http://127.0.0.1:{srv.server_address[1]}/"
+LIVE = os.environ.get("SITE_URL")          # e.g. SITE_URL=https://user.github.io/profiles/  -> test the deployed site
+if LIVE:
+    B = LIVE if LIVE.endswith("/") else LIVE + "/"
+else:
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), h); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    B = f"http://127.0.0.1:{srv.server_address[1]}/"
 THAI = re.compile(r"[฀-๿]")
 fails = []
 def check(ok, msg):
@@ -91,7 +95,11 @@ with sync_playwright() as p:
     b.close()
 # 5) One Page PDF (only if built with --pdf)
 pdf = os.path.join(ROOT, "profile", "one-page.pdf")
-if os.path.exists(pdf):
+if not LIVE and os.path.exists(pdf):
     pages = len(re.findall(rb"/Type\s*/Page(?![s\w])", open(pdf, "rb").read()))
     check(pages == 1, f"One Page PDF is {pages} page(s)")
+if LIVE:
+    import urllib.request
+    for path in ("profile/one-page.pdf", "profile/full.pdf", "en/profile/one-page.pdf", "default/resume.pdf", "profile.json", "llms.txt", "assets/favicon.svg"):
+        r = urllib.request.urlopen(B + path); check(r.status == 200, f"live GET {path} -> {r.status}")
 print("FAILED" if fails else "ALL PASSED"); sys.exit(1 if fails else 0)

@@ -64,6 +64,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - `python scripts/check_contrast.py` checks WCAG contrast of every token pair (text 4.5:1, graphics 3:1, hero wash).
 - `python scripts/check_site.py` (after `python build.py --pdf`; runs in CI) checks overflow at 360/390px in light/dark, phone redirect, timeline controls, Thai vs English text, no visible TODO, One Page PDF = 1 page.
 - `python scripts/check_webmcp.py` (after build; also runs in CI) calls every WebMCP tool with a fake `document.modelContext`.
+- Live site: `SITE_URL=https://ppongsakorn.github.io/profiles/ python scripts/check_site.py` (also `check_webmcp.py`) runs the same checks against the deployed pages. Deploy = merge to `main` (Pages workflow); the repo's Pages source is already GitHub Actions.
 - Playwright checks that matter: no horizontal overflow at 360–390px, phone viewport redirects `/` → `/m/`, light and dark.
 
 ## Gotchas

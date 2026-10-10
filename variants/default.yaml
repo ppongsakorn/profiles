@@ -1,0 +1,9 @@
+# 1 ไฟล์ = 1 Resume. เพิ่มไฟล์ใหม่ในโฟลเดอร์นี้ได้ไม่จำกัด
+title: Pongsakorn P. — Resume
+lang: en
+summary: default
+tags: []            # ว่าง = เอาทุกอย่าง
+sections: [summary, skills, experience, projects, interests]
+max_bullets: 5      # ต่อ 1 ตำแหน่ง
+max_projects: 5
+formats: [html, md, pdf]

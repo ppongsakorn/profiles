@@ -1,0 +1,67 @@
+# Single source of truth. แก้ที่นี่ที่เดียว แล้ว build ใหม่ ทุก Resume และเว็บจะอัปเดตตาม
+# ฟิลด์ข้อความใส่ได้ 2 แบบ:  "text"  หรือ  {en: "...", th: "..."}  (เลือกภาษาตาม variant)
+# tags ใช้กรอง/จัดลำดับต่อ variant — ไม่มี tags = แสดงในทุก variant
+
+basics:
+  name: Pongsakorn P.
+  label: {en: Data & AI Team Lead, th: หัวหน้าทีม Data & AI}
+  email: TODO
+  location: TODO
+  links:
+    - {label: GitHub, url: "https://github.com/ppongsakorn"}
+    # - {label: LinkedIn, url: "TODO"}
+
+# summary แยกตาม key; variant เลือกด้วย `summary: <key>` (ไม่เจอจะใช้ default)
+summaries:
+  default:
+    en: TODO — 3-4 lines about who you are and what you deliver.
+    th: TODO — แนะนำตัว 3-4 บรรทัด
+  data-platform:
+    en: TODO — emphasise Databricks / ADF / cost & performance.
+  ai:
+    en: TODO — emphasise AI agents, vector search, fraud detection.
+
+skills:
+  - group: Data Platform
+    tags: [data, platform]
+    items: [Azure Databricks, Azure Data Lake, Databricks SQL Serverless, Azure Data Factory]
+  - group: BI & Analytics
+    tags: [data, bi]
+    items: [Apache Superset 4, Matomo 5.x]
+  - group: AI & Fraud
+    tags: [ai, fraud]
+    items: [Microsoft Foundry, AI Agent, Vector Search, Bot Service, "Python / Docker / AKS"]
+  - group: Operations
+    tags: [data, platform, ops]
+    items: [Cost control, Performance tuning, SLA management]
+
+experience:
+  - company: Buzzebees
+    role: Data & AI Team Lead
+    start: TODO
+    end: Present
+    tags: [data, ai, platform, ops]
+    bullets:
+      - {text: "TODO: measurable result (e.g. cut Databricks cost by X%)", tags: [ops, platform]}
+      - {text: "TODO: pipeline / SLA achievement", tags: [data, platform]}
+      - {text: "TODO: AI / fraud detection result", tags: [ai, fraud]}
+
+projects:
+  - name: TODO Lakehouse on Azure Databricks
+    tags: [data, platform]
+    summary: TODO — problem → what you did → outcome
+    stack: [Databricks, ADLS, ADF]
+  - name: TODO Fraud Detection on AKS
+    tags: [ai, fraud]
+    summary: TODO
+    stack: [Python, Docker, AKS, MySQL, MSSQL, Azure Table]
+  - name: TODO Superset Dashboards
+    tags: [bi, data]
+    summary: TODO
+    stack: [Superset 4, Databricks SQL Serverless]
+
+interests:
+  - AI agents & workflow automation
+  - Vector search / RAG
+  - Databricks cost & query optimisation
+  - Dashboard storytelling

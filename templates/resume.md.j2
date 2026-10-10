@@ -1,7 +1,7 @@
 # {{ b.name }}
 **{{ b.label }}**  
 {{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · [{{ l.label }}]({{ l.url }}){% endfor %}
-{{ '' }}
+{{ '\n' }}
 {% for s in v.sections %}
 {% if s == 'summary' and summary %}
 ## {{ L.summary }}

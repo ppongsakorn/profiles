@@ -27,6 +27,7 @@ Repo นี้รวบรวมข้อมูลส่วนตัว ปร�
 | [projects/](projects/) | ผลงานที่ผ่านมา |
 | [interests/](interests/) | Topic ที่กำลังสนใจ |
 | [README.dev.md](README.dev.md) | วิธี generate Resume / deploy |
+| [ROADMAP.md](ROADMAP.md) | แผนงานและสิ่งที่ต้องตัดสินใจ |
 
 ## ติดต่อ
 

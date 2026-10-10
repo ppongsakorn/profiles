@@ -1,6 +1,9 @@
 # Single source of truth. แก้ที่นี่ที่เดียว แล้ว build ใหม่ ทุก Resume และเว็บจะอัปเดตตาม
 # ฟิลด์ข้อความใส่ได้ 2 แบบ:  "text"  หรือ  {en: "...", th: "..."}  (เลือกภาษาตาม variant)
 # tags ใช้กรอง/จัดลำดับต่อ variant — ไม่มี tags = แสดงในทุก variant
+# คำศัพท์ tag ที่อนุญาต = slug ของ focus (data, pipeline, bi, fraud, ai, cost) + extra_tags ด้านล่าง
+# status: draft = ยังไม่ตรวจ จะไม่ขึ้นเว็บ/Resume/profile.json (ไม่ใส่ = published)
+# รายละเอียดฟิลด์ทั้งหมดดู docs/DATA.md
 
 basics:
   name: Pongsakorn P.
@@ -20,6 +23,8 @@ summaries:
     en: TODO — emphasise Databricks / ADF / cost & performance.
   ai:
     en: TODO — emphasise AI agents, vector search, fraud detection.
+
+extra_tags: [leadership]
 
 # 6 focus areas -> วงล้อบนหน้าแรกและรายการบนมือถือ (ลำดับ = สี c1..c6)
 focus:
@@ -50,42 +55,81 @@ focus:
 
 skills:
   - group: Data Platform
-    tags: [data, platform]
+    tags: [data, pipeline]
     items: [Azure Databricks, Azure Data Lake, Databricks SQL Serverless, Azure Data Factory]
   - group: BI & Analytics
-    tags: [data, bi]
+    tags: [bi]
     items: [Apache Superset 4, Matomo 5.x]
   - group: AI & Fraud
     tags: [ai, fraud]
     items: [Microsoft Foundry, AI Agent, Vector Search, Bot Service, "Python / Docker / AKS"]
   - group: Operations
-    tags: [data, platform, ops]
+    tags: [cost, pipeline]
     items: [Cost control, Performance tuning, SLA management]
 
 experience:
   - company: Buzzebees
     role: Data & AI Team Lead
-    start: TODO
-    end: Present
-    tags: [data, ai, platform, ops]
+    location: TODO
+    start: TODO          # YYYY-MM
+    end: Present         # YYYY-MM | Present
+    tags: [data, pipeline, bi, fraud, ai, cost, leadership]
     bullets:
-      - {text: "TODO: measurable result (e.g. cut Databricks cost by X%)", tags: [ops, platform]}
-      - {text: "TODO: pipeline / SLA achievement", tags: [data, platform]}
+      - {text: "TODO: measurable result (e.g. cut Databricks cost by X%)", tags: [cost]}
+      - {text: "TODO: pipeline / SLA achievement", tags: [pipeline, data]}
       - {text: "TODO: AI / fraud detection result", tags: [ai, fraud]}
 
+# 1 โปรเจกต์ = 1 หน้า case study (/work/<slug>/). slug ต้องไม่ซ้ำ, เป็น kebab-case
 projects:
-  - name: TODO Lakehouse on Azure Databricks
-    tags: [data, platform]
-    summary: TODO — problem → what you did → outcome
+  - slug: lakehouse-databricks
+    name: TODO Lakehouse on Azure Databricks
+    period: TODO
+    role: TODO
+    tags: [data, pipeline]
+    summary: "TODO — one line: problem → outcome"
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []          # เช่น [{label: Query cost, value: "-X%"}]
     stack: [Databricks, ADLS, ADF]
-  - name: TODO Fraud Detection on AKS
-    tags: [ai, fraud]
+    links: []            # [{label: ..., url: ...}]
+    sanitized: false     # true = ปรับถ้อยคำ/ตัวเลขให้เผยแพร่ได้แล้ว
+  - slug: fraud-detection-aks
+    name: TODO Fraud Detection on AKS
+    period: TODO
+    role: TODO
+    tags: [fraud, ai]
     summary: TODO
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []
     stack: [Python, Docker, AKS, MySQL, MSSQL, Azure Table]
-  - name: TODO Superset Dashboards
+    links: []
+    sanitized: false
+  - slug: superset-dashboards
+    name: TODO Superset Dashboards
+    period: TODO
+    role: TODO
     tags: [bi, data]
     summary: TODO
+    problem: TODO
+    actions: [TODO]
+    result: TODO
+    metrics: []
     stack: [Superset 4, Databricks SQL Serverless]
+    links: []
+    sanitized: false
+
+# บันทึก/หัวข้อที่กำลังสนใจ (ยังไม่แสดงบนเว็บ จนกว่าจะตัดสินใจเรื่อง IA)
+notes:
+  - {slug: ai-agents, title: {en: AI agents & workflow automation, th: AI Agent และ workflow อัตโนมัติ}, tags: [ai]}
+  - {slug: vector-search, title: {en: Vector search / RAG, th: Vector Search / RAG}, tags: [ai]}
+  - {slug: databricks-cost, title: {en: Databricks cost & query optimisation, th: ลดต้นทุน Databricks และ Query}, tags: [cost, data]}
+  - {slug: dashboard-storytelling, title: {en: Dashboard storytelling, th: เล่าเรื่องด้วย Dashboard}, tags: [bi]}
+
+education: []            # [{school: ..., degree: ..., start: YYYY-MM, end: YYYY-MM}]
+certifications: []       # [{name: ..., issuer: ..., date: YYYY-MM, url: ...}]
 
 interests:
   - AI agents & workflow automation

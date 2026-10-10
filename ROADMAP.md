@@ -15,7 +15,10 @@
 - ✅ WebMCP (8 tools แบบ read-only) + `profile.json`, `llms.txt`, JSON-LD สำหรับ AI ที่เข้ามา scan
 - ✅ GitHub Actions deploy ไป Pages (`.github/workflows/pages.yml`)
 
-## Phase 1 — เนื้อหาจริง 🟡 (สำคัญที่สุด)
+## Phase 1 — ข้อมูลจริง 🟡 (สำคัญที่สุด)
+- ✅ โครงข้อมูล: tag ตรงกับ 6 focus, ฟิลด์ case study, `status: draft` กันข้อมูลที่ยังไม่ตรวจหลุดขึ้นเว็บ (`docs/DATA.md`)
+- ✅ `scripts/validate_data.py` (รันใน CI) และ `scripts/import_linkedin.py` (ไฟล์ดิบเก็บใน `private/` นอก git)
+- ⬜ รับ LinkedIn export → import เป็น draft → ตรวจทีละรายการ → publish
 - ⬜ ข้อมูลติดต่อ (email, LinkedIn) และ summary 3–4 บรรทัด
 - ⬜ ประสบการณ์: ช่วงเวลา + ผลลัพธ์เป็นตัวเลข (ลดต้นทุน %, เวลา pipeline, SLA)
 - ⬜ ผลงานอย่างน้อย 5 ชิ้น ตามหัวข้อ: Lakehouse, Fraud on AKS, Superset, Cost/Performance, AI Agent (โจทย์ → สิ่งที่ทำ → ผลลัพธ์ → เทคโนโลยี)

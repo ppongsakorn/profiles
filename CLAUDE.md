@@ -11,7 +11,9 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - Report limits honestly (what was not verified).
 
 ## Architecture
-- `data/profile.yaml` is the single source of truth. Text fields accept `"text"` or `{en: ..., th: ...}`; items carry `tags`.
+- `data/profile.yaml` is the single source of truth (schema in `docs/DATA.md`). Text fields accept `"text"` or `{en: ..., th: ...}`; items carry `tags`.
+  Tag vocabulary = the six `focus` slugs + `extra_tags`; `scripts/validate_data.py` enforces it (runs in CI).
+  Items with `status: draft` are excluded from site, resumes, profile.json and WebMCP (`python build.py --drafts` shows them locally).
 - `variants/*.yaml` = one resume each (tags filter, `max_bullets`, `max_projects`, `sections`, `lang`, `formats`).
 - `build.py` → `dist/` (gitignored): resumes at `dist/<variant>/resume.{html,md,pdf}`, site at `/` (th) and `/en/`.
 - Site has two versions: desktop (`templates/desktop.html.j2`, default) and a mobile web app under `m/`
@@ -26,10 +28,17 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   update `EXPECTED` in `scripts/check_webmcp.py` and the list above.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
 
+## LinkedIn / personal data intake
+- Raw LinkedIn exports live only in `private/` (gitignored) and are deleted after use; never commit them or paste contact lists/emails into the repo.
+- `python scripts/import_linkedin.py private/<dir>` writes a draft fragment (`status: draft`, empty tags). Review each item with the owner,
+  classify tags, strip confidential names/figures, write problem/actions/result, then merge and set `status: published`.
+- Ask before publishing anything that looks like a customer name, internal metric or non-public figure; set `sanitized: true` only after the owner confirms.
+
 ## Commands
 - `pip install -r requirements.txt`
 - `python build.py` (html + md) · `python build.py --pdf` (needs Chromium; set `CHROMIUM_PATH` if not on the default path)
 - Preview: `python -m http.server -d dist`
+- `python scripts/validate_data.py` checks tags, slugs, dates, statuses and variants (errors fail CI; warnings list TODOs and unsanitised projects).
 - `python scripts/check_webmcp.py` (after build; also runs in CI) calls every WebMCP tool with a fake `document.modelContext`.
 - Playwright checks that matter: no horizontal overflow at 360–390px, phone viewport redirects `/` → `/m/`, light and dark.
 

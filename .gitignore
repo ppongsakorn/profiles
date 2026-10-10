@@ -1,2 +1,7 @@
-dist/
+*.zip
+Basic_LinkedInDataExport*
+Connections.csv
 __pycache__/
+dist/
+messages.csv
+private/

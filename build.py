@@ -123,6 +123,16 @@ def score(item_tags, want):
     return len(set(item_tags or []) & set(want))
 
 
+def published(data):
+    """Drop items marked `status: draft` (unreviewed imports never reach the site, resumes or profile.json)."""
+    ok = lambda x: not (isinstance(x, dict) and x.get("status") == "draft")
+    out = dict(data)
+    for k in ("skills", "experience", "projects", "notes", "education", "certifications"):
+        out[k] = [x for x in data.get(k, []) if ok(x)]
+    out["experience"] = [{**e, "bullets": [b for b in e.get("bullets", []) if ok(b)]} for e in out["experience"]]
+    return out
+
+
 def select(data, v):
     lang, want = v.get("lang", "en"), v.get("tags", [])
     rank = lambda xs: sorted(xs, key=lambda i: -score(i.get("tags"), want))  # stable: keeps file order on ties
@@ -138,7 +148,8 @@ def select(data, v):
         bl = [x for x in rank([x if isinstance(x, dict) else {"text": x} for x in e.get("bullets", [])]) if match(x.get("tags"), want)]
         exp.append({**{k: tr(val, lang) for k, val in e.items() if k != "bullets"},
                     "bullets": [tr(x["text"], lang) for x in bl[: v.get("max_bullets", 99)]]})
-    prj = [{**p, "name": tr(p["name"], lang), "summary": tr(p.get("summary", ""), lang)}
+    prj = [{**p, **{k: tr(p.get(k, ""), lang) for k in ("name", "summary", "problem", "result", "role", "period")},
+            "actions": tr(p.get("actions", []), lang)}
            for p in rank(data.get("projects", [])) if match(p.get("tags"), want)][: v.get("max_projects", 99)]
     focus = [{**f, **{k: tr(f.get(k, ""), lang) for k in ("short", "title", "desc")}} for f in data.get("focus", [])]
     return dict(focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
@@ -162,8 +173,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pdf", action="store_true")
     ap.add_argument("--only")
+    ap.add_argument("--drafts", action="store_true", help="include items marked status: draft (local preview only)")
     a = ap.parse_args()
     data = yaml.safe_load(open(os.path.join(ROOT, "data/profile.yaml"), encoding="utf-8"))
+    if not a.drafts:
+        data = published(data)
     env = Environment(loader=FileSystemLoader(os.path.join(ROOT, "templates")), autoescape=False, trim_blocks=True, lstrip_blocks=True)
     env.filters["select"] = lambda xs: [x for x in xs if x]
     shutil.rmtree(DIST, ignore_errors=True)

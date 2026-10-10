@@ -25,5 +25,8 @@ body.doc{background:var(--bg);margin:0}
  .facts{grid-template-columns:repeat(3,minmax(0,1fr))!important}.doc.one .facts{gap:6px}.doc.one .fact{padding:5px 8px}.doc.one .fact dd b{font-size:12px}.doc.one .fact dd span:not(.chip){font-size:10.5px}
  .doc.one .chip{font-size:10px;padding:0 6px}.doc.one .glance{gap:3px}.doc.one .glance li{font-size:11px;grid-template-columns:78px 1fr}
  .doc.one .sk,.doc.one .cr{font-size:10.5px}.sheet h2{font-size:10px;margin-bottom:4px}
+ .mockbar{padding:3px 8px;font-size:9.5px;margin:-11mm -11mm 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .doc.one .mock-block{padding:3px 8px;margin-top:0}.doc.one .badge.mock{font-size:9px;padding:0 6px;margin:0 4px 0 0}
+ .doc.one .fact.mock-block dd b{font-size:11px;font-weight:600}
  .tl-item{break-inside:avoid}.eras a{break-inside:avoid}
 }

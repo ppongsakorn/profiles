@@ -1,5 +1,6 @@
+<p class="tiers" aria-hidden="true"><span style="--t:var(--bronze)">Bronze</span><i>→</i><span style="--t:var(--silver)">Silver</span><i>→</i><span style="--t:var(--gold)">Gold</span></p>
 <ol class="eras" aria-label="{{ ui.glance }}">
- {% for e in story.eras %}<li><a href="#{{ e.first_id }}"><span class="yrs">{{ e.years }}</span><b>{{ e.label }}</b><span class="eh">{{ e.headline }}</span></a></li>{% endfor %}
+ {% for e in story.eras %}<li><a href="#{{ e.first_id }}" data-tier="{{ e.tier }}"><span class="yrs">{{ e.years }}</span><b>{{ e.label }}</b><span class="eh">{{ e.headline }}</span></a></li>{% endfor %}
 </ol>
 {% if not story.static %}
 <div class="tl-tools no-print">
@@ -19,7 +20,7 @@
  {% if it.kind == 'milestone' %}
  <li class="ms" data-kind="milestone"><span class="yr">{{ it.year }}</span><span>{{ it.title }}{% if it.sub %}<small>{{ it.sub }}</small>{% endif %}</span></li>
  {% else %}
- <li class="tl-item {{ it.kind }}{% if it.current %} current{% endif %}{% if it.side %} side{% endif %}{% if it.highlight %} hi{% endif %}" id="{{ it.id }}" data-kind="{{ it.kind }}" data-tags="{{ it.tags | join(' ') }}">
+ <li class="tl-item {{ it.kind }}{% if it.current %} current{% endif %}{% if it.side %} side{% endif %}{% if it.highlight %} hi{% endif %}" id="{{ it.id }}" data-kind="{{ it.kind }}" data-tier="{{ it.tier }}" data-tags="{{ it.tags | join(' ') }}">
   {% set head %}
    <span class="when">{{ it.when }}{% if it.highlight %}<span class="badge">{{ ui.highlight }}</span>{% endif %}{% if it.side %}<span class="badge soft">{{ ui.side_job }}</span>{% endif %}</span>
    <span class="title">{{ it.title }}</span>{% if it.org %}<span class="org">{{ it.org }}</span>{% endif %}
@@ -31,7 +32,10 @@
     {% if it.bullets %}<h4>{{ ui.built }}</h4><ul>{% for x in it.bullets %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
     {% if it.impact %}<h4>{{ ui.impact }}</h4><ul>{% for x in it.impact %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
     {% if it.learned %}<h4>{{ ui.learned }}</h4><ul>{% for x in it.learned %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    {% if it.impact_mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span><h4>{{ ui.impact }}</h4><ul>{% for x in it.impact_mock %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+    {% if it.learned_mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span><h4>{{ ui.learned }}</h4><ul>{% for x in it.learned_mock %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
     {% if it.stack %}<h4>{{ ui.tech }}</h4><p>{% for s in it.stack %}<span class="chip">{{ s }}</span>{% endfor %}</p>{% endif %}
+    {% if it.missing %}<p class="prep"><b>{{ ui.prep }}</b> · {{ it.missing | join(' · ') }}</p>{% endif %}
    </div></details>
   {% else %}<div class="plain">{{ head }}</div>{% endif %}
  </li>

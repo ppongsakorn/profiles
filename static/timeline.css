@@ -20,11 +20,12 @@
 .linkbtn{font:inherit;font-size:13px;background:none;border:0;color:var(--accent);cursor:pointer;padding:4px 6px;text-decoration:underline}
 ol.tl{list-style:none;margin:16px 0 0;padding:0 0 0 28px;position:relative;display:flex;flex-direction:column;gap:12px}
 ol.tl.rev{flex-direction:column-reverse}
-ol.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--line)}
+ol.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--bronze),var(--silver),var(--gold))}
+ol.tl.rev::before{transform:scaleY(-1)}
 .tl [hidden]{display:none!important}
 .tl-item{position:relative;min-width:0}
-.tl-item::before{content:"";position:absolute;left:-28px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--ink2)}
-.tl-item.work::before{border-color:var(--accent);background:var(--accent)}
+.tl-item::before{content:"";position:absolute;left:-28px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--tier-c,var(--ink2))}
+.tl-item.work::before{border-color:var(--tier-c,var(--accent));background:var(--tier-c,var(--accent))}
 .tl-item.current::before{box-shadow:0 0 0 4px var(--accent-bg)}
 .tl-item.side{margin-left:12px}.tl-item.side::before{left:-40px;width:10px;height:10px;top:20px;background:var(--bg);border-color:var(--accent)}
 .tl-item details,.tl-item .plain{background:var(--paper);border:1px solid var(--line);border-radius:14px;min-width:0}
@@ -52,3 +53,13 @@ ol.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px
 }
 @media (max-width:560px){.tl-tools>.chipsrow:first-child{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;width:100%}.chipbtn{white-space:nowrap;flex:none}.tl-item.side{margin-left:0}.tl-item.side::before{left:-28px;width:14px;height:14px;top:18px}}
 @media print{.no-print{display:none!important}}
+
+/* medallion: older chapters are "bronze", later "silver", the latest "gold". Decorative markers only. */
+[data-tier=bronze]{--tier-c:var(--bronze)}[data-tier=silver]{--tier-c:var(--silver)}[data-tier=gold]{--tier-c:var(--gold)}
+.eras a[data-tier]{border-top:3px solid var(--tier-c)}
+.tiers{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--ink2);margin:0 0 8px}
+.tiers span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--t);margin-right:5px}
+.tiers i{font-style:normal}
+.prep{font-size:13px;color:var(--ink2);border:1px dashed var(--line);border-radius:10px;padding:6px 10px;margin:12px 0 0}
+.prep b{font-weight:600;color:var(--ink)}
+.hobby{display:inline-flex;align-items:center;gap:6px}.hobby-icon{width:16px;height:16px;flex:none}

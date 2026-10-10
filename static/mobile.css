@@ -23,3 +23,7 @@ h2{font-size:15px;color:var(--ink2);margin:26px 0 10px;font-weight:600}
 .tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0 7px;font-size:11px;font-weight:600;text-decoration:none;color:var(--ink2)}
 .tabs a svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tabs a[aria-current]{color:var(--accent)}
+
+.tagline{font-weight:600;margin:0 0 8px;line-height:1.4}
+.block.coming{border-style:dashed}.block .badge{margin:0 0 4px;display:inline-block}
+.prep{font-size:13px;color:var(--ink2);border:1px dashed var(--line);border-radius:10px;padding:6px 10px;margin:10px 0 0}

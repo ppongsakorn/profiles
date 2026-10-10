@@ -11,7 +11,9 @@
 <link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
 <script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
 <script defer src="{{ link('assets/timeline.js') }}"></script>
+<link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
 </head><body>
+{% include "_mockbar.html.j2" %}
 <header class="site-header"><div class="wrap">
  <a class="brand" href="#top">{{ b.name }}</a>
  <nav class="nav">
@@ -21,7 +23,7 @@
  </nav></div></header>
 <main id="top" class="wrap">
  <div class="hero">
-  <div><h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p><p>{{ summary }}</p>
+  <div><h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p>{% if b.tagline %}<p class="tagline">{{ b.tagline }}</p>{% endif %}<p>{{ summary }}</p>
    <div class="btns"><a class="btn primary" href="#resume">{{ ui.cta_resume }} →</a><a class="btn" href="#contact">{{ ui.cta_contact }}</a></div></div>
   {{ wheel }}
  </div>
@@ -31,14 +33,15 @@
  </div></section>
  <section id="experience"><h2>{{ ui.story }}</h2><p class="sub">{{ ui.story_sub }}</p>{% include "_story.html.j2" %}</section>
  {% if projects %}<section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
-  {% for p in projects %}<div class="card proj"><h3>{{ p.name }}</h3><p>{{ p.summary }}</p>{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
+  {% for p in projects %}<div class="card proj{% if p.in_preparation %} coming{% endif %}"><h3>{{ p.name }}</h3>{% if p.in_preparation %}<span class="badge soft">{{ ui.prep }}</span>{% endif %}<p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  </div></section>{% endif %}
  <section id="resume"><h2>{{ ui.resume }}</h2><div class="card">
   {% for r in resumes %}<div class="resume-row"><b>{{ r.title }}</b><span>{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</span></div>{% endfor %}
  </div></section>
- <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>{% if hobbies %}<h2 style="margin-top:22px">{{ ui.hobbies }}</h2><p>{% for h in hobbies %}<span class="chip">{{ h }}</span>{% endfor %}</p>{% endif %}</section>
+ <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>{% if hobbies %}<h2 style="margin-top:22px">{{ ui.hobbies }}</h2><p>{% include "_hobbies.html.j2" %}</p>{% endif %}</section>
 </main>
 <footer id="contact"><div class="wrap"><h2>{{ ui.contact }}</h2>
  <p>{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+ {% if not b.email %}<p class="prep"><b>{{ ui.prep }}</b> · {{ ui.m_email }} — {{ ui.contact_prep }}</p>{% endif %}
  <p class="muted">{{ ui.agents }} <a href="{{ link('profile.json') }}">profile.json</a> · <a href="{{ link('llms.txt') }}">llms.txt</a> · WebMCP</p></div></footer>
 </body></html>

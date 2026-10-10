@@ -7,6 +7,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - Reply in Thai; English technical terms are fine.
 - The repo is public: never commit credentials, customer data, internal hostnames or confidential company figures.
 - Do not invent facts about the owner (dates, numbers, employers, results). Unknown = leave `TODO` and ask.
+  **Exception (owner's explicit permission): MOCK content.** Guessed placeholder content is allowed only in `impact_mock`, `learned_mock`, `snapshot.open_to_mock`, `snapshot.scope_mock` and `projects[].mock`, and must always render with a visible `MOCK` label, the page-top banner and the `contains_mock` flag (profile.json, llms.txt, WebMCP `notice`). Never mock contact details, institutions, certifications, awards/ranks, employers or anything in resumes/JSON-LD. Remove a mock block as soon as the real data arrives. Fields not mocked show "ข้อมูลกำลังเตรียมอยู่" (status `coming` for projects).
 - Delivery: branch from `main`, clear commit message, push, open a PR only when asked, then verify the live site.
 - Report limits honestly (what was not verified).
 
@@ -60,6 +61,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - Preview: `python -m http.server -d dist`
 - `python scripts/check_pii.py` (also `--staged`, `--history`; runs in CI and as pre-commit hook) blocks PII from entering git.
 - `python scripts/validate_data.py` checks tags, slugs, dates, statuses and variants (errors fail CI; warnings list TODOs and unsanitised projects).
+- `python scripts/check_contrast.py` checks WCAG contrast of every token pair (text 4.5:1, graphics 3:1, hero wash).
 - `python scripts/check_site.py` (after `python build.py --pdf`; runs in CI) checks overflow at 360/390px in light/dark, phone redirect, timeline controls, Thai vs English text, no visible TODO, One Page PDF = 1 page.
 - `python scripts/check_webmcp.py` (after build; also runs in CI) calls every WebMCP tool with a fake `document.modelContext`.
 - Playwright checks that matter: no horizontal overflow at 360–390px, phone viewport redirects `/` → `/m/`, light and dark.

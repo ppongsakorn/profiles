@@ -37,11 +37,12 @@
 - ⬜ เจ้าของให้ข้อมูล: `impact` (ผลลัพธ์ตัวเลข) และ `learned` (ความรู้ที่ได้) ของแต่ละที่ทำงาน, `open_to`, `scope`
 - ⬜ ออกแบบ "ตัวตนเชิงสร้างสรรค์" ให้เว็บแสดงออกเอง (ไม่เขียนเป็นข้อความ) — รอเลือกแนวทาง
 
-## Phase 2 — Deploy ⬜
-- ⬜ รวมเข้า `main` และตั้งค่า Settings → Pages → Source = GitHub Actions
-- ⬜ ตรวจบนเว็บจริงด้วย Playwright: overflow 360–390px, redirect มือถือ, ลิงก์ Resume ทุกแบบ, light/dark
+## Phase 2 — Deploy ✅/🟡
+- ✅ รวมเข้า `main` (PR #1) และ deploy ขึ้น GitHub Pages สำเร็จ: https://ppongsakorn.github.io/profiles/
+- ✅ ตรวจบนเว็บจริงด้วย `SITE_URL=https://ppongsakorn.github.io/profiles/ python scripts/check_site.py` (overflow, redirect มือถือ, Timeline, ป้าย MOCK, PDF, WebMCP)
 - ⬜ ทดสอบ WebMCP กับเบราว์เซอร์/agent จริงที่รองรับ (ตอนนี้ทดสอบกับ `modelContext` จำลองเท่านั้น)
-- ⬜ เพิ่ม favicon และ Open Graph image (ให้ลิงก์สวยเวลาแชร์)
+- ✅ favicon · ⬜ Open Graph image (ให้ลิงก์สวยเวลาแชร์)
+- ⬜ แทนที่เนื้อหา MOCK ด้วยข้อมูลจริง (แล้วแถบ MOCK จะหายไปเอง) · พิจารณา `noindex` ระหว่างที่ยังมี MOCK
 - ⬜ (ถ้าต้องการ) custom domain
 
 ## Phase 3 — Resume หลายแบบ ⬜

@@ -8,8 +8,12 @@ EXPECTED = {"get_profile", "list_focus_areas", "get_experience", "list_projects"
 FAKE = "window.__tools={};document.modelContext={registerTool:async(t)=>{window.__tools[t.name]=t}};"
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dist")
 h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=ROOT); h.log_message = lambda *a: None
-srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), h); threading.Thread(target=srv.serve_forever, daemon=True).start()
-base = f"http://127.0.0.1:{srv.server_address[1]}/"
+LIVE = os.environ.get("SITE_URL")
+if LIVE:
+    base = LIVE if LIVE.endswith("/") else LIVE + "/"
+else:
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), h); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f"http://127.0.0.1:{srv.server_address[1]}/"
 fails = []
 def check(ok, msg):
     print(("ok   " if ok else "FAIL ") + msg)

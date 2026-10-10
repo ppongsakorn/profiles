@@ -21,11 +21,11 @@ UI = {
     "th": dict(focus="สิ่งที่ผมช่วยได้", experience="ประสบการณ์", projects="ผลงาน", resume="Resume", contact="ติดต่อ",
                interests="สิ่งที่กำลังสนใจ", cta_resume="ดู Resume", cta_contact="ติดต่อผม", full="เว็บเต็ม",
                mobile_ver="เวอร์ชันมือถือ", tab_home="หน้าแรก", tab_work="ผลงาน", tab_resume="Resume", tab_contact="ติดต่อ",
-               home="หน้าแรก", work="ผลงาน", wheel_t1="Data & AI", wheel_t2="แตะเพื่อดูรายละเอียด"),
+               home="หน้าแรก", work="ผลงาน", wheel_t1="Data & AI", wheel_t2="แตะเพื่อดูรายละเอียด", agents="สำหรับ AI Agent:"),
     "en": dict(focus="What I can help with", experience="Experience", projects="Projects", resume="Resume", contact="Contact",
                interests="Interests", cta_resume="View resume", cta_contact="Get in touch", full="Full site",
                mobile_ver="Mobile version", tab_home="Home", tab_work="Work", tab_resume="Resume", tab_contact="Contact",
-               home="Home", work="Work", wheel_t1="Data & AI", wheel_t2="Tap a segment"),
+               home="Home", work="Work", wheel_t1="Data & AI", wheel_t2="Tap a segment", agents="For AI agents:"),
 }
 SITE_LANGS = ["th", "en"]  # th lives at the site root, others under /<lang>/
 MOBILE_SCREENS = {"home": "", "work": "work/", "resume": "resume/", "contact": "contact/"}
@@ -59,9 +59,49 @@ def build_site(env, data, resumes):
             up = "../" * path.count("/")
             link = lambda t, up=up: (up + t) or "./"
             html = env.get_template(tpl).render(**ctx, ui=ui, prefix=prefix, screen=screen, link=link, alt_lang=alt_lang,
-                                                alt_path=alt_prefix + sub, wheel=wheel_svg(ctx["focus"], ui), resumes=resumes)
+                                                alt_path=alt_prefix + sub, wheel=wheel_svg(ctx["focus"], ui), resumes=resumes, jsonld=jsonld(ctx))
             os.makedirs(os.path.join(DIST, path), exist_ok=True)
             open(os.path.join(DIST, path, "index.html"), "w", encoding="utf-8").write(html)
+
+
+def real(x):
+    """Drop unfilled TODO placeholders from machine-readable output."""
+    return x if isinstance(x, str) and x and not x.startswith("TODO") else None
+
+
+def agent_view(ctx):
+    return dict(basics=ctx["b"], summary=ctx["summary"], focus=[{k: f[k] for k in ("slug", "title", "desc")} for f in ctx["focus"]],
+                skills=[{"group": g["group"], "items": g["list"]} for g in ctx["skills"]],
+                experience=ctx["experience"], projects=ctx["projects"], interests=ctx["interests"])
+
+
+def jsonld(ctx):
+    import json
+    b = ctx["b"]
+    d = {"@context": "https://schema.org", "@type": "Person", "name": b["name"], "jobTitle": b["label"],
+         "description": real(ctx["summary"]), "email": real(b.get("email")), "address": real(b.get("location")),
+         "worksFor": {"@type": "Organization", "name": next((e["company"] for e in ctx["experience"] if real(e["company"])), None)},
+         "sameAs": [l["url"] for l in b.get("links", []) if real(l["url"])],
+         "knowsAbout": [i for g in ctx["skills"] for i in g["list"]]}
+    d = {k: v for k, v in d.items() if v}
+    return '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+
+
+def build_agent_files(data, resumes):
+    import json
+    langs = {l: agent_view(select(data, dict(lang=l, summary="default", max_bullets=99, max_projects=99))) for l in SITE_LANGS}
+    doc = {"schema": "profile/1", "site": {"languages": SITE_LANGS, "default": SITE_LANGS[0], "mobile_path": "m/"},
+           "resumes": resumes, "langs": langs}
+    open(os.path.join(DIST, "profile.json"), "w", encoding="utf-8").write(json.dumps(doc, ensure_ascii=False, indent=1))
+    lines = []
+    for l in SITE_LANGS:
+        v = langs[l]; pre = "" if l == "th" else f"{l}/"
+        lines += [f"# {v['basics']['name']} ({l})", f"> {v['basics']['label']}. {real(v['summary']) or ''}".rstrip(), "",
+                  f"- Site: ./{pre}", f"- Mobile: ./{pre}m/", ""]
+    lines += ["## Machine-readable", "- ./profile.json: full profile in every language (JSON)",
+              "- Resumes: " + ", ".join(f"./{r['slug']}/resume.md" for r in resumes),
+              "- WebMCP: read-only tools on document.modelContext (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, get_contact)", ""]
+    open(os.path.join(DIST, "llms.txt"), "w", encoding="utf-8").write("\n".join(lines))
 
 
 def tr(x, lang):
@@ -142,9 +182,10 @@ def main():
             open(os.path.join(out, f"resume.{fmt}"), "w", encoding="utf-8").write(txt)
         if "pdf" in fmts:
             pdfs.append((os.path.join(out, "resume.html"), os.path.join(out, "resume.pdf")))
-        resumes.append(dict(slug=slug, title=v["title"], formats=[x for x in ["html", "pdf", "md"] if x in fmts]))
+        resumes.append(dict(slug=slug, title=v["title"], lang=v.get("lang", "en"), formats=[x for x in ["html", "pdf", "md"] if x in fmts]))
     if not a.only:
         build_site(env, data, resumes)
+        build_agent_files(data, resumes)
         shutil.copytree(os.path.join(ROOT, "static"), os.path.join(DIST, "assets"))
         open(os.path.join(DIST, ".nojekyll"), "w").close()
     if pdfs:

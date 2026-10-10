@@ -7,6 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}">
+{{ jsonld }}
+<link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
+<script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
 </head><body>
 <header class="site-header"><div class="wrap">
  <a class="brand" href="#top">{{ b.name }}</a>
@@ -36,5 +39,6 @@
  <section><h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p></section>
 </main>
 <footer id="contact"><div class="wrap"><h2>{{ ui.contact }}</h2>
- <p>{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p></div></footer>
+ <p>{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+ <p class="muted">{{ ui.agents }} <a href="{{ link('profile.json') }}">profile.json</a> · <a href="{{ link('llms.txt') }}">llms.txt</a> · WebMCP</p></div></footer>
 </body></html>

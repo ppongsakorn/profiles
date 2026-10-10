@@ -21,6 +21,7 @@ jobs:
       - run: pip install -r requirements.txt && playwright install --with-deps chromium
       - run: python scripts/check_pii.py
       - run: python scripts/validate_data.py
+      - run: python scripts/check_contrast.py
       - run: python build.py --pdf
       - run: python scripts/check_webmcp.py
       - run: python scripts/check_site.py

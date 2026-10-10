@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/doc.css') }}">
 {{ jsonld }}
 {% if mode == 'full' %}<script defer src="{{ link('assets/timeline.js') }}"></script>{% endif %}
+<link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
 </head><body class="doc {{ mode }}">
+{% include "_mockbar.html.j2" %}
 <nav class="docnav no-print"><a href="{{ link(prefix) }}">← {{ b.name }}</a>
  <span><a href="{{ link(prefix ~ 'profile/') }}"{% if mode == 'one' %} aria-current="page"{% endif %}>{{ ui.one_page }}</a>
  <a href="{{ link(prefix ~ 'profile/full/') }}"{% if mode == 'full' %} aria-current="page"{% endif %}>{{ ui.full_profile }}</a>
@@ -22,13 +24,13 @@
 {% if mode == 'one' %}
 <section><h2>{{ ui.glance }}</h2>
  <ul class="glance">{% for e in story.eras | reverse %}<li><span class="yrs">{{ e.years }}</span><span><b>{{ e.label }}</b> {{ e.headline }}</span></li>{% endfor %}</ul></section>
-<section class="two"><div><h2>{{ ui.skills_short }}</h2>{% for g in skills %}<p class="sk"><b>{{ g.group }}:</b> {{ g.list | join(', ') }}</p>{% endfor %}</div>
+<section class="two"><div><h2>{{ ui.skills_short }}</h2>{% for g in skills %}<p class="sk"><b>{{ g.group }}:</b> {{ g.list[:7] | join(', ') }}{% if g.list | length > 7 %}…{% endif %}</p>{% endfor %}</div>
  {% if story.cred.certs or story.cred.patents %}<div><h2>{{ ui.cred }}</h2><ul class="cr">{% for c in story.cred.certs %}<li>{{ c.name }}</li>{% endfor %}{% for p in story.cred.patents %}<li>{{ ui.patent }}: {{ p.title }}</li>{% endfor %}</ul></div>{% endif %}</section>
-{% if hobbies %}<p class="sk"><b>{{ ui.hobbies }}:</b> {{ hobbies | join(' · ') }}</p>{% endif %}
+{% if hobbies %}<p class="sk"><b>{{ ui.hobbies }}:</b> {{ hobbies | map(attribute='name') | join(' · ') }}</p>{% endif %}
 <p class="more no-print"><a href="{{ link(prefix ~ 'profile/full/') }}">{{ ui.read_full }} →</a></p>
 {% else %}
 <section><h2>{{ ui.story }}</h2>{% include "_story.html.j2" %}</section>
-{% if hobbies %}<section><h2>{{ ui.hobbies }}</h2><p>{% for h in hobbies %}<span class="chip">{{ h }}</span>{% endfor %}</p></section>{% endif %}
-{% if projects %}<section><h2>{{ ui.projects }}</h2>{% for p in projects %}<div class="pj"><b>{{ p.name }}</b> <span class="muted">{{ p.stack | join(' · ') }}</span><p>{{ p.summary }}</p></div>{% endfor %}</section>{% endif %}
+{% if hobbies %}<section><h2>{{ ui.hobbies }}</h2><p>{% include "_hobbies.html.j2" %}</p></section>{% endif %}
+{% if projects %}<section><h2>{{ ui.projects }}</h2>{% for p in projects %}<div class="pj"><b>{{ p.name }}</b>{% if p.in_preparation %} <span class="badge soft">{{ ui.prep }}</span>{% endif %} <span class="muted">{{ p.stack | join(' · ') }}</span><p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}</div>{% endfor %}</section>{% endif %}
 {% endif %}
 </main></body></html>

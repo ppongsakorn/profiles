@@ -34,3 +34,17 @@ h2{font-size:24px;margin:0 0 18px}
 footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--ink2);font-size:14px}
 @media (max-width:860px){.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.wheel{max-width:300px}}
 @media (max-width:640px){.grid3{grid-template-columns:1fr}.nav a:not(.lang):not(.to-mobile){display:none}.nav a.to-mobile{display:inline-block}}
+
+/* identity: a living wheel, a soft colour wash behind the hero, and the tagline */
+.tagline{font-size:19px;font-weight:600;line-height:1.4;margin:0 0 10px!important;color:var(--ink)!important;max-width:30em}
+.hero{position:relative;isolation:isolate}
+body{overflow-x:clip}
+.hero::before{content:"";position:absolute;inset:-30px calc(50% - 50vw);z-index:-1;pointer-events:none;
+ background:radial-gradient(38% 52% at 80% 28%,color-mix(in srgb,var(--c1) 9%,transparent),transparent 72%),
+            radial-gradient(30% 38% at 90% 52%,color-mix(in srgb,var(--c5) 8%,transparent),transparent 72%),
+            radial-gradient(26% 34% at 64% 66%,color-mix(in srgb,var(--c2) 7%,transparent),transparent 72%)}
+.wheel .orbit{transform-origin:160px 160px;transform:rotate(var(--a));pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.wheel .orbit{animation:orbit var(--d) linear infinite}}
+@keyframes orbit{to{transform:rotate(calc(var(--a) + 360deg))}}
+.proj.coming{border-style:dashed}
+.proj .badge{margin-left:0}

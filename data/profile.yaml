@@ -2,12 +2,14 @@
 # ฟิลด์ข้อความใส่ได้ 2 แบบ:  "text"  หรือ  {en: "...", th: "..."}  (เลือกภาษาตาม variant)
 # tags ใช้กรอง/จัดลำดับต่อ variant — ไม่มี tags = แสดงในทุก variant
 # คำศัพท์ tag ที่อนุญาต = slug ของ focus (data, pipeline, bi, fraud, ai, cost) + extra_tags ด้านล่าง
-# status: draft = ยังไม่ตรวจ จะไม่ขึ้นเว็บ/Resume/profile.json (ไม่ใส่ = published)
+# status: draft = ยังไม่ตรวจ จะไม่ขึ้นเว็บ/Resume/profile.json · coming = แสดงเป็น "ข้อมูลกำลังเตรียมอยู่" · (ไม่ใส่ = published)
 # รายละเอียดฟิลด์ทั้งหมดดู docs/DATA.md
 
 basics:
   name: Pongsakorn P.          # TODO: ใช้ชื่อเต็มหรือไม่ (LinkedIn แสดงชื่อเต็มอยู่แล้ว)
   label: {en: Data & AI Team Lead, th: หัวหน้าทีม Data & AI}
+  # ถ้อยคำจาก LinkedIn Summary ของเจ้าของ: "run all day, all night, with excellent output"
+  tagline: {en: "Data operations that run all day, all night, with excellent output.", th: "งานข้อมูลที่ทำงานให้ทั้งวันทั้งคืน ด้วยผลลัพธ์ที่ยอดเยี่ยม"}
   email: TODO                  # เลือกอีเมลที่จะแสดงสาธารณะ (ยังไม่ใส่)
   location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ ประเทศไทย"}
   links:
@@ -83,18 +85,23 @@ skills:
 # เรื่องเล่าเส้นทางอาชีพ: 5 ช่วง (ใช้เป็นแถบสรุปบนสุดของ Timeline) — entry ผูกกับช่วงด้วย `era`
 eras:
   - id: study
+    tier: bronze      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
     label: {en: Study, th: เรียน}
     headline: {en: "Computer Engineering degree, then contests and research papers.", th: "ปริญญาตรีวิศวกรรมคอมพิวเตอร์ ตามด้วยการแข่งขันและงานวิจัย"}
   - id: dev
+    tier: bronze      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
     label: {en: Full-stack developer, th: นักพัฒนา Full-stack}
     headline: {en: "A hotel booking engine, a social network and the infrastructure under them.", th: "ระบบจองโรงแรม โซเชียลเน็ตเวิร์ก และโครงสร้างพื้นฐานที่รองรับ"}
   - id: evangelist
+    tier: silver      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
     label: {en: Microsoft evangelist, th: Microsoft Evangelist}
     headline: {en: "Developer evangelist for ISVs; manager at Microsoft Innovation Center, Bangkok.", th: "Developer Evangelist สำหรับ ISV และผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}
   - id: mobile
+    tier: silver      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
     label: {en: Mobile team lead, th: หัวหน้าทีม Mobile}
     headline: {en: "Led the carmate.biz mobile team and ran Scrum; taught on the side.", th: "นำทีมแอป carmate.biz และเป็น Scrum Master พร้อมสอนควบคู่"}
   - id: dataai
+    tier: gold      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
     label: {en: Data & AI, th: Data & AI}
     headline: {en: "From senior data scientist to leading the Data & AI team at Buzzebees.", th: "จาก Senior Data Scientist สู่หัวหน้าทีม Data & AI ที่ Buzzebees"}
 
@@ -103,6 +110,8 @@ eras:
 snapshot:
   open_to: TODO                  # เช่น "Head of Data & AI · Data Platform Lead" (ว่าง = ไม่แสดง)
   scope: TODO                    # ขอบเขต เช่น ขนาดทีม/ปริมาณข้อมูล/งบประมาณ (ยืนยันกับเจ้าของ)
+  open_to_mock: {en: "Head of Data & AI · Data Platform Lead · AI-first transformation", th: "Head of Data & AI · Data Platform Lead · การปรับองค์กรเป็น AI-first"}   # MOCK
+  scope_mock: {en: "A Data & AI team across pipelines, cost and performance, SLA, fraud detection and AI agents (team size and budget to be confirmed).", th: "ทีม Data & AI ครอบคลุม pipeline, ต้นทุนและประสิทธิภาพ, SLA, ตรวจจับ Fraud และ AI Agent (ขนาดทีมและงบประมาณรอยืนยัน)"}   # MOCK
   stack: [Azure Databricks, Azure Data Factory, Databricks SQL Serverless, Azure Data Lake, AKS, Apache Superset, Microsoft Foundry, Python, Matomo]
   highlights:
     - {en: "Leads a Data & AI team end to end: pipelines, cost and performance, SLA, fraud detection and AI agents.", th: "นำทีม Data & AI ครบวงจร: pipeline, ต้นทุนและประสิทธิภาพ, SLA, ตรวจจับ Fraud และ AI Agent"}
@@ -124,6 +133,14 @@ experience:
     stack: [Azure Databricks, Azure Data Factory, Databricks SQL Serverless, Azure Data Lake, AKS, Apache Superset, Microsoft Foundry, Claude, Matomo]
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง (ตัวเลขเป็นตัวอย่าง)
+      - {en: "Made Data & AI spend visible per workload, then cut query and storage cost by roughly a third (sample figure).", th: "ทำให้เห็นต้นทุน Data & AI แยกตามงาน แล้วลดต้นทุน query และ storage ได้ประมาณหนึ่งในสาม (ตัวเลขตัวอย่าง)"}
+      - {en: "Kept pipeline SLA above 99% with automated validation gates (sample figure).", th: "รักษา SLA ของ pipeline เกิน 99% ด้วยด่านตรวจคุณภาพอัตโนมัติ (ตัวเลขตัวอย่าง)"}
+      - {en: "Moved reporting, monitoring and alerting from manual routines to AI agents that run around the clock.", th: "ย้ายงาน Reporting, Monitoring และ Alerting จากงานมือไปให้ AI Agent ทำงานตลอดเวลา"}
+    learned_mock:
+      - {en: "Cost is a design input, not a month-end surprise: make it visible before tuning.", th: "ต้นทุนเป็นส่วนหนึ่งของการออกแบบ ไม่ใช่เซอร์ไพรส์สิ้นเดือน: ทำให้มองเห็นก่อนแล้วค่อยปรับ"}
+      - {en: "AI agents work best on narrow, well-instrumented jobs with clear quality gates.", th: "AI Agent ทำงานได้ดีที่สุดกับงานที่แคบ วัดผลได้ และมีด่านคุณภาพชัดเจน"}
+      - {en: "Leading a data team means protecting the SLA first, then speed.", th: "การนำทีมข้อมูลคือปกป้อง SLA ก่อน แล้วจึงค่อยเร่งความเร็ว"}
     bullets:
       - {text: {en: "Lead the team to operational excellence in Data & AI routines: data pipeline, transformation, migration, visualization, validation, analytics and governance, designed and executed end-to-end with AI.", th: "นำทีมสู่ความเป็นเลิศในงานประจำด้าน Data & AI: data pipeline, transformation, migration, visualization, validation, analytics และ governance ออกแบบและดำเนินการครบวงจรร่วมกับ AI"}, tags: [data, pipeline]}
       - {text: {en: "Lead the team building and operating Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) as the backbone for all data and AI workloads.", th: "นำทีมสร้างและดูแลโครงสร้างพื้นฐานบน Azure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) ซึ่งเป็นกระดูกสันหลังของงาน data และ AI ทั้งหมด"}, tags: [data, pipeline]}
@@ -144,6 +161,12 @@ experience:
     stack: [Semantic Kernel, Azure OpenAI, Azure Bot Service, Azure Databricks, Azure Synapse, Azure Data Factory, AKS, Azure Event Hubs, Matomo, Grafana, Azure Application Insights]
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK
+      - {en: "Took fraud detection from idea to real-time scoring.", th: "พัฒนาระบบตรวจจับ Fraud จากไอเดียจนให้คะแนนแบบ real-time ได้"}
+      - {en: "Gave the business live user-tracking views instead of next-day reports.", th: "ให้ธุรกิจเห็นพฤติกรรมผู้ใช้แบบสด แทนรายงานที่ต้องรอวันถัดไป"}
+    learned_mock:
+      - {en: "Real-time systems fail in the seams between services: monitor those first.", th: "ระบบ real-time มักพังตรงรอยต่อระหว่างบริการ: ต้อง monitor จุดนั้นก่อน"}
+      - {en: "Building the platform and the models together keeps both honest.", th: "การสร้าง platform และโมเดลไปพร้อมกัน ทำให้ทั้งสองฝั่งต้องตรงไปตรงมา"}
     bullets:
       - {text: {en: "Built an AI chain with automatic orchestration using Semantic Kernel and Azure OpenAI.", th: "สร้าง AI chain ที่ orchestrate อัตโนมัติด้วย Semantic Kernel และ Azure OpenAI"}, tags: [ai]}
       - {text: {en: "Designed, built and managed a fraud detection system using AI/ML, with real-time detection and scoring.", th: "ออกแบบ สร้าง และดูแลระบบตรวจจับ Fraud ด้วย AI/ML ตรวจจับและให้คะแนนแบบ real-time"}, tags: [fraud, ai]}
@@ -162,6 +185,10 @@ experience:
     stack: []
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK
+      - {en: "Turned customer behaviour signals into UX/UI hypotheses the team could test.", th: "แปลงสัญญาณพฤติกรรมลูกค้าเป็นสมมติฐานด้าน UX/UI ที่ทีมนำไปทดสอบได้"}
+    learned_mock:
+      - {en: "Listening to users finds needs that metrics alone hide.", th: "การฟังผู้ใช้ค้นพบความต้องการที่ตัวเลขอย่างเดียวมองไม่เห็น"}
     bullets:
       - {text: {en: "Customer experience: listen and learn from customers, find hidden needs, build potential UX/UI, and track and follow up behaviour.", th: "Customer Experience: รับฟังและเรียนรู้จากลูกค้า ค้นหาความต้องการที่ซ่อนอยู่ สร้าง UX/UI ที่มีศักยภาพ และติดตามพฤติกรรม"}, tags: [bi]}
       - {text: {en: "Research areas: AI and machine learning, data platform, data visualization, UX/UI.", th: "หัวข้อวิจัย: AI และ machine learning, data platform, data visualization, UX/UI"}, tags: [ai, data]}
@@ -190,6 +217,11 @@ experience:
     stack: [Native iOS, Native Android, .NET Core, Node.js, WebRTC, Next.js, Vue.js, Azure DevOps, AWS, TensorFlow]
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK
+      - {en: "Shipped and sustained native iOS and Android releases for carmate.biz on a Scrum cadence.", th: "ส่งมอบและดูแลแอป native iOS และ Android ของ carmate.biz ต่อเนื่องด้วยจังหวะ Scrum"}
+    learned_mock:
+      - {en: "A steady sprint rhythm and automated releases matter more than heroics.", th: "จังหวะ sprint ที่สม่ำเสมอและการ release อัตโนมัติสำคัญกว่าการฮึดสู้"}
+      - {en: "Growing a team means clear ownership and removing blockers.", th: "การสร้างทีมคือการให้เจ้าของงานที่ชัดเจนและช่วยปลดล็อกอุปสรรค"}
     bullets:
       - {text: {en: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, leadership]}
       - {text: {en: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", th: "Scrum Master บน Microsoft Azure DevOps: Git workflow, วางแผน sprint และบริหารทรัพยากร, จัดการ task และ bug, burn-down และ Kanban, build และ release อัตโนมัติ"}, tags: [leadership]}
@@ -221,6 +253,10 @@ experience:
     stack: []
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK
+      - {en: "Helped ISV partners adopt Microsoft platforms and ship their products.", th: "ช่วยพาร์ตเนอร์ ISV นำแพลตฟอร์ม Microsoft ไปใช้และส่งมอบผลิตภัณฑ์"}
+    learned_mock:
+      - {en: "Evangelising sharpens how you explain technology to non-experts.", th: "การทำ evangelist ฝึกให้อธิบายเทคโนโลยีให้คนนอกวงการเข้าใจได้ดีขึ้น"}
     bullets:
       - {text: {en: "Manager at Microsoft Innovation Center, Bangkok.", th: "ผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}, tags: [leadership]}
   - company: A2Z Professional Travel Co, Ltd.
@@ -234,6 +270,10 @@ experience:
     stack: [PHP, Oracle, MySQL, Java, SOAP, Linux, Apache, Windows/IIS]
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
+    impact_mock:    # MOCK
+      - {en: "Delivered a booking engine and a social network end to end, including the servers underneath.", th: "ส่งมอบ booking engine และโซเชียลเน็ตเวิร์กครบวงจร รวมถึงเซิร์ฟเวอร์เบื้องหลัง"}
+    learned_mock:
+      - {en: "Full-stack ownership: from schema to server to screen.", th: "การรับผิดชอบแบบ full-stack: ตั้งแต่ schema, server จนถึงหน้าจอ"}
     bullets:
       - {text: {en: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", th: "ดูแลและติดตั้งโครงสร้างพื้นฐาน: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java"}, tags: [software]}
       - {text: {en: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", th: "พัฒนา booking engine สำหรับโรงแรม (PHP, Oracle) พร้อมเชื่อมต่อ SOAP web service กับซัพพลายเออร์โรงแรม"}, tags: [software]}
@@ -261,7 +301,7 @@ projects:
       - {label: Website, url: "https://ppongsakorn.github.io/management-framework/"}
       - {label: GitHub, url: "https://github.com/ppongsakorn/management-framework"}
     sanitized: true
-  # ร่างจาก Positions.csv: ยังไม่มี problem/actions/result จริง → draft (ไม่ขึ้นเว็บ)
+  # ร่างจาก Positions.csv: ยังไม่มี problem/actions/result จริง → status: coming = แสดงเป็นการ์ด "ข้อมูลกำลังเตรียมอยู่" (ชื่อ+สรุป+stack เท่านั้น)
   - slug: fraud-detection-system
     name: Fraud detection system
     period: TODO
@@ -275,7 +315,13 @@ projects:
     stack: [Python, AKS, MySQL, MSSQL, Azure Table, Matomo]
     links: []
     sanitized: false
-    status: draft
+    mock:           # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง
+      problem: {en: "Fraud scores arrived too late to stop bad activity.", th: "ตัวเลขความเสี่ยง Fraud มาช้าเกินกว่าจะหยุดพฤติกรรมผิดปกติได้"}
+      actions:
+        - {en: "Streamed signals from MySQL, MSSQL, Azure Table and Matomo into Python workers on AKS.", th: "สตรีมสัญญาณจาก MySQL, MSSQL, Azure Table และ Matomo เข้า Python worker บน AKS"}
+        - {en: "Scored events in real time and raised alerts to the team.", th: "ให้คะแนนเหตุการณ์แบบ real-time และส่งการแจ้งเตือนถึงทีม"}
+      result: {en: "Suspicious activity is flagged while it is still happening.", th: "พบกิจกรรมน่าสงสัยได้ขณะที่ยังเกิดขึ้นอยู่"}
+    status: coming
   - slug: modern-data-platform
     name: Modern data platform on Azure
     period: TODO
@@ -289,7 +335,13 @@ projects:
     stack: [Azure Databricks, Azure Data Factory, Azure Data Lake, Databricks Genie]
     links: []
     sanitized: false
-    status: draft
+    mock:           # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง
+      problem: {en: "Data lived in separate silos with slow, manual pipelines.", th: "ข้อมูลกระจายอยู่หลายที่ และ pipeline ช้าต้องทำด้วยมือ"}
+      actions:
+        - {en: "Built Bronze, Silver and Gold layers on Azure Data Lake with Databricks and Data Factory.", th: "สร้างชั้น Bronze, Silver, Gold บน Azure Data Lake ด้วย Databricks และ Data Factory"}
+        - {en: "Opened data to non-technical users through Databricks Genie.", th: "เปิดให้คนที่ไม่ใช่สายเทคนิคเข้าถึงข้อมูลผ่าน Databricks Genie"}
+      result: {en: "One trusted platform that pipelines, dashboards and agents all read from.", th: "แพลตฟอร์มข้อมูลเดียวที่เชื่อถือได้ ที่ pipeline, dashboard และ agent อ่านร่วมกัน"}
+    status: coming
   - slug: superset-dashboards
     name: Dashboards with Apache Superset
     period: TODO
@@ -303,7 +355,13 @@ projects:
     stack: [Apache Superset 4, Databricks SQL Serverless]
     links: []
     sanitized: false
-    status: draft
+    mock:           # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง
+      problem: {en: "Charts existed, but they did not tell people what to do next.", th: "มีกราฟอยู่แล้ว แต่ไม่ได้บอกว่าต้องทำอะไรต่อ"}
+      actions:
+        - {en: "Designed dashboards around questions and a story, not around tables.", th: "ออกแบบ dashboard รอบคำถามและเรื่องเล่า ไม่ใช่รอบตาราง"}
+        - {en: "Served them from Databricks SQL Serverless.", th: "ให้บริการจาก Databricks SQL Serverless"}
+      result: {en: "Dashboards that readers act on.", th: "Dashboard ที่ผู้อ่านนำไปลงมือทำต่อได้"}
+    status: coming
   - slug: ai-first-operating-model
     name: AI-first operating model
     period: TODO
@@ -317,7 +375,13 @@ projects:
     stack: [Claude, Microsoft Foundry, Vector Search, Bot Service]
     links: []
     sanitized: false
-    status: draft
+    mock:           # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง
+      problem: {en: "Routine work consumed time the team needed for thinking.", th: "งานประจำกินเวลาที่ทีมต้องใช้คิด"}
+      actions:
+        - {en: "Made Claude the daily co-pilot for planning, coding and architecture.", th: "ให้ Claude เป็น co-pilot ประจำวันสำหรับวางแผน เขียนโค้ด และออกแบบ"}
+        - {en: "Built agents on Microsoft Foundry for reporting, monitoring and alerting.", th: "สร้าง agent บน Microsoft Foundry สำหรับ Reporting, Monitoring, Alerting"}
+      result: {en: "Routine work runs by itself; the team spends its time on decisions.", th: "งานประจำเดินได้เอง ทีมใช้เวลากับการตัดสินใจ"}
+    status: coming
   - slug: cost-performance-control
     name: Cost and performance control
     period: TODO
@@ -331,7 +395,13 @@ projects:
     stack: [Azure Databricks, Databricks SQL Serverless, Azure Data Factory, AKS]
     links: []
     sanitized: false
-    status: draft
+    mock:           # MOCK: Claude เดาให้ รอเจ้าของแทนด้วยข้อมูลจริง
+      problem: {en: "Cloud and query cost grew without anyone seeing where.", th: "ต้นทุน cloud และ query โตขึ้นโดยไม่มีใครเห็นว่าอยู่ตรงไหน"}
+      actions:
+        - {en: "Made cost and speed visible per workload.", th: "ทำให้เห็นต้นทุนและความเร็วแยกตามงาน"}
+        - {en: "Tuned queries and storage, then locked the gains in.", th: "ปรับ query และ storage แล้วล็อกผลที่ได้ไว้"}
+      result: {en: "Lower cost and faster queries, with the numbers to show it.", th: "ต้นทุนลดลงและ query เร็วขึ้น พร้อมตัวเลขยืนยัน"}
+    status: coming
 
 # บันทึก/หัวข้อที่กำลังสนใจ (ยังไม่แสดงบนเว็บ จนกว่าจะตัดสินใจเรื่อง IA)
 notes:
@@ -349,7 +419,7 @@ notes:
       th: "ข้อสรุป: สร้างแอป Generative AI ที่เชื่อถือได้ด้วย Mosaic AI พร้อมคุม governance; RAG pipeline, vector search และ AI agent framework สำหรับองค์กร; กรณีศึกษาจริงจากองค์กรขนาดใหญ่ในการขยาย data และ AI"
     tags: [ai, data]
     source: LinkedIn post, 2025-10
-    status: draft
+    status: coming
 
 education:
   - school: TODO         # ชื่อสถาบัน (ช่องนี้ว่างในไฟล์ LinkedIn)
@@ -360,6 +430,8 @@ education:
     era: study
     headline: {en: "Bachelor's degree in Computer Engineering.", th: "ปริญญาตรีวิศวกรรมคอมพิวเตอร์"}
     learned: []     # TODO: สิ่งที่ได้จากช่วงเรียน (วิชา/โปรเจกต์/งานวิจัยที่ภูมิใจ)
+    learned_mock:   # MOCK
+      - {en: "Computer engineering foundations, then early contests and research that shaped how I build.", th: "พื้นฐานวิศวกรรมคอมพิวเตอร์ ตามด้วยการแข่งขันและงานวิจัยช่วงแรกที่หล่อหลอมวิธีสร้างงานของผม"}
 
 certifications:
   - {name: Microsoft Certified Application Developer (MCAD), issuer: Microsoft}

@@ -24,6 +24,8 @@
   };
   var langProp = { lang: { type: "string", enum: ["th", "en"], description: "Content language; defaults to the page language." } };
   var RO = { readOnlyHint: true };
+  // Sample (MOCK) data is flagged so an agent never reports it as fact.
+  function withNotice(d, o) { if (d.contains_mock) o.notice = d.mock_note; return o; }
 
   function pages(d, l, screen) {
     var pre = l === "th" ? "" : l + "/";
@@ -41,8 +43,8 @@
       description: "Who the owner is: name, role, summary, location, public links and what they can help with.",
       inputSchema: { type: "object", properties: langProp }, annotations: RO,
       execute: function (i) { return load().then(function (d) { var x = pick(d, i);
-        return { name: x.p.basics.name, role: x.p.basics.label, summary: x.p.summary, location: x.p.basics.location,
-          links: x.p.basics.links, focus_areas: x.p.focus.map(function (f) { return f.title; }), url: pages(d, x.l, "home") }; }); }
+        return withNotice(d, { name: x.p.basics.name, role: x.p.basics.label, summary: x.p.summary, location: x.p.basics.location,
+          links: x.p.basics.links, focus_areas: x.p.focus.map(function (f) { return f.title; }), url: pages(d, x.l, "home") }); }); }
     },
     {
       name: "list_focus_areas", title: "List focus areas",
@@ -55,7 +57,7 @@
       description: "Work history, newest first, with achievements.",
       inputSchema: { type: "object", properties: langProp }, annotations: RO,
       execute: function (i) { return load().then(function (d) { var x = pick(d, i);
-        return { experience: x.p.experience, url: pages(d, x.l, "experience") }; }); }
+        return withNotice(d, { experience: x.p.experience, url: pages(d, x.l, "experience") }); }); }
     },
     {
       name: "list_projects", title: "List projects",
@@ -64,7 +66,7 @@
       annotations: RO,
       execute: function (i) { return load().then(function (d) { var x = pick(d, i), q = str(i && i.tech).toLowerCase();
         var r = x.p.projects.filter(function (p) { return !q || hay(p).indexOf(q) >= 0; });
-        return { count: r.length, projects: r, url: pages(d, x.l, "projects") }; }); }
+        return withNotice(d, { count: r.length, projects: r, url: pages(d, x.l, "projects") }); }); }
     },
     {
       name: "get_skills", title: "Get skills",

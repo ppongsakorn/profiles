@@ -22,25 +22,27 @@ UI = {
                interests="สิ่งที่กำลังสนใจ", cta_resume="ดู Resume", cta_contact="ติดต่อผม", full="เว็บเต็ม",
                mobile_ver="เวอร์ชันมือถือ", tab_home="หน้าแรก", tab_work="ผลงาน", tab_resume="Resume", tab_contact="ติดต่อ",
                home="หน้าแรก", work="ผลงาน", wheel_t1="Data & AI", wheel_t2="แตะเพื่อดูรายละเอียด", agents="สำหรับ AI Agent:",
-               story="เส้นทางของผม", story_sub="เล่าตั้งแต่เรียนจนถึงวันนี้ กดการ์ดเพื่อดูรายละเอียด", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
+               story="เส้นทางของผม", story_sub="จากโค้ดบรรทัดแรก ถึงวันที่ข้อมูลทำงานให้เราทั้งวันทั้งคืน กดการ์ดเพื่ออ่านต่อ", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
                order_old="เรียง: เก่า → ใหม่", order_new="เรียง: ใหม่ → เก่า", filter_all="ทั้งหมด", built="สิ่งที่ได้สร้างและส่งมอบ", impact="ผลลัพธ์",
                learned="ความรู้และประสบการณ์ที่ได้รับ", tech="เทคโนโลยี", highlight="ไฮไลต์", side_job="ควบคู่", snapshot="ภาพรวมสำหรับผู้ว่าจ้าง",
                f_now="ตอนนี้", f_years="ประสบการณ์", years="ปี", since="ตั้งแต่", f_stack="เทคโนโลยีหลัก", f_open="เปิดรับ", f_scope="ขอบเขต",
                f_edu="การศึกษา", f_cert="ใบรับรอง", f_lang="ภาษา", f_loc="ที่ตั้ง", one_page="One Page", full_profile="ฉบับเต็ม", pdf="PDF",
                docs_title="โปรไฟล์ให้โหลดและพิมพ์", paper="งานวิจัย", cred="ใบรับรองและสิทธิบัตร", patent="สิทธิบัตร", now_word="ปัจจุบัน",
-               hobbies="นอกเวลางาน", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="อ่านฉบับเต็ม", glance="เส้นทางโดยสรุป",
+               hobbies="นอกเวลางาน", prep="ข้อมูลกำลังเตรียมอยู่", f_problem="โจทย์:", mock="MOCK · ข้อมูลตัวอย่าง", mock_banner="บางส่วนของหน้านี้เป็นข้อมูลตัวอย่าง (MOCK) ที่ Claude ร่างให้ระหว่างรอข้อมูลจริง ส่วนที่ติดป้าย MOCK อย่าถือเป็นข้อเท็จจริง", mock_note="ข้อมูลตัวอย่าง รอเจ้าของแทนด้วยข้อมูลจริง", prep_label="กำลังเตรียมข้อมูล", m_impact="ผลลัพธ์ที่วัดได้", m_learned="ความรู้ที่ได้รับ", m_built="สิ่งที่ได้สร้าง",
+               m_open="งานที่เปิดรับ", m_scope="ขอบเขตงาน", m_email="อีเมลติดต่อ", m_school="ชื่อสถาบัน", contact_prep="ระหว่างนี้ติดต่อผ่านลิงก์ด้านบนได้", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="อ่านฉบับเต็ม", glance="เส้นทางโดยสรุป",
                skills_short="ทักษะหลัก", contact_short="ติดต่อ"),
     "en": dict(focus="What I can help with", experience="Experience", projects="Projects", resume="Resume", contact="Contact",
                interests="Interests", cta_resume="View resume", cta_contact="Get in touch", full="Full site",
                mobile_ver="Mobile version", tab_home="Home", tab_work="Work", tab_resume="Resume", tab_contact="Contact",
                home="Home", work="Work", wheel_t1="Data & AI", wheel_t2="Tap a segment", agents="For AI agents:",
-               story="My story", story_sub="From study to today. Tap a card for details.", expand_all="Expand all", collapse_all="Collapse all",
+               story="My story", story_sub="From the first line of code to data that works all day, all night. Tap a card to read on.", expand_all="Expand all", collapse_all="Collapse all",
                order_old="Order: oldest first", order_new="Order: newest first", filter_all="All", built="What I built and delivered", impact="Impact",
                learned="What I learned", tech="Technologies", highlight="Highlight", side_job="Alongside", snapshot="At a glance for hiring teams",
                f_now="Now", f_years="Experience", years="years", since="since", f_stack="Core stack", f_open="Open to", f_scope="Scope",
                f_edu="Education", f_cert="Certifications", f_lang="Languages", f_loc="Based in", one_page="One Page", full_profile="Full profile", pdf="PDF",
                docs_title="Profiles to download and print", paper="Paper", cred="Certifications and patents", patent="Patent", now_word="Present",
-               hobbies="Outside work", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="Read the full profile", glance="Career at a glance",
+               hobbies="Outside work", prep="Content in preparation", f_problem="Problem:", mock="MOCK · sample data", mock_banner="Parts of this page are sample data (MOCK) drafted by Claude while the real details are prepared. Anything labelled MOCK is not a statement of fact.", mock_note="Sample data, to be replaced by the owner", prep_label="In preparation", m_impact="Measured impact", m_learned="What I learned", m_built="What I built",
+               m_open="Open to", m_scope="Scope", m_email="Contact e-mail", m_school="School name", contact_prep="Meanwhile, reach me through the links above.", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="Read the full profile", glance="Career at a glance",
                skills_short="Key skills", contact_short="Contact"),
 }
 SITE_LANGS = ["th", "en"]  # th lives at the site root, others under /<lang>/
@@ -61,9 +63,24 @@ def wheel_svg(focus, ui):
                    f'd="M{x0:.1f} {y0:.1f}A{ro} {ro} 0 0 1 {x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}A{ri} {ri} 0 0 0 {x3:.1f} {y3:.1f}Z"/>'
                    f'<path fill="none" stroke="var(--c{i+1})" stroke-width="5" d="M{ax0:.1f} {ay0:.1f}A{ro-2.5} {ro-2.5} 0 0 1 {ax1:.1f} {ay1:.1f}"/>'
                    f'<text x="{tx:.1f}" y="{ty:.1f}" text-anchor="middle" dominant-baseline="middle">{f["short"]}</text></a>')
-    return (f'<svg class="wheel" viewBox="0 0 320 320" role="img" aria-label="{ui["focus"]}">' + "".join(out) +
+    # "data packets" riding the rim: purely decorative; static when the visitor prefers reduced motion
+    orbit = "".join(f'<g class="orbit" aria-hidden="true" style="--a:{i * 360 / n + 18:.0f}deg;--d:{22 + i * 4}s"><circle cx="{cx + ro - 2.5:.1f}" cy="{cy}" r="4.5" fill="var(--c{i + 1})" stroke="var(--paper)" stroke-width="1.5"/></g>' for i in range(n))
+    return (f'<svg class="wheel" viewBox="0 0 320 320" role="img" aria-label="{ui["focus"]}">' + "".join(out) + orbit +
             f'<circle class="core" cx="{cx}" cy="{cy}" r="{ri-6}"/><text class="t1" x="{cx}" y="{cy-4}" text-anchor="middle">{ui["wheel_t1"]}</text>'
             f'<text class="t2" x="{cx}" y="{cy+16}" text-anchor="middle">{ui["wheel_t2"]}</text></svg>')
+
+
+def favicon_svg():
+    """Six-segment donut in the area colours (light-theme values), written to assets/favicon.svg."""
+    import math
+    light = ["#245fa6", "#2b7a4b", "#c7791a", "#b5322e", "#6b3fa0", "#3f6f78"]
+    segs = []
+    for i, col in enumerate(light):
+        a0 = -math.pi / 2 + 2 * math.pi * i / 6; a1 = a0 + 2 * math.pi / 6
+        pt = lambda r, a: (16 + r * math.cos(a), 16 + r * math.sin(a))
+        x0, y0 = pt(15, a0); x1, y1 = pt(15, a1); x2, y2 = pt(8, a1); x3, y3 = pt(8, a0)
+        segs.append(f'<path fill="{col}" stroke="#fff" stroke-width=".8" d="M{x0:.2f} {y0:.2f}A15 15 0 0 1 {x1:.2f} {y1:.2f}L{x2:.2f} {y2:.2f}A8 8 0 0 0 {x3:.2f} {y3:.2f}Z"/>')
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' + "".join(segs) + "</svg>"
 
 
 def build_site(env, data, resumes, pdf_built=False):
@@ -99,7 +116,7 @@ def real(x):
 def agent_view(ctx):
     return dict(basics=ctx["b"], summary=ctx["summary"], focus=[{k: f[k] for k in ("slug", "title", "desc")} for f in ctx["focus"]],
                 skills=[{"group": g["group"], "items": g["list"]} for g in ctx["skills"]],
-                experience=ctx["experience"], projects=ctx["projects"], interests=ctx["interests"], hobbies=ctx["hobbies"])
+                experience=ctx["experience"], projects=ctx["projects"], interests=ctx["interests"], hobbies=[h["name"] for h in ctx["hobbies"]])
 
 
 def jsonld(ctx):
@@ -117,7 +134,9 @@ def jsonld(ctx):
 def build_agent_files(data, resumes):
     import json
     langs = {l: agent_view(select(data, dict(lang=l, summary="default", max_bullets=99, max_projects=99))) for l in SITE_LANGS}
-    doc = {"schema": "profile/1", "site": {"languages": SITE_LANGS, "default": SITE_LANGS[0], "mobile_path": "m/"},
+    mock = any(select(data, dict(lang="en", summary="default", max_bullets=99, max_projects=99))["has_mock"] for _ in (0,))
+    doc = {"schema": "profile/1", "contains_mock": mock,
+           "mock_note": "Fields ending in _mock, and project.mock, are sample data drafted by Claude and are NOT facts." if mock else "", "site": {"languages": SITE_LANGS, "default": SITE_LANGS[0], "mobile_path": "m/"},
            "resumes": resumes, "langs": langs}
     open(os.path.join(DIST, "profile.json"), "w", encoding="utf-8").write(json.dumps(doc, ensure_ascii=False, indent=1))
     lines = []
@@ -125,6 +144,8 @@ def build_agent_files(data, resumes):
         v = langs[l]; pre = "" if l == "th" else f"{l}/"
         lines += [f"# {v['basics']['name']} ({l})", f"> {v['basics']['label']}. {real(v['summary']) or ''}".rstrip(), "",
                   f"- Site: ./{pre}", f"- Mobile: ./{pre}m/", ""]
+    if mock:
+        lines += ["## Notice", "- Some sections are labelled MOCK (sample data drafted by an AI assistant). Do not treat them as facts about the owner.", ""]
     lines += ["## Machine-readable", "- ./profile.json: full profile in every language (JSON)",
               "- Resumes: " + ", ".join(f"./{r['slug']}/resume.md" for r in resumes),
               "- WebMCP: read-only tools on document.modelContext (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, get_contact)", ""]
@@ -159,20 +180,24 @@ def build_story(data, exp, lang):
     for i, e in enumerate(data.get("education", [])):
         field, degree, school = tr(e.get("field", ""), lang), tr(e.get("degree", ""), lang), tr(e.get("school", ""), lang)
         learned = clean(e.get("learned"))
-        items.append(dict(kind="study", id=f"t-study-{i + 1}", era=e.get("era", "study"), key=sortkey(e.get("start")), title=field or degree,
+        l_mock = [] if learned else clean(e.get("learned_mock"))
+        items.append(dict(kind="study", learned_mock=l_mock, impact_mock=[], id=f"t-study-{i + 1}", era=e.get("era", "study"), key=sortkey(e.get("start")), title=field or degree,
                           org=" · ".join(x for x in ((degree if field else ""), school if real(school) else "") if x),
                           when=f'{e.get("start", "")} – {e.get("end", "")}', headline=tr(e.get("headline", ""), lang), bullets=[], impact=[],
                           learned=learned, stack=[], tags=e.get("tags", []), side=False, highlight=False, current=False,
-                          start_raw=str(e.get("start", "")), end_raw=str(e.get("end", "")), body=bool(learned)))
+                          start_raw=str(e.get("start", "")), end_raw=str(e.get("end", "")), body=True,
+                          missing=([ui["m_school"]] if not real(school) else []) + ([ui["m_learned"]] if not learned and not l_mock else [])))
     seen_current = False
     for n, e in enumerate(exp):
         cur = e["end_raw"] == "Present" and not seen_current
         seen_current = seen_current or cur
         imp, lrn, stk = clean(e.get("impact")), clean(e.get("learned")), tr(e.get("stack", []), lang)
-        items.append(dict(kind="work", id=f"t-work-{n + 1}", era=e.get("era", ""), key=sortkey(e["start_raw"]), title=e["role"], org=e["company"],
+        i_mock, l_mock = ([] if imp else clean(e.get("impact_mock"))), ([] if lrn else clean(e.get("learned_mock")))
+        items.append(dict(kind="work", impact_mock=i_mock, learned_mock=l_mock, id=f"t-work-{n + 1}", era=e.get("era", ""), key=sortkey(e["start_raw"]), title=e["role"], org=e["company"],
                           when=f'{e["start"]} – {e["end"]}', headline=e.get("headline", ""), bullets=e["bullets"], impact=imp, learned=lrn, stack=stk,
                           tags=e.get("tags", []), side=bool(e.get("side")), highlight=bool(e.get("highlight")), current=cur,
-                          start_raw=e["start_raw"], end_raw=e["end_raw"], body=bool(e["bullets"] or imp or lrn or stk)))
+                          start_raw=e["start_raw"], end_raw=e["end_raw"], body=True,
+                          missing=([ui["m_built"]] if not e["bullets"] else []) + ([ui["m_impact"]] if not imp and not i_mock else []) + ([ui["m_learned"]] if not lrn and not l_mock else [])))
     for h in data.get("honors", []):
         items.append(dict(kind="milestone", key=sortkey(h.get("date")), year=str(h.get("date", ""))[:4], title=tr(h["title"], lang), sub=tr(h.get("description", ""), lang)))
     for p in data.get("publications", []):
@@ -187,7 +212,10 @@ def build_story(data, exp, lang):
         y0 = min(int(m["start_raw"][:4]) for m in mem)
         ends = [m["end_raw"] for m in mem]
         y1 = ui["now_word"] if "Present" in ends else max(int(x[:4]) for x in ends if x[:4].isdigit())
-        eras.append(dict(id=era["id"], label=tr(era["label"], lang), headline=tr(era["headline"], lang), years=f"{y0}–{y1}", first_id=mem[0]["id"]))
+        eras.append(dict(id=era["id"], tier=era.get("tier", ""), label=tr(era["label"], lang), headline=tr(era["headline"], lang), years=f"{y0}–{y1}", first_id=mem[0]["id"]))
+    tier_of = {e["id"]: e["tier"] for e in eras}
+    for x in items:
+        x["tier"] = tier_of.get(x.get("era", ""), "")
     works = [x for x in items if x["kind"] == "work"]
     starts = [int(x["start_raw"][:4]) for x in works if x["start_raw"][:4].isdigit()]
     years = datetime.date.today().year - min(starts) if starts else None
@@ -201,6 +229,11 @@ def build_story(data, exp, lang):
         highlights=[tr(h, lang).replace("{years}", str(years)) for h in snap.get("highlights", [])],
         open_to=tr(snap.get("open_to", ""), lang) if real(snap.get("open_to", "")) else "",
         scope=tr(snap.get("scope", ""), lang) if real(snap.get("scope", "")) else "",
+        open_to_mock=tr(snap.get("open_to_mock", ""), lang) if not real(snap.get("open_to", "")) else "",
+        scope_mock=tr(snap.get("scope_mock", ""), lang) if not real(snap.get("scope", "")) else "",
+        missing=([ui["m_open"]] if not real(snap.get("open_to", "")) and not snap.get("open_to_mock") else [])
+                + ([ui["m_scope"]] if not real(snap.get("scope", "")) and not snap.get("scope_mock") else [])
+                + ([ui["m_email"]] if not real(data["basics"].get("email", "")) else []),
         edu=" · ".join(x for x in (tr(edu.get("field", ""), lang), tr(edu.get("degree", ""), lang)) if x) if edu else "",
         certs=certs, languages=[f'{tr(l["name"], lang)} — {tr(l["level"], lang)}' for l in data.get("languages", [])],
         location=tr(data["basics"].get("location", ""), lang) if real(tr(data["basics"].get("location", ""), lang)) else "")
@@ -261,13 +294,18 @@ def select(data, v):
         item["start_raw"], item["end_raw"] = str(item.get("start", "")), str(item.get("end", ""))
         item["start"], item["end"] = fmt_date(item.get("start", ""), lang), fmt_date(item.get("end", ""), lang)
         exp.append({**item, "bullets": [tr(x["text"], lang) for x in bl[: v.get("max_bullets", 99)]]})
-    prj = [{**p, **{k: tr(p.get(k, ""), lang) for k in ("name", "summary", "problem", "result", "role", "period")},
-            "actions": tr(p.get("actions", []), lang)}
+    todo0 = lambda s: "" if isinstance(s, str) and s.startswith("TODO") else s
+    prj = [{**p, **{k: todo0(tr(p.get(k, ""), lang)) for k in ("name", "summary", "problem", "result", "role", "period")},
+            "actions": [x for x in tr(p.get("actions", []), lang) if todo0(x)], "in_preparation": p.get("status") == "coming",
+            "mock": ({"problem": tr(p["mock"].get("problem", ""), lang), "actions": tr(p["mock"].get("actions", []), lang), "result": tr(p["mock"].get("result", ""), lang)}
+                     if p.get("mock") and not p.get("problem") or (p.get("mock") and str(p.get("problem", "")).startswith("TODO")) else None)}
            for p in rank(data.get("projects", [])) if match(p.get("tags"), want)][: v.get("max_projects", 99)]
     focus = [{**f, **{k: tr(f.get(k, ""), lang) for k in ("short", "title", "desc")}} for f in data.get("focus", [])]
     story = build_story(data, exp, lang)
-    hobbies = [tr(h["name"], lang) for h in data.get("hobbies", []) if h.get("public", True)]
-    return dict(hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
+    has_mock = (any(x.get("impact_mock") or x.get("learned_mock") for x in story["entries"] if x["kind"] != "milestone")
+                or bool(story["snapshot"]["open_to_mock"] or story["snapshot"]["scope_mock"]) or any(p.get("mock") for p in prj))
+    hobbies = [dict(slug=h["slug"], name=tr(h["name"], lang)) for h in data.get("hobbies", []) if h.get("public", True)]
+    return dict(has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
                 interests=tr(data.get("interests", []), lang), v=v, lang=lang, L=LABELS.get(lang, LABELS["en"]))
 
 
@@ -318,6 +356,7 @@ def main():
         pdfs += build_site(env, data, resumes, pdf_built=a.pdf)
         build_agent_files(data, resumes)
         shutil.copytree(os.path.join(ROOT, "static"), os.path.join(DIST, "assets"))
+        open(os.path.join(DIST, "assets", "favicon.svg"), "w", encoding="utf-8").write(favicon_svg())
         open(os.path.join(DIST, ".nojekyll"), "w").close()
     if pdfs:
         html_to_pdf(pdfs)

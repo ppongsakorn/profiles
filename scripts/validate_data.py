@@ -24,8 +24,8 @@ def tags(where, item):
             E(f"{where}: unknown tag '{t}' (allowed: {', '.join(sorted(vocab))})")
 
 def status(where, item):
-    if item.get("status", "published") not in ("draft", "published"):
-        E(f"{where}: status must be draft|published, got {item.get('status')!r}")
+    if item.get("status", "published") not in ("draft", "published", "coming"):
+        E(f"{where}: status must be draft|published|coming, got {item.get('status')!r}")
 
 def date(where, v, allow_present=False):
     if v in (None, "") or (isinstance(v, str) and v.startswith("TODO")):
@@ -163,6 +163,10 @@ lang_gap("summaries.default", data.get("summaries", {}).get("default"))
 for l, name in (("th", "Thai"), ("en", "English")):
     if gaps[l]:
         W(f"i18n: {len(gaps[l])} text field(s) missing {name}: " + ", ".join(gaps[l][:6]) + (" ..." if len(gaps[l]) > 6 else ""))
+
+mock_n = open(os.path.join(ROOT, "data/profile.yaml"), encoding="utf-8").read().count("# MOCK") + sum(1 for p in data.get("projects", []) if p.get("mock"))
+if mock_n:
+    W(f"{mock_n} MOCK block(s) in data: sample content, labelled on the site; replace with real data")
 
 todo = open(os.path.join(ROOT, "data/profile.yaml"), encoding="utf-8").read().count("TODO")
 if todo:

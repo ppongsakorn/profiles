@@ -1,0 +1,31 @@
+# {{ b.name }}
+**{{ b.label }}**  
+{{ [b.email, b.location] | select | join(' · ') }}{% for l in b.links %} · [{{ l.label }}]({{ l.url }}){% endfor %}
+{{ '' }}
+{% for s in v.sections %}
+{% if s == 'summary' and summary %}
+## {{ L.summary }}
+{{ summary }}
+
+{% elif s == 'skills' and skills %}
+## {{ L.skills }}
+{% for g in skills %}- **{{ g.group }}:** {{ g.list | join(', ') }}
+{% endfor %}
+
+{% elif s == 'experience' and experience %}
+## {{ L.experience }}
+{% for e in experience %}
+### {{ e.role }} — {{ e.company }} ({{ e.start }} – {{ e.end }})
+{% for x in e.bullets %}- {{ x }}
+{% endfor %}{% endfor %}
+
+{% elif s == 'projects' and projects %}
+## {{ L.projects }}
+{% for p in projects %}- **{{ p.name }}** — {{ p.summary }} _({{ p.stack | join(', ') }})_
+{% endfor %}
+
+{% elif s == 'interests' and interests %}
+## {{ L.interests }}
+{{ interests | join(' · ') }}
+{% endif %}
+{% endfor %}

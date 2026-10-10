@@ -26,6 +26,7 @@ Repo นี้รวบรวมข้อมูลส่วนตัว ปร�
 | [experience/](experience/) | ประวัติการทำงาน |
 | [projects/](projects/) | ผลงานที่ผ่านมา |
 | [interests/](interests/) | Topic ที่กำลังสนใจ |
+| [README.dev.md](README.dev.md) | วิธี generate Resume / deploy |
 
 ## ติดต่อ
 

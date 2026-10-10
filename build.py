@@ -24,7 +24,7 @@ UI = {
                home="หน้าแรก", work="ผลงาน", wheel_t1="Data & AI", wheel_t2="แตะเพื่อดูรายละเอียด", agents="สำหรับ AI Agent:",
                story="เส้นทางของผม", story_sub="จากโค้ดบรรทัดแรก ถึงวันที่ข้อมูลทำงานให้เราทั้งวันทั้งคืน กดการ์ดเพื่ออ่านต่อ", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
                order_old="เรียง: เก่า → ใหม่", order_new="เรียง: ใหม่ → เก่า", filter_all="ทั้งหมด", built="สิ่งที่ได้สร้างและส่งมอบ", impact="ผลลัพธ์",
-               learned="ความรู้และประสบการณ์ที่ได้รับ", tech="เทคโนโลยี", highlight="ไฮไลต์", side_job="ควบคู่", snapshot="ภาพรวมสำหรับผู้ว่าจ้าง",
+               learned="ความรู้และประสบการณ์ที่ได้รับ", tech="เทคโนโลยี", highlight="ไฮไลต์", side_job="ควบคู่", snapshot="ภาพรวมโดยย่อ",
                f_now="ตอนนี้", f_years="ประสบการณ์", years="ปี", since="ตั้งแต่", f_stack="เทคโนโลยีหลัก", f_open="เปิดรับ", f_scope="ขอบเขต",
                f_edu="การศึกษา", f_cert="ใบรับรอง", f_lang="ภาษา", f_loc="ที่ตั้ง", one_page="One Page", full_profile="ฉบับเต็ม", pdf="PDF",
                docs_title="โปรไฟล์ให้โหลดและพิมพ์", paper="งานวิจัย", cred="ใบรับรองและสิทธิบัตร", patent="สิทธิบัตร", now_word="ปัจจุบัน",
@@ -37,7 +37,7 @@ UI = {
                home="Home", work="Work", wheel_t1="Data & AI", wheel_t2="Tap a segment", agents="For AI agents:",
                story="My story", story_sub="From the first line of code to data that works all day, all night. Tap a card to read on.", expand_all="Expand all", collapse_all="Collapse all",
                order_old="Order: oldest first", order_new="Order: newest first", filter_all="All", built="What I built and delivered", impact="Impact",
-               learned="What I learned", tech="Technologies", highlight="Highlight", side_job="Alongside", snapshot="At a glance for hiring teams",
+               learned="What I learned", tech="Technologies", highlight="Highlight", side_job="Alongside", snapshot="At a glance",
                f_now="Now", f_years="Experience", years="years", since="since", f_stack="Core stack", f_open="Open to", f_scope="Scope",
                f_edu="Education", f_cert="Certifications", f_lang="Languages", f_loc="Based in", one_page="One Page", full_profile="Full profile", pdf="PDF",
                docs_title="Profiles to download and print", paper="Paper", cred="Certifications and patents", patent="Patent", now_word="Present",
@@ -171,7 +171,7 @@ def sortkey(v):
 
 
 def build_story(data, exp, lang):
-    """Narrative timeline (study + work + milestones), era strip, recruiter snapshot and credentials."""
+    """Narrative timeline (study + work + milestones), era strip, short snapshot and credentials."""
     import datetime
     ui = UI[lang]
     real = lambda x: isinstance(x, str) and bool(x) and not x.startswith("TODO")

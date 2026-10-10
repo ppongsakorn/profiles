@@ -30,6 +30,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
 
 ## Design intent
+- **Never name the intended audience on the site** (no "for employers / recruiters / headhunters / hiring" in page text, data, JSON-LD, llms.txt or WebMCP). The audience and goals are the design brief, not copy. Write in plain, human, first-person Thai (short sentences, jargon only where needed), not report language.
 - The owner's defining strength is creativity. **Never state this as a claim anywhere on the site, in data, JSON-LD, llms.txt or WebMCP output.** Let the design and interactions show it (show, don't tell).
 - Creativity must not cost clarity: recruiters scan in seconds, so the summary layer (snapshot, era strip) stays plain and fast. Expressive touches belong to one signature motif plus purposeful micro-interactions; respect `prefers-reduced-motion`, keep it keyboard accessible and light (no framework).
 

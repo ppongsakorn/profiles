@@ -18,6 +18,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   (`templates/mobile.html.j2`: Home / Work / Resume / Contact + "เว็บเต็ม"). Desktop redirects small screens to `m/`
   before paint unless `localStorage.fullweb === '1'`.
 - CSS is plain, in `static/` (`base.css` tokens + dark mode, `desktop.css`, `mobile.css`). No CSS framework.
+- Colour policy: content first. Text is always `--ink`/`--ink2`; the six area colours `--c1..c6` are markers only (dot, wheel rim, mobile side bar), big fills use the tints `--b1..b6`. Never use `--cN` as text colour. Check contrast of any new pair (text >= 4.5:1, graphics >= 3:1).
 - AI-readable surface (WebMCP + fallbacks): `static/webmcp.js` registers 8 read-only tools on `document.modelContext`
   (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, get_contact),
   fetching `profile.json` lazily. `build.py` also emits `profile.json`, `llms.txt` and a schema.org `Person` JSON-LD block.

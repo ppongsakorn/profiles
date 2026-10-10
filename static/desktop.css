@@ -16,14 +16,15 @@
 .btn.primary{background:var(--ink);color:var(--bg)}
 .wheel{width:100%;max-width:400px;justify-self:center;height:auto}
 .wheel a path{transition:opacity .15s}.wheel a:hover path{opacity:.85}
-.wheel text{fill:var(--on-c);font:600 12px "IBM Plex Sans Thai",sans-serif;pointer-events:none}
+.wheel text{fill:var(--ink);font:600 12px "IBM Plex Sans Thai",sans-serif;pointer-events:none}
 .wheel .core{fill:var(--paper)}.wheel .t1{fill:var(--ink);font-size:17px}.wheel .t2{fill:var(--ink2);font-size:12px;font-weight:400}
 section{padding:36px 0}
 h2{font-size:24px;margin:0 0 18px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.focus-card{border-top:4px solid var(--c);background:var(--paper);border-radius:14px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 18px}
-.focus-card h3{margin:0 0 4px;font-size:17px;color:var(--c)}.focus-card p{margin:0;color:var(--ink2);font-size:15px}
+.focus-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.focus-card h3{display:flex;align-items:center;gap:9px;margin:0 0 4px;font-size:17px;color:var(--ink)}
+.focus-card h3::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--c)}.focus-card p{margin:0;color:var(--ink2);font-size:15px}
 .job{margin-bottom:14px}.job .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .job h3{margin:0;font-size:18px}.job ul{margin:8px 0 0 1.1rem;padding:0}.job li{margin:3px 0}
 .proj h3{margin:0 0 4px;font-size:17px}.proj p{margin:6px 0;color:var(--ink2);font-size:15px}

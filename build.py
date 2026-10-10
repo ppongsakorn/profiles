@@ -34,14 +34,16 @@ MOBILE_SCREENS = {"home": "", "work": "work/", "resume": "resume/", "contact": "
 def wheel_svg(focus, ui):
     """Donut of the focus areas; each segment links to its card (#f-<slug>)."""
     import math
-    cx = cy = 160; ro, ri = 150, 92; n = len(focus); out = []
+    cx = cy = 160; ro, ri = 150, 82; n = len(focus); out = []
     pt = lambda r, a: (cx + r * math.cos(a), cy + r * math.sin(a))
     for i, f in enumerate(focus):
         a0 = -math.pi / 2 + 2 * math.pi * i / n; a1 = -math.pi / 2 + 2 * math.pi * (i + 1) / n
         x0, y0 = pt(ro, a0); x1, y1 = pt(ro, a1); x2, y2 = pt(ri, a1); x3, y3 = pt(ri, a0)
         tx, ty = pt((ro + ri) / 2, (a0 + a1) / 2)
-        out.append(f'<a href="#f-{f["slug"]}" aria-label="{f["title"]}"><path fill="var(--c{i+1})" stroke="var(--bg)" stroke-width="2" '
+        ax0, ay0 = pt(ro - 2.5, a0); ax1, ay1 = pt(ro - 2.5, a1)
+        out.append(f'<a href="#f-{f["slug"]}" aria-label="{f["title"]}"><path fill="var(--b{i+1})" stroke="var(--bg)" stroke-width="2" '
                    f'd="M{x0:.1f} {y0:.1f}A{ro} {ro} 0 0 1 {x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}A{ri} {ri} 0 0 0 {x3:.1f} {y3:.1f}Z"/>'
+                   f'<path fill="none" stroke="var(--c{i+1})" stroke-width="5" d="M{ax0:.1f} {ay0:.1f}A{ro-2.5} {ro-2.5} 0 0 1 {ax1:.1f} {ay1:.1f}"/>'
                    f'<text x="{tx:.1f}" y="{ty:.1f}" text-anchor="middle" dominant-baseline="middle">{f["short"]}</text></a>')
     return (f'<svg class="wheel" viewBox="0 0 320 320" role="img" aria-label="{ui["focus"]}">' + "".join(out) +
             f'<circle class="core" cx="{cx}" cy="{cy}" r="{ri-6}"/><text class="t1" x="{cx}" y="{cy-4}" text-anchor="middle">{ui["wheel_t1"]}</text>'

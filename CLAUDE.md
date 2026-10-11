@@ -13,7 +13,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 
 ## Architecture
 - `data/profile.yaml` is the single source of truth (schema in `docs/DATA.md`). Text fields accept `"text"` or `{en: ..., th: ...}`; items carry `tags`.
-  Tag vocabulary = the seven `focus` slugs (ux, data, ai, cloud, management, mobile, web: the owner's interests, shown as the wheel) + `extra_tags` (software, teaching); `scripts/validate_data.py` enforces it (runs in CI).
+  Tag vocabulary = the seven `focus` slugs, in wheel order (management, cloud, data, ai, ux = CX & UX, mobile, web: the owner's interests, shown as the wheel) + `extra_tags` (software, teaching); `scripts/validate_data.py` enforces it (runs in CI).
   Items with `status: draft` are excluded from site, resumes, profile.json and WebMCP (`python build.py --drafts` shows them locally).
 - `variants/*.yaml` = one resume each (tags filter, `max_bullets`, `max_projects`, `sections`, `lang`, `formats`).
 - `build.py` → `dist/` (gitignored): resumes at `dist/<variant>/resume.{html,md,pdf}`, site at `/` (th) and `/en/`.

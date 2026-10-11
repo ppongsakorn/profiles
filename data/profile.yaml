@@ -31,10 +31,14 @@ extra_tags: [software, teaching]
 
 # 7 ด้านความสนใจ -> วงกลมบนหน้าแรกและการ์ดด้านล่าง (ลำดับ = สี c1..c7) · slug ใช้เป็น tag ของทุกรายการ
 focus:
-  - slug: ux
-    short: {en: UX/UI, th: UX/UI}
-    title: {en: "UX/UI & storytelling", th: "UX/UI และการเล่าเรื่องด้วยข้อมูล"}
-    desc: {en: "Listening to users, shaping the experience, and telling the story behind the numbers with dashboards.", th: "ฟังผู้ใช้ ออกแบบประสบการณ์ และเล่าเรื่องจากตัวเลขด้วย Dashboard"}
+  - slug: management
+    short: {en: Management, th: Management}
+    title: {en: Management, th: การบริหารทีม}
+    desc: {en: "Leading teams since 2016: Scrum, sprint planning, resource management and committed SLAs.", th: "นำทีมมาตั้งแต่ปี 2016 ด้วย Scrum การวางแผน sprint การบริหารทรัพยากร และ SLA ที่ตกลงไว้"}
+  - slug: cloud
+    short: {en: Cloud, th: Cloud}
+    title: {en: Cloud, th: คลาวด์}
+    desc: {en: "Azure infrastructure (AKS, App Service, Redis, Container Registry) and AWS, with cost and performance kept visible.", th: "โครงสร้างบน Azure (AKS, App Service, Redis, Container Registry) และ AWS พร้อมดูแลต้นทุนและประสิทธิภาพให้มองเห็นได้"}
   - slug: data
     short: {en: Data, th: Data}
     title: {en: Data, th: ข้อมูล}
@@ -43,14 +47,10 @@ focus:
     short: {en: AI, th: AI}
     title: {en: AI, th: AI}
     desc: {en: "AI agents on Microsoft Foundry, Claude as a daily co-pilot, and fraud detection with AI/ML.", th: "AI Agent บน Microsoft Foundry, Claude เป็น co-pilot ประจำวัน และการตรวจจับ Fraud ด้วย AI/ML"}
-  - slug: cloud
-    short: {en: Cloud, th: Cloud}
-    title: {en: Cloud, th: คลาวด์}
-    desc: {en: "Azure infrastructure (AKS, App Service, Redis, Container Registry) and AWS, with cost and performance kept visible.", th: "โครงสร้างบน Azure (AKS, App Service, Redis, Container Registry) และ AWS พร้อมดูแลต้นทุนและประสิทธิภาพให้มองเห็นได้"}
-  - slug: management
-    short: {en: Management, th: Management}
-    title: {en: Management, th: การบริหารทีม}
-    desc: {en: "Leading teams since 2016: Scrum, sprint planning, resource management and committed SLAs.", th: "นำทีมมาตั้งแต่ปี 2016 ด้วย Scrum การวางแผน sprint การบริหารทรัพยากร และ SLA ที่ตกลงไว้"}
+  - slug: ux
+    short: {en: CX & UX, th: CX & UX}
+    title: {en: "CX & UX and storytelling", th: "CX & UX และการเล่าเรื่องด้วยข้อมูล"}
+    desc: {en: "Listening to users, shaping the experience, and telling the story behind the numbers with dashboards.", th: "ฟังผู้ใช้ ออกแบบประสบการณ์ และเล่าเรื่องจากตัวเลขด้วย Dashboard"}
   - slug: mobile
     short: {en: Mobile, th: Mobile}
     title: {en: Mobile, th: มือถือ}
@@ -120,8 +120,8 @@ eras:
 
 # ข้อความส่วนแรกของหน้าแรก: ย่อหน้าเดียวที่ขมวดเรื่องทั้งหมด (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
 hero_text:
-  th: "ผมเริ่มต้นจากวิศวกรรมคอมพิวเตอร์ ส่งงานเข้าประกวด เขียนงานวิจัย และได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบทั้งตัว Developer Evangelist ที่ Microsoft Mobile Dev Lead ไปจนถึงงานข้อมูลและ AI บนคลาวด์ในวันนี้ ตลอดเส้นทางมีสิ่งหนึ่งเป็นแกนกลางของทุกช่วง คือความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI ข้อมูล AI คลาวด์ การบริหารทีม แอปมือถือ หรือเว็บ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
-  en: "I started in computer engineering, entered contests, wrote research papers and received a software patent, then grew through more than {years} years in software: full-stack developer, Microsoft developer evangelist, mobile dev lead, and today data and AI on the cloud. One thing has stayed at the centre of every stage, which is creativity: finding new ways to turn a complicated problem into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management, mobile or web. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
+  th: "ผมเริ่มต้นจากวิศวกรรมคอมพิวเตอร์ ส่งงานเข้าประกวด เขียนงานวิจัย และได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบทั้งตัว Developer Evangelist ที่ Microsoft Mobile Dev Lead ไปจนถึงงานข้อมูลและ AI บนคลาวด์ในวันนี้ ตลอดเส้นทางมีสิ่งหนึ่งเป็นแกนกลางของทุกช่วง คือความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็นการบริหารทีม คลาวด์ ข้อมูล AI CX & UX แอปมือถือ หรือเว็บ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
+  en: "I started in computer engineering, entered contests, wrote research papers and received a software patent, then grew through more than {years} years in software: full-stack developer, Microsoft developer evangelist, mobile dev lead, and today data and AI on the cloud. One thing has stayed at the centre of every stage, which is creativity: finding new ways to turn a complicated problem into something that works and is easy to understand, whether it is team management, cloud, data, AI, CX & UX, mobile or web. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
 
 # ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่

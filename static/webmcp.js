@@ -48,7 +48,7 @@
     },
     {
       name: "list_focus_areas", title: "List focus areas",
-      description: "The areas the owner cares about and has worked in (UX/UI, data, AI, cloud, management, mobile, web).",
+      description: "The areas the owner cares about and has worked in (management, cloud, data, AI, CX & UX, mobile, web).",
       inputSchema: { type: "object", properties: langProp }, annotations: RO,
       execute: function (i) { return load().then(function (d) { return pick(d, i).p.focus; }); }
     },

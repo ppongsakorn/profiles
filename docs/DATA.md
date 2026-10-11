@@ -4,7 +4,7 @@
 
 ## กติกากลาง
 - **ข้อความ** ใส่ได้ 2 แบบ: `"text"` หรือ `{en: "...", th: "..."}`
-- **tags** ต้องมาจากคำศัพท์ที่กำหนด = slug ของ `focus` 7 ด้านความสนใจ (`ux, data, ai, cloud, management, mobile, web`) + `extra_tags` (`software, teaching`)
+- **tags** ต้องมาจากคำศัพท์ที่กำหนด = slug ของ `focus` 7 ด้านความสนใจตามลำดับในวงล้อ (`management, cloud, data, ai, ux (=CX & UX), mobile, web`) + `extra_tags` (`software, teaching`)
   - tag เดียวเชื่อมทุกอย่าง: การ์ด focus → ผลงาน, Resume แต่ละแบบ (`variants/*.yaml` กรองด้วย tag), WebMCP
 - **วันที่** รูปแบบ `YYYY-MM` (ตำแหน่งปัจจุบัน `end: Present`)
 - **status** `draft` = ยังไม่ตรวจ → **ไม่ขึ้น** เว็บ / Resume / `profile.json` / WebMCP (ไม่ระบุ = `published`)

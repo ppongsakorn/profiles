@@ -36,7 +36,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 - Creativity must not cost clarity: recruiters scan in seconds, so the summary layer (snapshot, era strip) stays plain and fast. Expressive touches belong to one signature motif plus purposeful micro-interactions; respect `prefers-reduced-motion`, keep it keyboard accessible and light (no framework).
 
 ## Languages
-- The site is bilingual: Thai at `/` (default), English at `/en/`; every page has an `alt_path` switch. Narrative text in `data/profile.yaml` must exist in both (`{en, th}`); proper nouns, role titles, company names and technical terms stay English.
+- The site is bilingual: Thai at `/` (default), English at `/en/`; every page has an `alt_path` switch. On the Thai page the interest labels (hero line, wheel) are Thai (บริหารทีม, คลาวด์, ข้อมูล, AI, UX/UI, มือถือ, เว็บ); the English page keeps the English names. Narrative text in `data/profile.yaml` must exist in both (`{en, th}`); proper nouns, role titles, company names and technical terms stay English.
 - `scripts/validate_data.py` warns on narrative fields missing a language. Thai text drafted by Claude is marked in the data and needs the owner's review.
 
 ## Career story (profile views)

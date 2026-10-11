@@ -32,15 +32,15 @@ extra_tags: [software, teaching]
 # 7 ด้านความสนใจ -> วงกลมบนหน้าแรกและการ์ดด้านล่าง (ลำดับ = สี c1..c7) · slug ใช้เป็น tag ของทุกรายการ
 focus:
   - slug: management
-    short: {en: Management, th: Management}
+    short: {en: Management, th: บริหารทีม}
     title: {en: Management, th: การบริหารทีม}
     desc: {en: "Leading teams since 2016: Scrum, sprint planning, resource management and committed SLAs.", th: "นำทีมมาตั้งแต่ปี 2016 ด้วย Scrum การวางแผน sprint การบริหารทรัพยากร และ SLA ที่ตกลงไว้"}
   - slug: cloud
-    short: {en: Cloud, th: Cloud}
+    short: {en: Cloud, th: คลาวด์}
     title: {en: Cloud, th: คลาวด์}
     desc: {en: "Azure infrastructure (AKS, App Service, Redis, Container Registry) and AWS, with cost and performance kept visible.", th: "โครงสร้างบน Azure (AKS, App Service, Redis, Container Registry) และ AWS พร้อมดูแลต้นทุนและประสิทธิภาพให้มองเห็นได้"}
   - slug: data
-    short: {en: Data, th: Data}
+    short: {en: Data, th: ข้อมูล}
     title: {en: Data, th: ข้อมูล}
     desc: {en: "Lakehouse on Azure Databricks and Data Factory, with automated quality gates that protect the SLA.", th: "Lakehouse บน Azure Databricks และ Data Factory พร้อมด่านตรวจคุณภาพอัตโนมัติที่ปกป้อง SLA"}
   - slug: ai
@@ -52,11 +52,11 @@ focus:
     title: {en: "UX/UI & storytelling", th: "UX/UI และการเล่าเรื่องด้วยข้อมูล"}
     desc: {en: "Listening to users, shaping the experience, and telling the story behind the numbers with dashboards.", th: "ฟังผู้ใช้ ออกแบบประสบการณ์ และเล่าเรื่องจากตัวเลขด้วย Dashboard"}
   - slug: mobile
-    short: {en: Mobile, th: Mobile}
+    short: {en: Mobile, th: มือถือ}
     title: {en: Mobile, th: มือถือ}
     desc: {en: "Native iOS and Android apps, Apache Cordova, and the backend and real-time chat behind them.", th: "แอป native iOS และ Android, Apache Cordova พร้อม backend และ real-time chat ที่อยู่เบื้องหลัง"}
   - slug: web
-    short: {en: Web, th: Web}
+    short: {en: Web, th: เว็บ}
     title: {en: Web, th: เว็บ}
     desc: {en: "Web applications from the server to the page: PHP, ASP.NET, Node.js, Next.js and Vue.js.", th: "เว็บแอปพลิเคชันตั้งแต่เซิร์ฟเวอร์จนถึงหน้าเว็บ ด้วย PHP, ASP.NET, Node.js, Next.js และ Vue.js"}
 
@@ -120,8 +120,8 @@ eras:
 
 # ข้อความส่วนแรกของหน้าแรก: ย่อหน้าที่เจ้าของเขียนเอง (th) ใช้ตามถ้อยคำเดิม เปลี่ยนเฉพาะจำนวนปีเป็น {years}; en = ร่างแปลโดย Claude. ย่อหน้าเดียวที่ขมวดเรื่องทั้งหมด (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
 hero_text:
-  th: "ผมเรียนจบวิศวกรรมคอมพิวเตอร์ เคยส่งซอฟต์แวร์เข้าประกวดและได้รับมาหลายรางวัล เขียนงานวิจัยและได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบวงจร, Developer Evangelist ที่ Microsoft, Mobile Dev Lead ไปจนถึงงาน Big Data และ AI บนคลาวด์ที่ทำอยู่ในปัจจุบัน ผมเป็นคนที่มีความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI, Data, AI, Cloud การบริหารทีม หรือแอปมือถือ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
-  en: "I graduated in computer engineering, entered my software in contests and won several awards, wrote research papers and received a software patent, before growing through more than {years} years in software: from a developer who looked after whole systems, to Developer Evangelist at Microsoft and Mobile Dev Lead, and on to the Big Data and AI work on the cloud that I do today. I am a creative person. I like finding new ways to turn complicated problems into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management or mobile apps. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
+  th: "ผมเรียนจบวิศวกรรมคอมพิวเตอร์ เคยส่งซอฟต์แวร์เข้าประกวดและได้รับรางวัล เขียนงานวิจัยและได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบวงจร, Developer Evangelist ที่ Microsoft, Mobile Dev Lead ไปจนถึงงาน Big Data และ AI บนคลาวด์ที่ทำอยู่ในปัจจุบัน ผมเป็นคนที่มีความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI, Data, AI, Cloud การบริหารทีม หรือแอปมือถือ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
+  en: "I graduated in computer engineering, entered my software in contests and won awards, wrote research papers and received a software patent, before growing through more than {years} years in software: from a developer who looked after whole systems, to Developer Evangelist at Microsoft and Mobile Dev Lead, and on to the Big Data and AI work on the cloud that I do today. I am a creative person. I like finding new ways to turn complicated problems into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management or mobile apps. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
 
 # ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่

@@ -32,8 +32,8 @@ with sync_playwright() as p:
         check(ro, f"[{path or '/'}] all tools are readOnlyHint")
         if path == "":
             call = lambda n, a={}: pg.evaluate("([n,a])=>window.__tools[n].execute(a)", [n, a])
-            prof = call("get_profile"); check(prof["name"] and len(prof["focus_areas"]) == 6, "get_profile name + 6 focus areas")
-            check(len(call("list_focus_areas")) == 6, "list_focus_areas = 6")
+            prof = call("get_profile"); check(prof["name"] and len(prof["focus_areas"]) == 7, "get_profile name + 7 focus areas")
+            check(len(call("list_focus_areas")) == 7, "list_focus_areas = 7")
             check(call("get_experience")["experience"][0]["company"] == "Buzzebees", "get_experience first = Buzzebees")
             allp = call("list_projects"); check(allp["count"] >= 1, f"list_projects -> {allp['count']} published")
             tech = allp["projects"][0]["stack"][0]

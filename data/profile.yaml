@@ -29,7 +29,7 @@ summaries:
 
 extra_tags: [software, teaching]
 
-# 6 ด้านความสนใจ -> วงกลมบนหน้าแรกและการ์ดด้านล่าง (ลำดับ = สี c1..c6) · slug ใช้เป็น tag ของทุกรายการ
+# 7 ด้านความสนใจ -> วงกลมบนหน้าแรกและการ์ดด้านล่าง (ลำดับ = สี c1..c7) · slug ใช้เป็น tag ของทุกรายการ
 focus:
   - slug: ux
     short: {en: UX/UI, th: UX/UI}
@@ -55,6 +55,10 @@ focus:
     short: {en: Mobile, th: Mobile}
     title: {en: Mobile, th: มือถือ}
     desc: {en: "Native iOS and Android apps, Apache Cordova, and the backend and real-time chat behind them.", th: "แอป native iOS และ Android, Apache Cordova พร้อม backend และ real-time chat ที่อยู่เบื้องหลัง"}
+  - slug: web
+    short: {en: Web, th: Web}
+    title: {en: Web, th: เว็บ}
+    desc: {en: "Web applications from the server to the page: PHP, ASP.NET, Node.js, Next.js and Vue.js.", th: "เว็บแอปพลิเคชันตั้งแต่เซิร์ฟเวอร์จนถึงหน้าเว็บ ด้วย PHP, ASP.NET, Node.js, Next.js และ Vue.js"}
 
 skills:
   - group: {en: Data Platform, th: แพลตฟอร์มข้อมูล}
@@ -76,7 +80,7 @@ skills:
     tags: [cloud, data, management]
     items: [Cost Management, SLA, Performance tuning]
   - group: {en: Software Engineering, th: วิศวกรรมซอฟต์แวร์}
-    tags: [software, mobile]
+    tags: [software, mobile, web]
     items: ["C#", ".NET", ASP.NET, Java, JavaScript, PHP, HTML, jQuery, Web Services, Visual Studio, Windows Phone, Universal Windows App, Full Stack Web Development]
   - group: {en: Management & Delivery, th: การบริหารและส่งมอบงาน}
     tags: [management]
@@ -116,8 +120,8 @@ eras:
 
 # ข้อความส่วนแรกของหน้าแรก: ย่อหน้าเดียวที่ขมวดเรื่องทั้งหมด (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
 hero_text:
-  th: "ผมเริ่มต้นจากวิศวกรรมคอมพิวเตอร์ ส่งงานเข้าประกวด เขียนงานวิจัย และได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบทั้งตัว Developer Evangelist ที่ Microsoft Mobile Dev Lead ไปจนถึงงานข้อมูลและ AI บนคลาวด์ในวันนี้ ตลอดเส้นทางมีสิ่งหนึ่งเป็นแกนกลางของทุกช่วง คือความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI ข้อมูล AI คลาวด์ การบริหารทีม หรือแอปมือถือ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
-  en: "I started in computer engineering, entered contests, wrote research papers and received a software patent, then grew through more than {years} years in software: full-stack developer, Microsoft developer evangelist, mobile dev lead, and today data and AI on the cloud. One thing has stayed at the centre of every stage, which is creativity: finding new ways to turn a complicated problem into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management or mobile. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
+  th: "ผมเริ่มต้นจากวิศวกรรมคอมพิวเตอร์ ส่งงานเข้าประกวด เขียนงานวิจัย และได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบทั้งตัว Developer Evangelist ที่ Microsoft Mobile Dev Lead ไปจนถึงงานข้อมูลและ AI บนคลาวด์ในวันนี้ ตลอดเส้นทางมีสิ่งหนึ่งเป็นแกนกลางของทุกช่วง คือความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI ข้อมูล AI คลาวด์ การบริหารทีม แอปมือถือ หรือเว็บ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
+  en: "I started in computer engineering, entered contests, wrote research papers and received a software patent, then grew through more than {years} years in software: full-stack developer, Microsoft developer evangelist, mobile dev lead, and today data and AI on the cloud. One thing has stayed at the centre of every stage, which is creativity: finding new ways to turn a complicated problem into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management, mobile or web. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
 
 # ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่
@@ -224,7 +228,7 @@ experience:
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
     start: "2016-04"
     end: "2020-03"
-    tags: [software, management, ai, mobile, cloud]
+    tags: [software, management, ai, mobile, cloud, web]
     era: mobile
     highlight: true
     headline: {en: "Led the mobile team behind carmate.biz: native apps, backend, real-time chat and Scrum delivery.", th: "นำทีมแอปมือถือเบื้องหลัง carmate.biz ครอบคลุม native app, backend, real-time chat และการส่งงานแบบ Scrum"}
@@ -237,7 +241,7 @@ experience:
       - {en: "A steady sprint rhythm and automated releases matter more than heroics.", th: "จังหวะ sprint ที่สม่ำเสมอและการ release อัตโนมัติสำคัญกว่าการฮึดสู้"}
       - {en: "Growing a team means clear ownership and removing blockers.", th: "การสร้างทีมคือการให้เจ้าของงานที่ชัดเจนและช่วยปลดล็อกอุปสรรค"}
     bullets:
-      - {text: {en: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, management, mobile]}
+      - {text: {en: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, management, mobile, web]}
       - {text: {en: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", th: "Scrum Master บน Microsoft Azure DevOps: Git workflow, วางแผน sprint และบริหารทรัพยากร, จัดการ task และ bug, burn-down และ Kanban, build และ release อัตโนมัติ"}, tags: [management]}
       - {text: {en: "Cloud on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", th: "Cloud บน Amazon AWS และ Microsoft Azure (EC2, S3, RDS, Lambda)"}, tags: [software, cloud]}
       - {text: {en: "Machine-learning image recognition with TensorFlow.", th: "Image recognition ด้วย machine learning บน TensorFlow"}, tags: [ai]}
@@ -246,7 +250,7 @@ experience:
     location: {en: "Phuket, Thailand", th: "ภูเก็ต"}
     start: "2015-07"
     end: "2015-10"
-    tags: [teaching, software]
+    tags: [teaching, software, web]
     era: mobile
     side: true
     headline: {en: "Lectured on web development with ASP.NET MVC.", th: "บรรยายวิชาการพัฒนาเว็บด้วย ASP.NET MVC"}
@@ -254,7 +258,7 @@ experience:
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: {en: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", th: "การพัฒนาเว็บด้วย ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript และ AngularJS 2.0, Web API, Windows Azure"}, tags: [teaching, software]}
+      - {text: {en: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", th: "การพัฒนาเว็บด้วย ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript และ AngularJS 2.0, Web API, Windows Azure"}, tags: [teaching, software, web]}
   - company: Microsoft
     role: ISV Developer Evangelist
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
@@ -279,7 +283,7 @@ experience:
     location: {en: "Thailand", th: "ประเทศไทย"}
     start: "2006-01"
     end: "2009-10"
-    tags: [software, cloud]
+    tags: [software, cloud, web]
     era: dev
     headline: {en: "Full-stack developer: systems from server to web page, a hotel booking engine and a social network.", th: "Full-stack developer ดูแลระบบตั้งแต่เซิร์ฟเวอร์จนถึงหน้าเว็บ พร้อมพัฒนาระบบจองโรงแรมและโซเชียลเน็ตเวิร์ก"}
     stack: [PHP, Oracle, MySQL, Java, SOAP, Linux, Apache, Windows/IIS]
@@ -291,8 +295,8 @@ experience:
       - {en: "Full-stack ownership: from schema to server to screen.", th: "การรับผิดชอบแบบ full-stack: ตั้งแต่ schema, server จนถึงหน้าจอ"}
     bullets:
       - {text: {en: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", th: "ดูแลและติดตั้งโครงสร้างพื้นฐาน: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java"}, tags: [software, cloud]}
-      - {text: {en: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", th: "พัฒนา booking engine สำหรับโรงแรม (PHP, Oracle) พร้อมเชื่อมต่อ SOAP web service กับซัพพลายเออร์โรงแรม"}, tags: [software]}
-      - {text: {en: "Developed a social network with PHP and MySQL.", th: "พัฒนาโซเชียลเน็ตเวิร์กด้วย PHP และ MySQL"}, tags: [software]}
+      - {text: {en: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", th: "พัฒนา booking engine สำหรับโรงแรม (PHP, Oracle) พร้อมเชื่อมต่อ SOAP web service กับซัพพลายเออร์โรงแรม"}, tags: [software, web]}
+      - {text: {en: "Developed a social network with PHP and MySQL.", th: "พัฒนาโซเชียลเน็ตเวิร์กด้วย PHP และ MySQL"}, tags: [software, web]}
 
 # 1 โปรเจกต์ = 1 หน้า case study (/work/<slug>/). slug ต้องไม่ซ้ำ, เป็น kebab-case
 projects:
@@ -301,7 +305,7 @@ projects:
     name: {en: "Management Framework Learning Hub + AI Advisor", th: "เข็มทิศกรอบความคิด (Management Framework Learning Hub + AI Advisor)"}
     period: "2026"
     role: {en: "Creator", th: "ผู้สร้าง"}
-    tags: [ai, data, management]
+    tags: [ai, data, management, web]
     summary: {en: "A free, public site that groups 61 management frameworks by the question an executive is asking, each with steps, an example and a diagram, plus an optional AI advisor.", th: "เว็บสาธารณะที่รวม 61 กรอบความคิดด้านการบริหาร จัดกลุ่มตามคำถามที่ผู้บริหารกำลังถาม พร้อมขั้นตอน ตัวอย่าง แผนภาพ และที่ปรึกษา AI (เลือกใช้ได้)"}
     problem: {en: "People know many frameworks but not which one to use in the situation they are in.", th: "คนรู้จัก framework เยอะ แต่ไม่รู้ว่าตอนนี้ควรใช้ตัวไหน"}
     actions:

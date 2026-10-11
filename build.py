@@ -12,36 +12,38 @@ from jinja2 import Environment, FileSystemLoader
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
 LABELS = {
-    "en": dict(summary="Summary", skills="Skills", experience="Experience", projects="Projects", interests="Interests"),
+    "en": dict(summary="Summary", skills="Skills", experience="Experience", projects="Projects", interests="Currently exploring"),
     "th": dict(summary="สรุป", skills="ทักษะ", experience="ประสบการณ์", projects="ผลงาน", interests="สิ่งที่สนใจ"),
 }
 
 
 UI = {
-    "th": dict(focus="สิ่งที่ผมช่วยได้", experience="ประสบการณ์", projects="ผลงาน", resume="Resume", contact="ติดต่อ",
-               interests="สิ่งที่กำลังสนใจ", cta_resume="ดู Resume", cta_contact="ติดต่อผม", full="เว็บเต็ม",
+    "th": dict(focus="สิ่งที่ผมสนใจและลงมือทำ", nav_focus="ความสนใจ", experience="ประสบการณ์", projects="ผลงาน", resume="Resume", contact="ติดต่อ",
+               interests="กำลังศึกษาอยู่", cta_resume="ดู Resume", cta_contact="ติดต่อผม", full="เว็บเต็ม",
                mobile_ver="เวอร์ชันมือถือ", tab_home="หน้าแรก", tab_work="ผลงาน", tab_resume="Resume", tab_contact="ติดต่อ",
-               home="หน้าแรก", work="ผลงาน", wheel_t1="Data & AI", wheel_t2="แตะเพื่อดูรายละเอียด", agents="สำหรับ AI Agent:",
-               story="เส้นทางของผม", story_sub="จากโค้ดบรรทัดแรก ถึงวันที่ข้อมูลทำงานให้เราทั้งวันทั้งคืน กดการ์ดเพื่ออ่านต่อ", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
+               home="หน้าแรก", work="ผลงาน", wheel_t1="Creativity", wheel_t2="แกนกลางของทุกด้าน", agents="สำหรับ AI Agent:",
+               story="เส้นทางของผม", story_sub="ตลอดเส้นทางที่ผ่านมา จากโค้ดบรรทัดแรกจนถึงงานข้อมูลที่ทำงานต่อเนื่องทั้งวันทั้งคืน เลือกการ์ดเพื่ออ่านรายละเอียด", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
                order_old="เรียง: เก่า → ใหม่", order_new="เรียง: ใหม่ → เก่า", filter_all="ทั้งหมด", built="สิ่งที่ได้สร้างและส่งมอบ", impact="ผลลัพธ์",
                learned="ความรู้และประสบการณ์ที่ได้รับ", tech="เทคโนโลยี", highlight="ไฮไลต์", side_job="ควบคู่", snapshot="ภาพรวมโดยย่อ",
                f_now="ตอนนี้", f_years="ประสบการณ์", years="ปี", since="ตั้งแต่", f_stack="เทคโนโลยีหลัก", f_open="เปิดรับ", f_scope="ขอบเขต",
                f_edu="การศึกษา", f_cert="ใบรับรอง", f_lang="ภาษา", f_loc="ที่ตั้ง", one_page="One Page", full_profile="ฉบับเต็ม", pdf="PDF",
                docs_title="โปรไฟล์ให้โหลดและพิมพ์", paper="งานวิจัย", cred="ใบรับรองและสิทธิบัตร", patent="สิทธิบัตร", now_word="ปัจจุบัน",
-               hobbies="นอกเวลางาน", prep="ข้อมูลกำลังเตรียมอยู่", f_problem="โจทย์:", mock="MOCK · ข้อมูลตัวอย่าง", mock_banner="บางส่วนของหน้านี้เป็นข้อมูลตัวอย่าง (MOCK) ที่ Claude ร่างให้ระหว่างรอข้อมูลจริง ส่วนที่ติดป้าย MOCK อย่าถือเป็นข้อเท็จจริง", mock_note="ข้อมูลตัวอย่าง รอเจ้าของแทนด้วยข้อมูลจริง", prep_label="กำลังเตรียมข้อมูล", m_impact="ผลลัพธ์ที่วัดได้", m_learned="ความรู้ที่ได้รับ", m_built="สิ่งที่ได้สร้าง",
+               hobbies="นอกเวลางาน", stack_title="เทคโนโลยีที่ผ่านมา", stack_sub="แต่ละคอลัมน์คือช่วงหนึ่งของเส้นทาง อ่านจากซ้ายไปขวาคือจากปัจจุบันย้อนไปในอดีต จุดสีหน้าชื่อหมายถึงใช้ต่อเนื่องมาจากช่วงก่อนหน้า",
+               sm_carry="ใช้ต่อมาจากช่วงก่อนหน้า", sm_new="เริ่มใช้ในช่วงนี้", sm_rev="ปัจจุบัน → อดีต", sm_fwd="อดีต → ปัจจุบัน", sm_now="ยังใช้อยู่", sm_mock="MOCK (ตัวอย่าง)", sm_eras="ช่วงอาชีพ", sm_list="ดูเป็นรายช่วง", prep="ข้อมูลกำลังเตรียมอยู่", f_problem="โจทย์:", mock="MOCK · ข้อมูลตัวอย่าง", mock_banner="บางส่วนของหน้านี้เป็นข้อมูลตัวอย่าง (MOCK) ที่ Claude ร่างให้ระหว่างรอข้อมูลจริง ส่วนที่ติดป้าย MOCK อย่าถือเป็นข้อเท็จจริง", mock_note="ข้อมูลตัวอย่าง รอเจ้าของแทนด้วยข้อมูลจริง", prep_label="กำลังเตรียมข้อมูล", m_impact="ผลลัพธ์ที่วัดได้", m_learned="ความรู้ที่ได้รับ", m_built="สิ่งที่ได้สร้าง",
                m_open="งานที่เปิดรับ", m_scope="ขอบเขตงาน", m_email="อีเมลติดต่อ", m_school="ชื่อสถาบัน", contact_prep="ระหว่างนี้ติดต่อผ่านลิงก์ด้านบนได้", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="อ่านฉบับเต็ม", glance="เส้นทางโดยสรุป",
                skills_short="ทักษะหลัก", contact_short="ติดต่อ"),
-    "en": dict(focus="What I can help with", experience="Experience", projects="Projects", resume="Resume", contact="Contact",
+    "en": dict(focus="What I care about and work on", nav_focus="Interests", experience="Experience", projects="Projects", resume="Resume", contact="Contact",
                interests="Interests", cta_resume="View resume", cta_contact="Get in touch", full="Full site",
                mobile_ver="Mobile version", tab_home="Home", tab_work="Work", tab_resume="Resume", tab_contact="Contact",
-               home="Home", work="Work", wheel_t1="Data & AI", wheel_t2="Tap a segment", agents="For AI agents:",
-               story="My story", story_sub="From the first line of code to data that works all day, all night. Tap a card to read on.", expand_all="Expand all", collapse_all="Collapse all",
+               home="Home", work="Work", wheel_t1="Creativity", wheel_t2="at the centre of it all", agents="For AI agents:",
+               story="My story", story_sub="The path so far, from the first line of code to data that works day and night. Select a card for details.", expand_all="Expand all", collapse_all="Collapse all",
                order_old="Order: oldest first", order_new="Order: newest first", filter_all="All", built="What I built and delivered", impact="Impact",
                learned="What I learned", tech="Technologies", highlight="Highlight", side_job="Alongside", snapshot="At a glance",
                f_now="Now", f_years="Experience", years="years", since="since", f_stack="Core stack", f_open="Open to", f_scope="Scope",
                f_edu="Education", f_cert="Certifications", f_lang="Languages", f_loc="Based in", one_page="One Page", full_profile="Full profile", pdf="PDF",
                docs_title="Profiles to download and print", paper="Paper", cred="Certifications and patents", patent="Patent", now_word="Present",
-               hobbies="Outside work", prep="Content in preparation", f_problem="Problem:", mock="MOCK · sample data", mock_banner="Parts of this page are sample data (MOCK) drafted by Claude while the real details are prepared. Anything labelled MOCK is not a statement of fact.", mock_note="Sample data, to be replaced by the owner", prep_label="In preparation", m_impact="Measured impact", m_learned="What I learned", m_built="What I built",
+               hobbies="Outside work", stack_title="Technology timeline", stack_sub="Each column is one stage of the path, read left to right from today back into the past. A coloured dot means the technology carried over from the previous stage.",
+               sm_carry="Carried over from the previous stage", sm_new="Started in this stage", sm_rev="Today → past", sm_fwd="Past → today", sm_now="Still in use", sm_mock="MOCK (sample)", sm_eras="Career stages", sm_list="View by stage", prep="Content in preparation", f_problem="Problem:", mock="MOCK · sample data", mock_banner="Parts of this page are sample data (MOCK) drafted by Claude while the real details are prepared. Anything labelled MOCK is not a statement of fact.", mock_note="Sample data, to be replaced by the owner", prep_label="In preparation", m_impact="Measured impact", m_learned="What I learned", m_built="What I built",
                m_open="Open to", m_scope="Scope", m_email="Contact e-mail", m_school="School name", contact_prep="Meanwhile, reach me through the links above.", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="Read the full profile", glance="Career at a glance",
                skills_short="Key skills", contact_short="Contact"),
 }
@@ -52,12 +54,12 @@ MOBILE_SCREENS = {"home": "", "work": "work/", "resume": "resume/", "contact": "
 def wheel_svg(focus, ui):
     """Donut of the focus areas; each segment links to its card (#f-<slug>)."""
     import math
-    cx = cy = 160; ro, ri = 150, 82; n = len(focus); out = []
+    cx = cy = 160; ro, ri = 150, 68; n = len(focus); out = []
     pt = lambda r, a: (cx + r * math.cos(a), cy + r * math.sin(a))
     for i, f in enumerate(focus):
         a0 = -math.pi / 2 + 2 * math.pi * i / n; a1 = -math.pi / 2 + 2 * math.pi * (i + 1) / n
         x0, y0 = pt(ro, a0); x1, y1 = pt(ro, a1); x2, y2 = pt(ri, a1); x3, y3 = pt(ri, a0)
-        tx, ty = pt((ro + ri) / 2, (a0 + a1) / 2)
+        tx, ty = pt((ro + ri) / 2 - (2 if len(f["short"]) > 8 else 0), (a0 + a1) / 2)   # long labels sit a little inward
         ax0, ay0 = pt(ro - 2.5, a0); ax1, ay1 = pt(ro - 2.5, a1)
         out.append(f'<a href="#f-{f["slug"]}" aria-label="{f["title"]}"><path fill="var(--b{i+1})" stroke="var(--bg)" stroke-width="2" '
                    f'd="M{x0:.1f} {y0:.1f}A{ro} {ro} 0 0 1 {x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}A{ri} {ri} 0 0 0 {x3:.1f} {y3:.1f}Z"/>'
@@ -116,7 +118,7 @@ def real(x):
 def agent_view(ctx):
     return dict(basics=ctx["b"], summary=ctx["summary"], focus=[{k: f[k] for k in ("slug", "title", "desc")} for f in ctx["focus"]],
                 skills=[{"group": g["group"], "items": g["list"]} for g in ctx["skills"]],
-                experience=ctx["experience"], projects=ctx["projects"], interests=ctx["interests"], hobbies=[h["name"] for h in ctx["hobbies"]])
+                experience=ctx["experience"], tech_timeline=[dict(lane=ln["label"], techs=[dict(name=x["name"], **{"from": x["iso_from"], "to": x["iso_to"]}, current=x["current"], mock=x["mock"]) for x in ln["bars"]]) for ln in ctx["story"]["stackmap"]["lanes"]], projects=ctx["projects"], interests=ctx["interests"], hobbies=[h["name"] for h in ctx["hobbies"]])
 
 
 def jsonld(ctx):
@@ -168,6 +170,91 @@ def sortkey(v):
     """'YYYY' | 'YYYY-MM' | 'YYYY-MM-DD' -> sortable 'YYYY-MM' (year-only sits mid-year)."""
     m = re.match(r"^(\d{4})(?:-(\d{2}))?", str(v))
     return f"{m.group(1)}-{m.group(2) or '07'}" if m else "9999-99"
+
+
+def ymf(s, end=False):
+    """'2020-10' -> 2020.75 (start of month); end=True gives the end of that month. 'Present' -> today."""
+    import datetime
+    if s == "Present":
+        t = datetime.date.today(); return t.year + (t.month - 1) / 12 + 1 / 12
+    m = re.match(r"^(\d{4})(?:-(\d{2}))?", str(s))
+    if not m:
+        return 0.0
+    mo = int(m.group(2)) if m.group(2) else (12 if end else 1)
+    return int(m.group(1)) + (mo - 1) / 12 + (1 / 12 if end else 0)
+
+
+def years_since(data):
+    starts = [int(str(e["start"])[:4]) for e in data.get("experience", []) if str(e.get("start", ""))[:4].isdigit()]
+    import datetime
+    return datetime.date.today().year - min(starts) if starts else None
+
+
+def build_stackmap(data, exp, items, eras, lang):
+    """Technology timeline: lanes by kind, one bar per technology and contiguous span of years."""
+    import datetime
+    ui = UI[lang]
+    lane_of = {n: ln["id"] for ln in data.get("tech_lanes", []) for n in ln.get("items", [])}
+    spans = {}
+    def add(names, a, b, ia, ib, mock):
+        for n in names:
+            spans.setdefault((n, mock), []).append((a, b, ia, ib))
+    for e in exp:
+        a, b = ymf(e["start_raw"]), ymf(e["end_raw"], end=True)
+        add(e.get("stack", []) or [], a, b, e["start_raw"], e["end_raw"], False)
+        add(e.get("stack_mock", []) or [], a, b, e["start_raw"], e["end_raw"], True)
+    for h in data.get("honors", []):
+        d = str(h.get("date", ""))
+        if d[:4].isdigit() and h.get("stack"):
+            a = ymf(d); b = a + (1.0 if len(d) == 4 else 0.5)
+            add(h["stack"], a, b, d, d, False)
+    today = ymf("Present")
+    lanes = []
+    for li, ln in enumerate(data.get("tech_lanes", [])):
+        bars = []
+        for (name, mock), iv in spans.items():
+            if lane_of.get(name) != ln["id"]:
+                continue
+            iv = sorted(iv); merged = [list(iv[0])]
+            for a, b2, ia, ib in iv[1:]:
+                if a <= merged[-1][1] + 0.25:
+                    if b2 > merged[-1][1]:
+                        merged[-1][1], merged[-1][3] = b2, ib
+                else:
+                    merged.append([a, b2, ia, ib])
+            for a, b2, ia, ib in merged:
+                fmt = lambda s: fmt_date(s, lang) if s == "Present" or re.match(r"^\d{4}-\d{2}$", str(s)) else str(s)
+                when = f"{fmt(ia)} – {fmt(ib)}" if str(ia) != str(ib) else fmt(ia)
+                bars.append(dict(name=name, a=a, b=b2, mock=mock, current=(not mock and b2 >= today - 0.3), when=when,
+                                 iso_from=str(ia), iso_to=str(ib)))
+        bars.sort(key=lambda x: (x["a"], x["name"]))
+        if bars:
+            lanes.append(dict(id=ln["id"], label=tr(ln["label"], lang), bars=bars))
+    # matrix: rows = lanes, columns = career stages (chronological); a technology is in a stage when its span overlaps it
+    cols = []
+    for e in eras:
+        mem = [x for x in items if x.get("era") == e["id"] and x["kind"] != "milestone"]
+        cols.append(dict(label=e["label"], years=e["years"], tier=e["tier"], a=min(ymf(m["start_raw"]) for m in mem), b=max(ymf(m["end_raw"], end=True) for m in mem)))
+    prev_names = [set() for _ in cols]
+    for ln in lanes:
+        cells = []
+        for k, c in enumerate(cols):
+            ts = {}
+            for x in ln["bars"]:
+                if min(x["b"], c["b"]) - max(x["a"], c["a"]) > 0.2:
+                    t = ts.setdefault((x["name"], x["mock"]), dict(name=x["name"], mock=x["mock"], current=False))
+                    t["current"] = t["current"] or x["current"]
+            cells.append(sorted(ts.values(), key=lambda t: t["name"].lower()))
+        for k, cell in enumerate(cells):
+            before = {t["name"] for t in cells[k - 1]} if k else set()
+            for t in cell:
+                t["carry"] = t["name"] in before
+        ln["cells"] = cells
+    era_list = []
+    for k in reversed(range(len(cols))):
+        groups = [dict(lane=ln["label"], techs=ln["cells"][k]) for ln in lanes if ln["cells"][k]]
+        era_list.append(dict(label=cols[k]["label"], years=cols[k]["years"], tier=cols[k]["tier"], groups=groups))
+    return dict(lanes=lanes, cols=[{k: v for k, v in c.items() if k not in ("a", "b")} for c in cols], era_list=era_list)
 
 
 def build_story(data, exp, lang):
@@ -244,7 +331,8 @@ def build_story(data, exp, lang):
     filters = [(t, titles.get(t) or extra.get(t, t)) for t in order if t in used]
     cred = dict(certs=[dict(name=c["name"], issuer=c.get("issuer", "")) for c in data.get("certifications", [])],
                 patents=[dict(title=tr(p["title"], lang), issuer=tr(p.get("issuer", ""), lang), url=p.get("url", "")) for p in data.get("patents", [])])
-    return dict(entries=items, eras=eras, filters=filters, cred=cred, snapshot=snapshot, open_all=False, static=False)
+    stackmap = build_stackmap(data, exp, items, eras, lang)
+    return dict(stackmap=stackmap, entries=items, eras=eras, filters=filters, cred=cred, snapshot=snapshot, open_all=False, static=False)
 
 
 def tr(x, lang):
@@ -284,6 +372,7 @@ def select(data, v):
             b[k] = ""
     sums = data.get("summaries", {})
     summary = tr(sums.get(v.get("summary", "default")) or sums.get("default", ""), lang)
+    summary = summary.replace("{years}", str(years_since(data)))
     skills = [{**g, "group": tr(g["group"], lang), "list": tr(g["items"], lang)} for g in rank(data.get("skills", [])) if match(g.get("tags"), want)]
     exp = []
     for e in data.get("experience", []):
@@ -304,8 +393,10 @@ def select(data, v):
     story = build_story(data, exp, lang)
     has_mock = (any(x.get("impact_mock") or x.get("learned_mock") for x in story["entries"] if x["kind"] != "milestone")
                 or bool(story["snapshot"]["open_to_mock"] or story["snapshot"]["scope_mock"]) or any(p.get("mock") for p in prj))
+    hero_text = tr(data.get("hero_text", ""), lang).replace("{years}", str(years_since(data)))
+    hero_line = " · ".join(f["short"] for f in focus)
     hobbies = [dict(slug=h["slug"], name=tr(h["name"], lang)) for h in data.get("hobbies", []) if h.get("public", True)]
-    return dict(has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
+    return dict(hero_text=hero_text, hero_line=hero_line, has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
                 interests=tr(data.get("interests", []), lang), v=v, lang=lang, L=LABELS.get(lang, LABELS["en"]))
 
 

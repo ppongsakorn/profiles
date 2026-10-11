@@ -36,3 +36,15 @@
   window.addEventListener("hashchange", openHash);
   openHash();
 })();
+
+/* Technology timeline: switch reading direction (today -> past / past -> today). */
+(function () {
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-act=sm-dir]") : null;
+    if (!b) return;
+    var box = b.closest(".sm");
+    if (!box) return;
+    box.setAttribute("data-dir", b.getAttribute("data-dir"));
+    [].forEach.call(box.querySelectorAll("[data-act=sm-dir]"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+  });
+})();

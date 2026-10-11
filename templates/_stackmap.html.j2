@@ -1,0 +1,22 @@
+{% set sm = story.stackmap %}
+<div class="sm" data-dir="rev">
+ <div class="sm-tools no-print">
+  <div class="chipsrow" role="group" aria-label="{{ ui.stack_title }}">
+   <button type="button" class="chipbtn" data-act="sm-dir" data-dir="rev" aria-pressed="true">{{ ui.sm_rev }}</button>
+   <button type="button" class="chipbtn" data-act="sm-dir" data-dir="fwd" aria-pressed="false">{{ ui.sm_fwd }}</button>
+  </div>
+  <p class="sm-key"><span class="sm-t carry">{{ ui.sm_carry }}</span><span class="sm-t cur">{{ ui.sm_now }}</span>{% if has_mock %}<span class="sm-t mock">{{ ui.sm_mock }}</span>{% endif %}</p>
+ </div>
+ <div class="sm-chart" role="group" aria-label="{{ ui.stack_title }}">
+  <div class="sm-row head"><div class="sm-lab"></div><div class="sm-cells">{% for c in sm.cols %}<div class="sm-cell h" data-tier="{{ c.tier }}"><span class="yrs">{{ c.years }}</span><b>{{ c.label }}</b></div>{% endfor %}</div></div>
+  {% for ln in sm.lanes %}
+  <div class="sm-row" style="--lc:var(--c{{ loop.index }})"><div class="sm-lab"><i></i>{{ ln.label }}</div><div class="sm-cells">
+   {% for cell in ln.cells %}<div class="sm-cell">{% for t in cell %}<span class="sm-t{% if t.carry %} carry{% endif %}{% if t.current %} cur{% endif %}{% if t.mock %} mock{% endif %}" title="{{ t.name }} · {{ ui.sm_carry if t.carry else ui.sm_new }}{% if t.mock %} · MOCK{% endif %}">{{ t.name }}</span>{% endfor %}</div>{% endfor %}
+  </div></div>
+  {% endfor %}
+ </div>
+ <div class="sm-list">
+  {% for e in sm.era_list %}<div class="sm-era" data-tier="{{ e.tier }}"><h3>{{ e.label }} <span class="yrs">{{ e.years }}</span></h3>
+   {% for g in e.groups %}<p><b>{{ g.lane }}</b>{% for t in g.techs %}<span class="sm-t{% if t.carry %} carry{% endif %}{% if t.mock %} mock{% endif %}">{{ t.name }}</span>{% endfor %}</p>{% endfor %}</div>{% endfor %}
+ </div>
+</div>

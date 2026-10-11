@@ -16,13 +16,14 @@
 {% include "_mockbar.html.j2" %}<div class="top"><span>{{ b.name }}</span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></div>
 <main>
 {% if screen == 'home' %}
- <h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p>{% if b.tagline %}<p class="tagline">{{ b.tagline }}</p>{% endif %}<p class="lead">{{ summary }}</p>
- <h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}
+ <h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p><p class="lead">{{ hero_text }}</p>
  <h2>{{ ui.focus }}</h2>
  <div class="list">{% for f in focus %}<div class="item f{{ loop.index }}"><span class="bar"></span><span><b>{{ f.title }}</b><small>{{ f.desc }}</small></span></div>{% endfor %}</div>
+ <h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}
  <p><a class="pill" href="{{ link(prefix ~ 'm/resume/') }}">{{ ui.cta_resume }}</a><a class="pill" href="{{ link(prefix ~ 'm/contact/') }}">{{ ui.cta_contact }}</a></p>
 {% elif screen == 'work' %}
  <h2>{{ ui.story }}</h2>{% include "_story.html.j2" %}
+ <h2>{{ ui.stack_title }}</h2>{% include "_stackmap.html.j2" %}
  {% if projects %}<h2>{{ ui.projects }}</h2>{% endif %}
  {% for p in projects %}<div class="block{% if p.in_preparation %} coming{% endif %}"><h3>{{ p.name }}</h3>{% if p.in_preparation %}<span class="badge soft">{{ ui.prep }}</span>{% endif %}<p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  <h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>

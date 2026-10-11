@@ -4,7 +4,7 @@
 
 ## กติกากลาง
 - **ข้อความ** ใส่ได้ 2 แบบ: `"text"` หรือ `{en: "...", th: "..."}`
-- **tags** ต้องมาจากคำศัพท์ที่กำหนด = slug ของ `focus` (`data, pipeline, bi, fraud, ai, cost`) + `extra_tags` (`leadership`)
+- **tags** ต้องมาจากคำศัพท์ที่กำหนด = slug ของ `focus` 6 ด้านความสนใจ (`ux, data, ai, cloud, management, mobile`) + `extra_tags` (`software, teaching`)
   - tag เดียวเชื่อมทุกอย่าง: การ์ด focus → ผลงาน, Resume แต่ละแบบ (`variants/*.yaml` กรองด้วย tag), WebMCP
 - **วันที่** รูปแบบ `YYYY-MM` (ตำแหน่งปัจจุบัน `end: Present`)
 - **status** `draft` = ยังไม่ตรวจ → **ไม่ขึ้น** เว็บ / Resume / `profile.json` / WebMCP (ไม่ระบุ = `published`)
@@ -35,6 +35,10 @@
 `stack[]` (เทคโนโลยี), `bullets` (สิ่งที่ได้สร้างและส่งมอบ), `impact[]` (ผลลัพธ์ที่วัดได้ — **รอเจ้าของ**), `learned[]` (ความรู้/ประสบการณ์ที่ได้ — **รอเจ้าของ**)
 - `eras` = 5 ช่วงอาชีพบนแถบสรุป · `snapshot` = ภาพรวมสำหรับ recruiter (`highlights` ใช้ `{years}` ได้, `stack`, `open_to`, `scope`; ค่า `TODO` ไม่แสดง)
 - `hobbies[]` = {slug, name, public}
+
+### Tech Stack Timeline และส่วนแรกของหน้าแรก
+- `tech_lanes[]` = {id, label, items[]} เลนของแผนผังเทคโนโลยี (ชื่อใน `stack` ต้องอยู่ในเลนใดเลนหนึ่ง) · `stack[]` ของแต่ละตำแหน่ง/`honors[].stack` ใช้เฉพาะที่มีหลักฐานจากข้อมูลของเจ้าของ · `stack_mock[]` = เดาที่ไม่มีวันที่ (ติดป้าย MOCK)
+- `hero_text` = ย่อหน้าเดียวที่ขมวดเรื่องทั้งหมด (`{years}` คำนวณอัตโนมัติ) ห้ามระบุตำแหน่งปัจจุบัน
 
 ### สองภาษา
 ข้อความบรรยายต้องมีทั้ง `en` และ `th` · ชื่อบริษัท/ตำแหน่ง/ศัพท์เทคนิคคงเป็นอังกฤษ · validator เตือนถ้าขาดภาษาใดภาษาหนึ่ง

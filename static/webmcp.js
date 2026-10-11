@@ -48,7 +48,7 @@
     },
     {
       name: "list_focus_areas", title: "List focus areas",
-      description: "The areas of work the owner can help with (data platform, pipelines and SLA, dashboards, fraud detection, AI agents, cost and performance).",
+      description: "The areas the owner cares about and has worked in (UX/UI, data, AI, cloud, management, mobile).",
       inputSchema: { type: "object", properties: langProp }, annotations: RO,
       execute: function (i) { return load().then(function (d) { return pick(d, i).p.focus; }); }
     },
@@ -67,6 +67,12 @@
       execute: function (i) { return load().then(function (d) { var x = pick(d, i), q = str(i && i.tech).toLowerCase();
         var r = x.p.projects.filter(function (p) { return !q || hay(p).indexOf(q) >= 0; });
         return withNotice(d, { count: r.length, projects: r, url: pages(d, x.l, "projects") }); }); }
+    },
+    {
+      name: "get_tech_timeline", title: "Get technology timeline",
+      description: "Technologies used across the career, grouped by kind (data & AI, cloud, databases, backend, front end & mobile, tools), each with the period it was used. Entries with mock:true are sample data, not facts.",
+      inputSchema: { type: "object", properties: langProp }, annotations: RO,
+      execute: function (i) { return load().then(function (d) { var x = pick(d, i); return withNotice(d, { lanes: x.p.tech_timeline }); }); }
     },
     {
       name: "get_skills", title: "Get skills",

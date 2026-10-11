@@ -63,3 +63,25 @@ ol.tl.rev::before{transform:scaleY(-1)}
 .prep{font-size:13px;color:var(--ink2);border:1px dashed var(--line);border-radius:10px;padding:6px 10px;margin:12px 0 0}
 .prep b{font-weight:600;color:var(--ink)}
 .hobby{display:inline-flex;align-items:center;gap:6px}.hobby-icon{width:16px;height:16px;flex:none}
+
+/* technology timeline: rows = kinds, columns = career stages; "today" on the left by default */
+.sm-tools{display:flex;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.sm-key{display:flex;gap:8px;flex-wrap:wrap;margin:0;font-size:12px}
+.sm-t{display:inline-flex;align-items:center;font-size:12.5px;line-height:1.3;padding:2px 9px;border-radius:99px;background:var(--bg);color:var(--ink);border:1px solid var(--line);margin:2px 4px 2px 0}
+.sm-t.carry::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lc,var(--accent));margin-right:5px;flex:none}
+.sm-t.cur{border-color:var(--ink)}
+.sm-t.mock{border-style:dashed;background:repeating-linear-gradient(135deg,transparent 0 6px,color-mix(in srgb,var(--ink2) 10%,transparent) 6px 7px)}
+.sm-chart{display:grid;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px}
+.sm-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:stretch}
+.sm-row+.sm-row{border-top:1px solid var(--line);padding-top:8px}
+.sm-lab{display:flex;gap:7px;align-items:flex-start;font-size:13px;font-weight:600;line-height:1.35;padding-top:2px}
+.sm-lab i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--lc,transparent);margin-top:5px}
+.sm-cells{display:flex;gap:8px;min-width:0}
+.sm[data-dir=rev] .sm-cells{flex-direction:row-reverse}
+.sm-cell{flex:1 1 0;min-width:0}
+.sm-cell.h{display:grid;gap:0;border-top:3px solid var(--tier-c,var(--ink2));padding-top:4px}
+.sm-cell.h b{font-size:14px;line-height:1.3}
+.sm-list{display:none}
+.sm-era{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px;border-top:3px solid var(--tier-c,var(--ink2))}
+.sm-era h3{margin:0 0 6px;font-size:16px}.sm-era p{margin:4px 0;font-size:13.5px}.sm-era p b{display:block;font-size:12px;color:var(--ink2);margin-bottom:1px}
+@media (max-width:860px){.sm-chart,.sm-tools .chipsrow{display:none}.sm-list{display:block}.sm-tools{margin-bottom:8px}}

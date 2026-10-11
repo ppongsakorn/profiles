@@ -2,8 +2,8 @@
 <html lang="{{ lang }}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{if(matchMedia('(max-width:640px)').matches&&localStorage.getItem('fullweb')!=='1')location.replace('{{ link(prefix ~ "m/") }}')}catch(e){}</script>
-<title>{{ b.name }} — {{ b.label }}</title>
-<meta name="description" content="{{ summary | truncate(150) }}">
+<title>{{ b.name }} — {{ hero_line }}</title>
+<meta name="description" content="{{ hero_text | truncate(150) }}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}">
@@ -17,21 +17,22 @@
 <header class="site-header"><div class="wrap">
  <a class="brand" href="#top">{{ b.name }}</a>
  <nav class="nav">
-  <a href="#focus">{{ ui.focus }}</a><a href="#experience">{{ ui.experience }}</a><a href="#projects">{{ ui.projects }}</a><a href="#resume">{{ ui.resume }}</a><a href="#contact">{{ ui.contact }}</a>
+  <a href="#focus">{{ ui.nav_focus }}</a><a href="#experience">{{ ui.experience }}</a><a href="#stack">{{ ui.stack_title }}</a><a href="#projects">{{ ui.projects }}</a><a href="#resume">{{ ui.resume }}</a><a href="#contact">{{ ui.contact }}</a>
   <a class="to-mobile" href="{{ link(prefix ~ 'm/') }}" onclick="try{localStorage.removeItem('fullweb')}catch(e){}">{{ ui.mobile_ver }}</a>
   <a class="lang" href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a>
  </nav></div></header>
 <main id="top" class="wrap">
  <div class="hero">
-  <div><h1>{{ b.name }}</h1><p class="role">{{ b.label }}</p>{% if b.tagline %}<p class="tagline">{{ b.tagline }}</p>{% endif %}<p>{{ summary }}</p>
+  <div><h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p><p>{{ hero_text }}</p>
    <div class="btns"><a class="btn primary" href="#resume">{{ ui.cta_resume }} →</a><a class="btn" href="#contact">{{ ui.cta_contact }}</a></div></div>
   {{ wheel }}
  </div>
- <section id="snapshot"><h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}{% include "_docs_links.html.j2" %}</section>
  <section id="focus"><h2>{{ ui.focus }}</h2><div class="grid3">
   {% for f in focus %}<div class="focus-card f{{ loop.index }}" id="f-{{ f.slug }}"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p></div>{% endfor %}
  </div></section>
+ <section id="snapshot"><h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}{% include "_docs_links.html.j2" %}</section>
  <section id="experience"><h2>{{ ui.story }}</h2><p class="sub">{{ ui.story_sub }}</p>{% include "_story.html.j2" %}</section>
+ <section id="stack"><h2>{{ ui.stack_title }}</h2><p class="sub">{{ ui.stack_sub }}</p>{% include "_stackmap.html.j2" %}</section>
  {% if projects %}<section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
   {% for p in projects %}<div class="card proj{% if p.in_preparation %} coming{% endif %}"><h3>{{ p.name }}</h3>{% if p.in_preparation %}<span class="badge soft">{{ ui.prep }}</span>{% endif %}<p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  </div></section>{% endif %}

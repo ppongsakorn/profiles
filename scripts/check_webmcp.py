@@ -4,7 +4,7 @@
 import functools, http.server, json, os, sys, threading
 from playwright.sync_api import sync_playwright
 
-EXPECTED = {"get_profile", "list_focus_areas", "get_experience", "list_projects", "get_skills", "list_resumes", "search_profile", "get_contact"}
+EXPECTED = {"get_profile", "list_focus_areas", "get_experience", "list_projects", "get_skills", "get_tech_timeline", "list_resumes", "search_profile", "get_contact"}
 FAKE = "window.__tools={};document.modelContext={registerTool:async(t)=>{window.__tools[t.name]=t}};"
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dist")
 h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=ROOT); h.log_message = lambda *a: None
@@ -40,6 +40,9 @@ with sync_playwright() as p:
             r = call("list_projects", {"tech": tech}); check(r["count"] >= 1, f"list_projects tech={tech} -> {r['count']}")
             check(call("list_projects", {"tech": "zzz-no-such-tech"})["count"] == 0, "list_projects unknown tech -> 0")
             check(len(call("get_skills")) >= 3, "get_skills groups")
+            tt = call("get_tech_timeline"); lanes = tt["lanes"]
+            check(len(lanes) >= 5 and all(l["techs"] for l in lanes) and all("from" in t and "to" in t for l in lanes for t in l["techs"]), f"get_tech_timeline: {len(lanes)} lanes with spans")
+            check(any(t["mock"] for l in lanes for t in l["techs"]) and "notice" in tt, "get_tech_timeline flags mock data")
             rs = call("list_resumes"); check(len(rs) == 3 and rs[0]["links"]["md"].startswith("http"), "list_resumes absolute links")
             s = call("search_profile", {"query": "databricks cost"}); check(s["count"] >= 1, f"search_profile 'databricks cost' -> {s['count']}")
             check("error" in call("search_profile", {"query": "  "}), "search_profile empty query -> error")

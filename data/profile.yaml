@@ -98,7 +98,7 @@ eras:
     headline: {en: "Developer evangelist for ISVs; manager at Microsoft Innovation Center, Bangkok.", th: "Developer Evangelist สำหรับ ISV และผู้จัดการ Microsoft Innovation Center กรุงเทพฯ"}
   - id: mobile
     tier: silver      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
-    label: {en: Mobile team lead, th: หัวหน้าทีม Mobile}
+    label: {en: Mobile dev lead, th: Mobile Dev Lead}
     headline: {en: "Led the carmate.biz mobile team and ran Scrum; taught on the side.", th: "นำทีมแอป carmate.biz และเป็น Scrum Master พร้อมสอนควบคู่"}
   - id: dataai
     tier: gold      # Bronze → Silver → Gold (medallion): ช่วงอาชีพยิ่งใหม่ยิ่ง 'กลั่น' มากขึ้น ใช้เป็นสีตกแต่งเท่านั้น
@@ -116,7 +116,7 @@ snapshot:
   highlights:
     - {en: "Leads a Data & AI team end to end: pipelines, cost and performance, SLA, fraud detection and AI agents.", th: "นำทีม Data & AI ครบวงจร: pipeline, ต้นทุนและประสิทธิภาพ, SLA, ตรวจจับ Fraud และ AI Agent"}
     - {en: "Hands-on with the Azure data stack: Databricks, Data Factory, SQL Serverless, AKS and Superset.", th: "ลงมือจริงกับ Azure data stack: Databricks, Data Factory, SQL Serverless, AKS และ Superset"}
-    - {en: "{years}+ years across the whole path: developer, Microsoft evangelist, mobile team head, data scientist, Data & AI lead.", th: "ประสบการณ์ {years}+ ปีตลอดเส้นทาง: นักพัฒนา, Microsoft Evangelist, หัวหน้าทีม Mobile, Data Scientist, หัวหน้า Data & AI"}
+    - {en: "{years}+ years across the whole path: developer, Microsoft evangelist, mobile dev lead, data scientist, Data & AI lead.", th: "ประสบการณ์ {years}+ ปีตลอดเส้นทาง: นักพัฒนา, Microsoft Evangelist, Mobile Dev Lead, Data Scientist, Data & AI Lead"}
 
 # th ของ bullets/คำบรรยายด้านล่าง = ร่างแปลโดย Claude (ศัพท์เทคนิคคงเป็นอังกฤษ) รอเจ้าของตรวจ
 # ที่มา: LinkedIn Positions.csv (ถ้อยคำของเจ้าของ แก้คำสะกดผิด/เรียบเรียงเป็นประโยคสั้น) · ยังไม่มีตัวเลขผลลัพธ์ → ดู TODO (draft)
@@ -206,7 +206,7 @@ experience:
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets: []
   - company: EMCS THAI CO. LTD
-    role: Head of Mobile Application Team
+    role: Mobile Dev Lead
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
     start: "2016-04"
     end: "2020-03"

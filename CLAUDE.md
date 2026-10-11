@@ -13,7 +13,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 
 ## Architecture
 - `data/profile.yaml` is the single source of truth (schema in `docs/DATA.md`). Text fields accept `"text"` or `{en: ..., th: ...}`; items carry `tags`.
-  Tag vocabulary = the six `focus` slugs (ux, data, ai, cloud, management, mobile: the owner's interests, shown as the wheel) + `extra_tags` (software, teaching); `scripts/validate_data.py` enforces it (runs in CI).
+  Tag vocabulary = the seven `focus` slugs (ux, data, ai, cloud, management, mobile, web: the owner's interests, shown as the wheel) + `extra_tags` (software, teaching); `scripts/validate_data.py` enforces it (runs in CI).
   Items with `status: draft` are excluded from site, resumes, profile.json and WebMCP (`python build.py --drafts` shows them locally).
 - `variants/*.yaml` = one resume each (tags filter, `max_bullets`, `max_projects`, `sections`, `lang`, `formats`).
 - `build.py` → `dist/` (gitignored): resumes at `dist/<variant>/resume.{html,md,pdf}`, site at `/` (th) and `/en/`.
@@ -21,7 +21,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   (`templates/mobile.html.j2`: Home / Work / Resume / Contact + "เว็บเต็ม"). Desktop redirects small screens to `m/`
   before paint unless `localStorage.fullweb === '1'`.
 - CSS is plain, in `static/` (`base.css` tokens + dark mode, `desktop.css`, `mobile.css`). No CSS framework.
-- Colour policy: content first. Text is always `--ink`/`--ink2`; the six area colours `--c1..c6` are markers only (dot, wheel rim, mobile side bar), big fills use the tints `--b1..b6`. Never use `--cN` as text colour. Check contrast of any new pair (text >= 4.5:1, graphics >= 3:1).
+- Colour policy: content first. Text is always `--ink`/`--ink2`; the seven area colours `--c1..c7` are markers only (dot, wheel rim, mobile side bar), big fills use the tints `--b1..b7`. Never use `--cN` as text colour. Check contrast of any new pair (text >= 4.5:1, graphics >= 3:1).
 - AI-readable surface (WebMCP + fallbacks): `static/webmcp.js` registers 9 read-only tools on `document.modelContext`
   (get_profile, list_focus_areas, get_experience, list_projects, get_skills, get_tech_timeline, list_resumes, search_profile, get_contact),
   fetching `profile.json` lazily. `build.py` also emits `profile.json`, `llms.txt` and a schema.org `Person` JSON-LD block.
@@ -32,7 +32,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
 ## Design intent
 - **Never name the intended audience on the site** (no "for employers / recruiters / headhunters / hiring" in page text, data, JSON-LD, llms.txt or WebMCP). The audience and goals are the design brief, not copy. Write in plain, human, first-person Thai (short sentences, jargon only where needed), not report language.
 - **Creativity is the owner's defining strength and the central axis of the site** (latest instruction; it replaces the earlier "never state it" rule). It sits at the centre of the interest wheel ("Creativity") and in the one-paragraph story, and is carried by the design itself (living wheel, medallion timeline, technology matrix). Do not add self-praise or hype sentences about it; show it through the work and the interactions.
-- **The first section of the home page** is one paragraph that condenses the whole story (study, contests/research/patent, path, creativity as the axis, outside work) plus the six interest areas in the wheel. It must not name the current position.
+- **The first section of the home page** is one paragraph that condenses the whole story (study, contests/research/patent, path, creativity as the axis, outside work) plus the seven interest areas in the wheel. It must not name the current position.
 - Creativity must not cost clarity: recruiters scan in seconds, so the summary layer (snapshot, era strip) stays plain and fast. Expressive touches belong to one signature motif plus purposeful micro-interactions; respect `prefers-reduced-motion`, keep it keyboard accessible and light (no framework).
 
 ## Languages

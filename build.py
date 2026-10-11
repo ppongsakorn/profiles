@@ -21,7 +21,7 @@ UI = {
     "th": dict(focus="สิ่งที่ผมสนใจและลงมือทำ", nav_focus="ความสนใจ", experience="ประสบการณ์", projects="ผลงาน", resume="Resume", contact="ติดต่อ",
                interests="กำลังศึกษาอยู่", cta_resume="ดู Resume", cta_contact="ติดต่อผม", full="เว็บเต็ม",
                mobile_ver="เวอร์ชันมือถือ", tab_home="หน้าแรก", tab_work="ผลงาน", tab_resume="Resume", tab_contact="ติดต่อ",
-               home="หน้าแรก", work="ผลงาน", wheel_t1="Creativity", wheel_t2="แกนกลางของทุกด้าน", agents="สำหรับ AI Agent:",
+               home="หน้าแรก", work="ผลงาน", wheel_t1="Creativity", agents="สำหรับ AI Agent:",
                story="เส้นทางของผม", story_sub="ตลอดเส้นทางที่ผ่านมา จากโค้ดบรรทัดแรกจนถึงงานข้อมูลที่ทำงานต่อเนื่องทั้งวันทั้งคืน เลือกการ์ดเพื่ออ่านรายละเอียด", expand_all="ขยายทั้งหมด", collapse_all="ย่อทั้งหมด",
                order_old="เรียง: เก่า → ใหม่", order_new="เรียง: ใหม่ → เก่า", filter_all="ทั้งหมด", built="สิ่งที่ได้สร้างและส่งมอบ", impact="ผลลัพธ์",
                learned="ความรู้และประสบการณ์ที่ได้รับ", tech="เทคโนโลยี", highlight="ไฮไลต์", side_job="ควบคู่", snapshot="ภาพรวมโดยย่อ",
@@ -35,7 +35,7 @@ UI = {
     "en": dict(focus="What I care about and work on", nav_focus="Interests", experience="Experience", projects="Projects", resume="Resume", contact="Contact",
                interests="Interests", cta_resume="View resume", cta_contact="Get in touch", full="Full site",
                mobile_ver="Mobile version", tab_home="Home", tab_work="Work", tab_resume="Resume", tab_contact="Contact",
-               home="Home", work="Work", wheel_t1="Creativity", wheel_t2="at the centre of it all", agents="For AI agents:",
+               home="Home", work="Work", wheel_t1="Creativity", agents="For AI agents:",
                story="My story", story_sub="The path so far, from the first line of code to data that works day and night. Select a card for details.", expand_all="Expand all", collapse_all="Collapse all",
                order_old="Order: oldest first", order_new="Order: newest first", filter_all="All", built="What I built and delivered", impact="Impact",
                learned="What I learned", tech="Technologies", highlight="Highlight", side_job="Alongside", snapshot="At a glance",
@@ -68,17 +68,16 @@ def wheel_svg(focus, ui):
     # "data packets" riding the rim: purely decorative; static when the visitor prefers reduced motion
     orbit = "".join(f'<g class="orbit" aria-hidden="true" style="--a:{i * 360 / n + 18:.0f}deg;--d:{22 + i * 4}s"><circle cx="{cx + ro - 2.5:.1f}" cy="{cy}" r="4.5" fill="var(--c{i + 1})" stroke="var(--paper)" stroke-width="1.5"/></g>' for i in range(n))
     return (f'<svg class="wheel" viewBox="0 0 320 320" role="img" aria-label="{ui["focus"]}">' + "".join(out) + orbit +
-            f'<circle class="core" cx="{cx}" cy="{cy}" r="{ri-6}"/><text class="t1" x="{cx}" y="{cy-4}" text-anchor="middle">{ui["wheel_t1"]}</text>'
-            f'<text class="t2" x="{cx}" y="{cy+16}" text-anchor="middle">{ui["wheel_t2"]}</text></svg>')
+            f'<circle class="core" cx="{cx}" cy="{cy}" r="{ri-6}"/><text class="t1" x="{cx}" y="{cy}" text-anchor="middle" dominant-baseline="middle">{ui["wheel_t1"]}</text></svg>')
 
 
 def favicon_svg():
-    """Six-segment donut in the area colours (light-theme values), written to assets/favicon.svg."""
+    """Seven-segment donut in the area colours (light-theme values), written to assets/favicon.svg."""
     import math
-    light = ["#245fa6", "#2b7a4b", "#c7791a", "#b5322e", "#6b3fa0", "#3f6f78"]
+    light = ["#245fa6", "#2b7a4b", "#c7791a", "#b5322e", "#6b3fa0", "#3f6f78", "#a33c70"]
     segs = []
     for i, col in enumerate(light):
-        a0 = -math.pi / 2 + 2 * math.pi * i / 6; a1 = a0 + 2 * math.pi / 6
+        a0 = -math.pi / 2 + 2 * math.pi * i / len(light); a1 = a0 + 2 * math.pi / len(light)
         pt = lambda r, a: (16 + r * math.cos(a), 16 + r * math.sin(a))
         x0, y0 = pt(15, a0); x1, y1 = pt(15, a1); x2, y2 = pt(8, a1); x3, y3 = pt(8, a0)
         segs.append(f'<path fill="{col}" stroke="#fff" stroke-width=".8" d="M{x0:.2f} {y0:.2f}A15 15 0 0 1 {x1:.2f} {y1:.2f}L{x2:.2f} {y2:.2f}A8 8 0 0 0 {x3:.2f} {y3:.2f}Z"/>')

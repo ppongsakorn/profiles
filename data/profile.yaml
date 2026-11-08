@@ -118,10 +118,16 @@ eras:
     label: {en: Data & AI, th: Data & AI}
     headline: {en: "From senior data scientist to leading the Data & AI team at Buzzebees.", th: "จาก Senior Data Scientist สู่การดูแลทีม Data & AI ที่ Buzzebees"}
 
-# ข้อความส่วนแรกของหน้าแรก: ย่อหน้าที่เจ้าของเขียนเอง (th) ใช้ตามถ้อยคำเดิม เปลี่ยนเฉพาะจำนวนปีเป็น {years}; en = ร่างแปลโดย Claude. ย่อหน้าเดียวที่ขมวดเรื่องทั้งหมด (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
+# ข้อความส่วนแรกของหน้าแรก: 3 ย่อหน้าที่เจ้าของเขียนเอง (th) ใช้ตามถ้อยคำเดิม เปลี่ยนเฉพาะจำนวนปีเป็น {years}; en = ร่างแปลโดย Claude. ไม่พูดถึงตำแหน่งปัจจุบัน (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
 hero_text:
-  th: "ผมเรียนจบวิศวกรรมคอมพิวเตอร์ เคยส่งซอฟต์แวร์เข้าประกวดและได้รับรางวัล เขียนงานวิจัยและได้สิทธิบัตรซอฟต์แวร์ ก่อนเติบโตในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่นักพัฒนาที่ดูแลระบบครบวงจร, Developer Evangelist ที่ Microsoft, Mobile Dev Lead ไปจนถึงงาน Big Data และ AI บนคลาวด์ที่ทำอยู่ในปัจจุบัน ผมเป็นคนที่มีความคิดสร้างสรรค์ ผมชอบมองหาวิธีใหม่ๆ ที่ทำให้โจทย์ซับซ้อนกลายเป็นสิ่งที่ใช้งานได้จริงและเข้าใจง่าย ไม่ว่าจะเป็น UX/UI, Data, AI, Cloud การบริหารทีม หรือแอปมือถือ ส่วนนอกเวลางาน ผมเล่นแบดมินตันและปิงปอง ปั่นจักรยาน และชอบตะเวนกินตะเวนดื่ม"
-  en: "I graduated in computer engineering, entered my software in contests and won awards, wrote research papers and received a software patent, before growing through more than {years} years in software: from a developer who looked after whole systems, to Developer Evangelist at Microsoft and Mobile Dev Lead, and on to the Big Data and AI work on the cloud that I do today. I am a creative person. I like finding new ways to turn complicated problems into something that works and is easy to understand, whether it is UX/UI, data, AI, cloud, team management or mobile apps. Outside work I play badminton and table tennis, ride bikes, and enjoy hunting for good food and drinks."
+  th:
+    - "ผมจบวิศวกรรมคอมพิวเตอร์ และทำงานในสายซอฟต์แวร์มากว่า {years} ปี เส้นทางเริ่มจากการเป็นนักพัฒนาที่ดูแลระบบตั้งแต่ต้นจนจบ เคยส่งซอฟต์แวร์เข้าประกวดจนได้รับรางวัล ทำงานวิจัยและได้รับสิทธิบัตร ก่อนจะมีโอกาสทำงานในหลากหลายบทบาท ทั้ง Developer Evangelist ที่ Microsoft, Mobile Development Lead และปัจจุบันทำงานด้าน Big Data, Cloud และ AI"
+    - "ผมเป็นคนชอบคิด ชอบสร้างสรรค์ และสนุกกับการแก้ปัญหา โดยเฉพาะการเปลี่ยนเรื่องซับซ้อนให้กลายเป็นสิ่งที่เข้าใจง่ายและใช้งานได้จริง ไม่ว่าจะเป็นเรื่อง UX/UI, Software, Data, AI, Cloud หรือการบริหารทีม ผมเชื่อว่าเทคโนโลยีที่ดีไม่จำเป็นต้องซับซ้อน แต่ควรช่วยให้ชีวิตและการทำงานง่ายขึ้น"
+    - "นอกเวลางาน ผมชอบเล่นแบดมินตัน ปิงปอง ปั่นจักรยาน และแน่นอนว่าชอบตระเวนหาร้านอร่อย ๆ กินและดื่มด้วย"
+  en:
+    - "I studied computer engineering and have worked in software for more than {years} years. My path began as a developer who looked after systems from start to finish. I entered my software in contests and won awards, did research and received a patent, and then had the chance to work in many roles: Developer Evangelist at Microsoft, Mobile Development Lead, and today Big Data, Cloud and AI."
+    - "I like to think and to create, and I enjoy solving problems, especially turning complicated things into something easy to understand and useful in practice, whether it is UX/UI, software, data, AI, cloud or team management. I believe good technology does not have to be complicated; it should make life and work easier."
+    - "Outside work I enjoy badminton, table tennis and cycling, and of course I love hunting down tasty places to eat and drink."
 
 # ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่

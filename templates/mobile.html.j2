@@ -16,7 +16,7 @@
 {% include "_mockbar.html.j2" %}<div class="top"><span>{{ b.name }}</span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></div>
 <main>
 {% if screen == 'home' %}
- <h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p><p class="lead">{{ hero_text }}</p>
+ <h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p>{% for t in hero_paras %}<p class="lead">{{ t }}</p>{% endfor %}
  <h2>{{ ui.focus }}</h2>
  <div class="list">{% for f in focus %}<div class="item f{{ loop.index }}"><span class="bar"></span><span><b>{{ f.title }}</b><small>{{ f.desc }}</small></span></div>{% endfor %}</div>
  <h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}

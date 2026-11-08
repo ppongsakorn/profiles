@@ -71,7 +71,7 @@ with sync_playwright() as p:
     pg = b.new_page(viewport={"width": 1280, "height": 900}); pg.goto(B); pg.wait_for_timeout(300)
     htxt = pg.inner_text(".hero")
     check("Data & AI Lead" not in htxt and "Team Lead" not in htxt and "หัวหน้าทีม Data" not in htxt, "hero does not name the current position")
-    check(pg.locator(".hero > div:first-child p:not(.role)").count() == 1, "hero tells the story in one paragraph")
+    check(pg.locator(".hero > div:first-child p:not(.role)").count() == 3, "hero tells the story in three short paragraphs")
     check(pg.locator(".wheel a").count() == 7, "wheel shows 7 interest areas")
     check("Creativity" in (pg.text_content(".wheel") or "") and "แกนกลาง" not in (pg.text_content(".wheel") or ""), "wheel centre reads Creativity with no sub-caption")
     check(pg.locator("#stack .sm-row").count() >= 7 and pg.locator("#stack .sm-t").count() >= 30, "technology timeline renders (rows and technologies)")

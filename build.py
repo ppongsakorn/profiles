@@ -392,10 +392,12 @@ def select(data, v):
     story = build_story(data, exp, lang)
     has_mock = (any(x.get("impact_mock") or x.get("learned_mock") for x in story["entries"] if x["kind"] != "milestone")
                 or bool(story["snapshot"]["open_to_mock"] or story["snapshot"]["scope_mock"]) or any(p.get("mock") for p in prj))
-    hero_text = tr(data.get("hero_text", ""), lang).replace("{years}", str(years_since(data)))
+    hero_raw = tr(data.get("hero_text", ""), lang)
+    hero_paras = [t.replace("{years}", str(years_since(data))) for t in (hero_raw if isinstance(hero_raw, list) else [hero_raw])]
+    hero_text = hero_paras[0] if hero_paras else ""
     hero_line = " · ".join(f["short"] for f in focus)
     hobbies = [dict(slug=h["slug"], name=tr(h["name"], lang)) for h in data.get("hobbies", []) if h.get("public", True)]
-    return dict(hero_text=hero_text, hero_line=hero_line, has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
+    return dict(hero_paras=hero_paras, hero_text=hero_text, hero_line=hero_line, has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
                 interests=tr(data.get("interests", []), lang), v=v, lang=lang, L=LABELS.get(lang, LABELS["en"]))
 
 

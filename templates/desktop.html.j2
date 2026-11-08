@@ -23,7 +23,7 @@
  </nav></div></header>
 <main id="top" class="wrap">
  <div class="hero">
-  <div><h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p><p>{{ hero_text }}</p>
+  <div><h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p>{% for t in hero_paras %}<p>{{ t }}</p>{% endfor %}
    <div class="btns"><a class="btn primary" href="#resume">{{ ui.cta_resume }} →</a><a class="btn" href="#contact">{{ ui.cta_contact }}</a></div></div>
   {{ wheel }}
  </div>

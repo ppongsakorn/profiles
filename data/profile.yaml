@@ -20,7 +20,7 @@ basics:
 # ที่มา: Summary บน LinkedIn ของเจ้าของ (ถ้อยคำเดิม) · th = ร่างแปลโดย Claude รอตรวจ
 summaries:
   default:
-    en: "I lead the Data & AI team at Buzzebees, after more than {years} years in software as a developer, Microsoft evangelist, mobile dev lead and data scientist. Today my focus is data systems on Azure that run reliably day and night, fraud detection, and AI agents in everyday work, with the SLA and cost visibility as the first priorities."
+    en: "I lead the Data & AI team at Buzzebees, after more than {years} years in software as a developer, Microsoft evangelist, mobile dev lead and data scientist. Today my focus is data systems on Azure that run reliably day and night, fraud detection, and AI agents in everyday work, with SLA and cost visibility as the first priorities."
     th: "ผมดูแลทีม Data & AI ที่ Buzzebees หลังทำงานสายซอฟต์แวร์มากว่า {years} ปี ทั้งในบทบาทนักพัฒนา Microsoft Evangelist Mobile Dev Lead และ Data Scientist วันนี้ผมให้ความสำคัญกับระบบข้อมูลบน Azure ที่ทำงานได้อย่างมั่นคงทั้งวันทั้งคืน การตรวจจับ Fraud และการใช้ AI Agent ในงานประจำ โดยยึด SLA และการมองเห็นต้นทุนเป็นเรื่องแรก"
   data-platform:
     en: "I lead the Data & AI team at Buzzebees. My core work is Azure Databricks and Data Factory pipelines (Bronze to Silver to Gold) on Azure Data Lake, with automated quality gates that protect the SLA, and cost control that starts with visibility, then tuning, then savings."
@@ -118,16 +118,12 @@ eras:
     label: {en: Data & AI, th: Data & AI}
     headline: {en: "From senior data scientist to leading the Data & AI team at Buzzebees.", th: "จาก Senior Data Scientist สู่การดูแลทีม Data & AI ที่ Buzzebees"}
 
-# ข้อความส่วนแรกของหน้าแรก: 3 ย่อหน้าที่เจ้าของเขียนเอง (th) ใช้ตามถ้อยคำเดิม เปลี่ยนเฉพาะจำนวนปีเป็น {years}; en = ร่างแปลโดย Claude. ไม่พูดถึงตำแหน่งปัจจุบัน (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
+# ข้อความส่วนแรกของหน้าแรก: ย่อหน้าเดียวที่เจ้าของเขียนเอง (th) ใช้ตามถ้อยคำเดิม เปลี่ยนเฉพาะจำนวนปีเป็น {years}; en = ร่างแปลโดย Claude. ไม่พูดถึงตำแหน่งปัจจุบัน (เรียน → ผลงาน → เส้นทาง → ความคิดสร้างสรรค์เป็นแกนกลาง → นอกเวลางาน) ไม่พูดถึงตำแหน่งปัจจุบัน ({years} = จำนวนปีประสบการณ์ คำนวณอัตโนมัติ)
 hero_text:
   th:
-    - "ผมจบวิศวกรรมคอมพิวเตอร์ และทำงานในสายซอฟต์แวร์มากว่า {years} ปี เส้นทางเริ่มจากการเป็นนักพัฒนาที่ดูแลระบบตั้งแต่ต้นจนจบ เคยส่งซอฟต์แวร์เข้าประกวดจนได้รับรางวัล ทำงานวิจัยและได้รับสิทธิบัตร ก่อนจะมีโอกาสทำงานในหลากหลายบทบาท ทั้ง Developer Evangelist ที่ Microsoft, Mobile Development Lead และปัจจุบันทำงานด้าน Big Data, Cloud และ AI"
-    - "ผมเป็นคนชอบคิด ชอบสร้างสรรค์ และสนุกกับการแก้ปัญหา โดยเฉพาะการเปลี่ยนเรื่องซับซ้อนให้กลายเป็นสิ่งที่เข้าใจง่ายและใช้งานได้จริง ไม่ว่าจะเป็นเรื่อง UX/UI, Software, Data, AI, Cloud หรือการบริหารทีม ผมเชื่อว่าเทคโนโลยีที่ดีไม่จำเป็นต้องซับซ้อน แต่ควรช่วยให้ชีวิตและการทำงานง่ายขึ้น"
-    - "นอกเวลางาน ผมชอบเล่นแบดมินตัน ปิงปอง ปั่นจักรยาน และแน่นอนว่าชอบตระเวนหาร้านอร่อย ๆ กินและดื่มด้วย"
+    - "ผมจบวิศวกรรมคอมพิวเตอร์และทำงานในสายซอฟต์แวร์มากว่า {years} ปี ตั้งแต่การเป็นนักพัฒนา เคยได้รับรางวัลจากการประกวดซอฟต์แวร์ ทำงานวิจัยและได้รับสิทธิบัตร ไปจนถึงบทบาท Developer Evangelist ที่ Microsoft, Mobile Dev Lead และปัจจุบันทำงานด้าน Big Data, Cloud และ AI ที่ Buzzebees ผมเป็นคนชอบคิด ชอบสร้างสรรค์ และสนุกกับการเปลี่ยนเรื่องซับซ้อนให้เข้าใจง่ายและใช้งานได้จริง ไม่ว่าจะเป็นเทคโนโลยี การออกแบบ หรือการบริหารทีม ส่วนเวลาว่างก็ชอบเล่นแบดมินตัน ปิงปอง ปั่นจักรยาน และตระเวนหาร้านอร่อย ๆ กินดื่มครับ"
   en:
-    - "I studied computer engineering and have worked in software for more than {years} years. My path began as a developer who looked after systems from start to finish. I entered my software in contests and won awards, did research and received a patent, and then had the chance to work in many roles: Developer Evangelist at Microsoft, Mobile Development Lead, and today Big Data, Cloud and AI."
-    - "I like to think and to create, and I enjoy solving problems, especially turning complicated things into something easy to understand and useful in practice, whether it is UX/UI, software, data, AI, cloud or team management. I believe good technology does not have to be complicated; it should make life and work easier."
-    - "Outside work I enjoy badminton, table tennis and cycling, and of course I love hunting down tasty places to eat and drink."
+    - "I studied computer engineering and have worked in software for more than {years} years, starting as a developer. I have won awards in software contests, done research and received a patent, and gone on to roles such as Developer Evangelist at Microsoft and Mobile Dev Lead. Today I work on Big Data, Cloud and AI at Buzzebees. I enjoy thinking and creating, and I like turning complicated things into something easy to understand and genuinely useful, whether it is technology, design or team management. In my spare time I enjoy badminton, table tennis and cycling, and exploring good places to eat and drink."
 
 # ภาพรวมโดยย่อ (อ่านจบใน 10 วินาที). ค่าว่าง/TODO จะไม่แสดง
 # จำนวนปีประสบการณ์คำนวณอัตโนมัติจากตำแหน่งแรก; {years} ใน highlights จะถูกแทนที่
@@ -140,7 +136,7 @@ snapshot:
   highlights:
     - {en: "I lead the Data & AI team across pipelines, cost and performance, SLA, fraud detection and AI agents.", th: "ผมดูแลทีม Data & AI ครอบคลุม pipeline ต้นทุนและประสิทธิภาพ SLA การตรวจจับ Fraud และ AI Agent"}
     - {en: "I work hands-on with the Azure data stack: Databricks, Data Factory, SQL Serverless, AKS and Superset.", th: "ผมลงมือทำงานกับ Azure data stack ด้วยตัวเอง ทั้ง Databricks, Data Factory, SQL Serverless, AKS และ Superset"}
-    - {en: "{years}+ years across the path: developer, Microsoft evangelist, mobile dev lead, data scientist and Data & AI lead.", th: "ประสบการณ์ {years}+ ปี ผ่านบทบาทนักพัฒนา Microsoft Evangelist Mobile Dev Lead Data Scientist และ Data & AI Lead"}
+    - {en: "{years}+ years across the whole path: developer, Microsoft evangelist, mobile dev lead, data scientist and Data & AI lead.", th: "ประสบการณ์ {years}+ ปี ผ่านบทบาทนักพัฒนา Microsoft Evangelist Mobile Dev Lead Data Scientist และ Data & AI Lead"}
 
 # th ของ bullets/คำบรรยายด้านล่าง = ร่างแปลโดย Claude (ศัพท์เทคนิคคงเป็นอังกฤษ) รอเจ้าของตรวจ
 # ที่มา: LinkedIn Positions.csv (ถ้อยคำของเจ้าของ แก้คำสะกดผิด/เรียบเรียงเป็นประโยคสั้น) · ยังไม่มีตัวเลขผลลัพธ์ → ดู TODO (draft)
@@ -166,12 +162,12 @@ experience:
       - {en: "AI agents work best on narrow, well-instrumented jobs with clear quality gates.", th: "AI Agent ทำงานได้ดีที่สุดกับงานที่แคบ วัดผลได้ และมีด่านคุณภาพชัดเจน"}
       - {en: "Leading a data team means protecting the SLA first, then speed.", th: "การนำทีมข้อมูลคือปกป้อง SLA ก่อน แล้วจึงค่อยเร่งความเร็ว"}
     bullets:
-      - {text: {en: "Lead the team to operational excellence in Data & AI routines: data pipeline, transformation, migration, visualization, validation, analytics and governance, designed and executed end-to-end with AI.", th: "นำทีมสู่ความเป็นเลิศในงานประจำด้าน Data & AI: data pipeline, transformation, migration, visualization, validation, analytics และ governance ออกแบบและดำเนินการครบวงจรร่วมกับ AI"}, tags: [data]}
-      - {text: {en: "Lead the team building and operating Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) as the backbone for all data and AI workloads.", th: "นำทีมสร้างและดูแลโครงสร้างพื้นฐานบน Azure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) ซึ่งเป็นกระดูกสันหลังของงาน data และ AI ทั้งหมด"}, tags: [data]}
-      - {text: {en: "Lead Data & AI cost and performance optimisation across Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM and Data Lake storage, with continuous focus on cost visibility, query optimisation and storage efficiency.", th: "นำการปรับต้นทุนและประสิทธิภาพของงาน Data & AI ทั้ง Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM และ storage ของ Data Lake โดยเน้นต่อเนื่องที่การมองเห็นต้นทุน การปรับ query และประสิทธิภาพของ storage"}, tags: [cloud]}
-      - {text: {en: "Lead adoption of an AI-first operating model: Claude for planning, coding, architecture and decision support; Databricks Genie for natural-language data access; AI agents on Microsoft Foundry (Vector Search, Bot Service) for automated reporting, monitoring and alerting.", th: "นำการใช้โมเดลการทำงานแบบ AI-first: ใช้ Claude ช่วยวางแผน เขียนโค้ด ออกแบบสถาปัตยกรรม และสนับสนุนการตัดสินใจ; ใช้ Databricks Genie ให้เข้าถึงข้อมูลด้วยภาษาธรรมชาติ; และใช้ AI Agent บน Microsoft Foundry (Vector Search, Bot Service) ทำ Reporting, Monitoring และ Alerting อัตโนมัติ"}, tags: [ai]}
-      - {text: {en: "Lead the team to achieve the committed SLA across data pipeline, transformation, visualization, validation and data quality.", th: "นำทีมให้บรรลุ SLA ที่ตกลงไว้ ครอบคลุม data pipeline, transformation, visualization, validation และคุณภาพข้อมูล"}, tags: [data]}
-      - {text: {en: "Lead the team building fraud prediction and detection systems: Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo.", th: "นำทีมสร้างระบบทำนายและตรวจจับ Fraud: Python worker บน AKS ดึงข้อมูลจาก MySQL, MSSQL และ Azure Table พร้อมสัญญาณพฤติกรรมจาก Matomo"}, tags: [ai]}
+      - {text: {en: "Lead the team to run Data & AI routines to a high standard: data pipelines, transformation, migration, visualization, validation, analytics and governance, all designed and executed end to end with AI.", th: "นำทีมสู่ความเป็นเลิศในงานประจำด้าน Data & AI: data pipeline, transformation, migration, visualization, validation, analytics และ governance ออกแบบและดำเนินการครบวงจรร่วมกับ AI"}, tags: [data]}
+      - {text: {en: "Build and operate the Azure cloud infrastructure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) that carries all our data and AI workloads.", th: "นำทีมสร้างและดูแลโครงสร้างพื้นฐานบน Azure (App Service, AKS, Azure VM, Redis, Azure Container Registry, Azure Data Lake) ซึ่งเป็นกระดูกสันหลังของงาน data และ AI ทั้งหมด"}, tags: [data]}
+      - {text: {en: "Keep Data & AI cost and performance under control across Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM and Data Lake storage, with a steady focus on cost visibility, query optimisation and storage efficiency.", th: "นำการปรับต้นทุนและประสิทธิภาพของงาน Data & AI ทั้ง Azure Databricks, Azure Data Factory, Databricks SQL Serverless, AKS, Azure VM และ storage ของ Data Lake โดยเน้นต่อเนื่องที่การมองเห็นต้นทุน การปรับ query และประสิทธิภาพของ storage"}, tags: [cloud]}
+      - {text: {en: "Run an AI-first way of working: Claude for planning, coding, architecture and decision support; Databricks Genie for natural-language access to data; and AI agents on Microsoft Foundry (Vector Search, Bot Service) for automated reporting, monitoring and alerting.", th: "นำการใช้โมเดลการทำงานแบบ AI-first: ใช้ Claude ช่วยวางแผน เขียนโค้ด ออกแบบสถาปัตยกรรม และสนับสนุนการตัดสินใจ; ใช้ Databricks Genie ให้เข้าถึงข้อมูลด้วยภาษาธรรมชาติ; และใช้ AI Agent บน Microsoft Foundry (Vector Search, Bot Service) ทำ Reporting, Monitoring และ Alerting อัตโนมัติ"}, tags: [ai]}
+      - {text: {en: "Lead the team to meet the committed SLA across data pipelines, transformation, visualization, validation and data quality.", th: "นำทีมให้บรรลุ SLA ที่ตกลงไว้ ครอบคลุม data pipeline, transformation, visualization, validation และคุณภาพข้อมูล"}, tags: [data]}
+      - {text: {en: "Lead the team that builds fraud prediction and detection systems: Python workers on AKS over MySQL, MSSQL and Azure Table, with behavioural signals from Matomo.", th: "นำทีมสร้างระบบทำนายและตรวจจับ Fraud: Python worker บน AKS ดึงข้อมูลจาก MySQL, MSSQL และ Azure Table พร้อมสัญญาณพฤติกรรมจาก Matomo"}, tags: [ai]}
       - {text: "TODO: measurable results (cost saved, query/pipeline time, SLA achieved, fraud caught)", tags: [cloud, data, ai], status: draft}
   - company: Buzzebees
     role: Senior Data Scientist
@@ -194,10 +190,10 @@ experience:
     bullets:
       - {text: {en: "Built an AI chain with automatic orchestration using Semantic Kernel and Azure OpenAI.", th: "สร้าง AI chain ที่ orchestrate อัตโนมัติด้วย Semantic Kernel และ Azure OpenAI"}, tags: [ai]}
       - {text: {en: "Designed, built and managed a fraud detection system using AI/ML, with real-time detection and scoring.", th: "ออกแบบ สร้าง และดูแลระบบตรวจจับ Fraud ด้วย AI/ML ตรวจจับและให้คะแนนแบบ real-time"}, tags: [ai]}
-      - {text: {en: "Azure Bot Service performance reports in Microsoft Teams, and automatic report generation from Databricks.", th: "รายงานประสิทธิภาพผ่าน Azure Bot Service ใน Microsoft Teams และสร้างรายงานอัตโนมัติจาก Databricks"}, tags: [ai, data, ux]}
-      - {text: {en: "Real-time user-tracking analytics on Azure Kubernetes Service, Azure Event Hubs and Matomo.", th: "Analytics ติดตามผู้ใช้แบบ real-time บน Azure Kubernetes Service, Azure Event Hubs และ Matomo"}, tags: [data, ux]}
-      - {text: {en: "Real-time monitoring (internal tool) with Grafana, alerts and notifications, and Azure Application Insights (Azure Monitor).", th: "ระบบ monitoring แบบ real-time (เครื่องมือภายใน) ด้วย Grafana, การแจ้งเตือน และ Azure Application Insights (Azure Monitor)"}, tags: [data]}
-      - {text: {en: "Modern data platform on Azure Databricks, Azure Synapse and Azure Data Factory.", th: "Modern data platform บน Azure Databricks, Azure Synapse และ Azure Data Factory"}, tags: [data]}
+      - {text: {en: "Delivered performance reports through Azure Bot Service in Microsoft Teams, and automated report generation from Databricks.", th: "รายงานประสิทธิภาพผ่าน Azure Bot Service ใน Microsoft Teams และสร้างรายงานอัตโนมัติจาก Databricks"}, tags: [ai, data, ux]}
+      - {text: {en: "Built real-time user-tracking analytics on Azure Kubernetes Service, Azure Event Hubs and Matomo.", th: "Analytics ติดตามผู้ใช้แบบ real-time บน Azure Kubernetes Service, Azure Event Hubs และ Matomo"}, tags: [data, ux]}
+      - {text: {en: "Built an internal real-time monitoring tool with Grafana, alerts and notifications, and Azure Application Insights (Azure Monitor).", th: "ระบบ monitoring แบบ real-time (เครื่องมือภายใน) ด้วย Grafana, การแจ้งเตือน และ Azure Application Insights (Azure Monitor)"}, tags: [data]}
+      - {text: {en: "Built the modern data platform on Azure Databricks, Azure Synapse and Azure Data Factory.", th: "Modern data platform บน Azure Databricks, Azure Synapse และ Azure Data Factory"}, tags: [data]}
   - company: EMCS THAI CO. LTD
     role: CX and RD (AI & Deep Learning) Lead
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
@@ -214,8 +210,8 @@ experience:
     learned_mock:
       - {en: "Listening to users finds needs that metrics alone hide.", th: "การฟังผู้ใช้ค้นพบความต้องการที่ตัวเลขอย่างเดียวมองไม่เห็น"}
     bullets:
-      - {text: {en: "Customer experience: listen and learn from customers, find hidden needs, build potential UX/UI, and track and follow up behaviour.", th: "Customer Experience: รับฟังและเรียนรู้จากลูกค้า ค้นหาความต้องการที่ซ่อนอยู่ สร้าง UX/UI ที่มีศักยภาพ และติดตามพฤติกรรม"}, tags: [data, ux]}
-      - {text: {en: "Research areas: AI and machine learning, data platform, data visualization, UX/UI.", th: "หัวข้อวิจัย: AI และ machine learning, data platform, data visualization, UX/UI"}, tags: [ai, data]}
+      - {text: {en: "Looked after customer experience: listened to and learned from customers, found hidden needs, shaped promising UX/UI, and tracked and followed up on behaviour.", th: "Customer Experience: รับฟังและเรียนรู้จากลูกค้า ค้นหาความต้องการที่ซ่อนอยู่ สร้าง UX/UI ที่มีศักยภาพ และติดตามพฤติกรรม"}, tags: [data, ux]}
+      - {text: {en: "Led research in AI and machine learning, data platform, data visualization and UX/UI.", th: "หัวข้อวิจัย: AI และ machine learning, data platform, data visualization, UX/UI"}, tags: [ai, data]}
   - company: inclass.in.th
     role: Mathematics & Computer Teacher (weekend job)
     location: {en: "Nakhon Ratchasima, Thailand", th: "นครราชสีมา"}
@@ -224,7 +220,7 @@ experience:
     tags: [teaching]
     era: mobile
     side: true
-    headline: {en: "Taught mathematics and computer on weekends.", th: "สอนคณิตศาสตร์และคอมพิวเตอร์ในวันหยุดสุดสัปดาห์"}
+    headline: {en: "Taught mathematics and computing at weekends.", th: "สอนคณิตศาสตร์และคอมพิวเตอร์ในวันหยุดสุดสัปดาห์"}
     stack: []
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
@@ -247,10 +243,10 @@ experience:
       - {en: "A steady sprint rhythm and automated releases matter more than heroics.", th: "จังหวะ sprint ที่สม่ำเสมอและการ release อัตโนมัติสำคัญกว่าการฮึดสู้"}
       - {en: "Growing a team means clear ownership and removing blockers.", th: "การสร้างทีมคือการให้เจ้าของงานที่ชัดเจนและช่วยปลดล็อกอุปสรรค"}
     bullets:
-      - {text: {en: "Software development team lead for carmate.biz: native iOS and Android apps, .NET Core backend, Node.js real-time chat, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, management, mobile, web]}
-      - {text: {en: "Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, build and release automation.", th: "Scrum Master บน Microsoft Azure DevOps: Git workflow, วางแผน sprint และบริหารทรัพยากร, จัดการ task และ bug, burn-down และ Kanban, build และ release อัตโนมัติ"}, tags: [management]}
-      - {text: {en: "Cloud on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", th: "Cloud บน Amazon AWS และ Microsoft Azure (EC2, S3, RDS, Lambda)"}, tags: [software, cloud]}
-      - {text: {en: "Machine-learning image recognition with TensorFlow.", th: "Image recognition ด้วย machine learning บน TensorFlow"}, tags: [ai]}
+      - {text: {en: "Led software development for carmate.biz: native iOS and Android apps, a .NET Core backend, real-time chat on Node.js, WebRTC/P2P communication, Next.js and Vue.js.", th: "หัวหน้าทีมพัฒนาซอฟต์แวร์ของ carmate.biz: แอป native iOS และ Android, backend ด้วย .NET Core, real-time chat ด้วย Node.js, การสื่อสารแบบ WebRTC/P2P, Next.js และ Vue.js"}, tags: [software, management, mobile, web]}
+      - {text: {en: "Served as Scrum Master on Microsoft Azure DevOps: Git workflow, sprint planning and resource management, task and bug management, burn-down and Kanban, and build and release automation.", th: "Scrum Master บน Microsoft Azure DevOps: Git workflow, วางแผน sprint และบริหารทรัพยากร, จัดการ task และ bug, burn-down และ Kanban, build และ release อัตโนมัติ"}, tags: [management]}
+      - {text: {en: "Ran workloads on Amazon AWS and Microsoft Azure (EC2, S3, RDS, Lambda).", th: "Cloud บน Amazon AWS และ Microsoft Azure (EC2, S3, RDS, Lambda)"}, tags: [software, cloud]}
+      - {text: {en: "Worked on machine-learning image recognition with TensorFlow.", th: "Image recognition ด้วย machine learning บน TensorFlow"}, tags: [ai]}
   - company: Prince of Songkla University, Phuket Campus
     role: Lecturer (ASP.NET MVC)
     location: {en: "Phuket, Thailand", th: "ภูเก็ต"}
@@ -264,7 +260,7 @@ experience:
     impact: []      # TODO: ผลลัพธ์ที่วัดได้ที่ส่งมอบให้บริษัท
     learned: []     # TODO: ความรู้และประสบการณ์ที่ได้รับจากที่นี่
     bullets:
-      - {text: {en: "Web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API, Windows Azure.", th: "การพัฒนาเว็บด้วย ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript และ AngularJS 2.0, Web API, Windows Azure"}, tags: [teaching, software, web]}
+      - {text: {en: "Taught web development with ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript and AngularJS 2.0, Web API and Windows Azure.", th: "การพัฒนาเว็บด้วย ASP.NET MVC: MVC, jQuery, responsive design (Bootstrap), TypeScript และ AngularJS 2.0, Web API, Windows Azure"}, tags: [teaching, software, web]}
   - company: Microsoft
     role: ISV Developer Evangelist
     location: {en: "Bangkok, Thailand", th: "กรุงเทพฯ"}
@@ -300,7 +296,7 @@ experience:
     learned_mock:
       - {en: "Full-stack ownership: from schema to server to screen.", th: "การรับผิดชอบแบบ full-stack: ตั้งแต่ schema, server จนถึงหน้าจอ"}
     bullets:
-      - {text: {en: "Managed and set up infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java.", th: "ดูแลและติดตั้งโครงสร้างพื้นฐาน: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java"}, tags: [software, cloud]}
+      - {text: {en: "Managed and set up the infrastructure: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP and Java.", th: "ดูแลและติดตั้งโครงสร้างพื้นฐาน: Oracle, Windows/IIS, Linux/Apache/MySQL, PHP, Java"}, tags: [software, cloud]}
       - {text: {en: "Developed a hotel booking engine (PHP, Oracle) with SOAP web-service connections to hotel suppliers.", th: "พัฒนา booking engine สำหรับโรงแรม (PHP, Oracle) พร้อมเชื่อมต่อ SOAP web service กับซัพพลายเออร์โรงแรม"}, tags: [software, web]}
       - {text: {en: "Developed a social network with PHP and MySQL.", th: "พัฒนาโซเชียลเน็ตเวิร์กด้วย PHP และ MySQL"}, tags: [software, web]}
 

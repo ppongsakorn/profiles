@@ -27,3 +27,5 @@ h2{font-size:15px;color:var(--ink2);margin:26px 0 10px;font-weight:600}
 .tagline{font-weight:600;margin:0 0 8px;line-height:1.4}
 .block.coming{border-style:dashed}.block .badge{margin:0 0 4px;display:inline-block}
 .prep{font-size:13px;color:var(--ink2);border:1px dashed var(--line);border-radius:10px;padding:6px 10px;margin:10px 0 0}
+
+.item .flink{display:block;margin-top:2px}.item .flink a{color:var(--accent);font-weight:600}

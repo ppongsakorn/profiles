@@ -115,7 +115,7 @@ def real(x):
 
 
 def agent_view(ctx):
-    return dict(basics=ctx["b"], summary=ctx["summary"], focus=[{k: f[k] for k in ("slug", "title", "desc")} for f in ctx["focus"]],
+    return dict(basics=ctx["b"], summary=ctx["summary"], focus=[{**{k: f[k] for k in ("slug", "title", "desc")}, **({"url": f["link"]["url"]} if f.get("link") else {})} for f in ctx["focus"]],
                 skills=[{"group": g["group"], "items": g["list"]} for g in ctx["skills"]],
                 experience=ctx["experience"], tech_timeline=[dict(lane=ln["label"], techs=[dict(name=x["name"], **{"from": x["iso_from"], "to": x["iso_to"]}, current=x["current"], mock=x["mock"]) for x in ln["bars"]]) for ln in ctx["story"]["stackmap"]["lanes"]], projects=ctx["projects"], interests=ctx["interests"], hobbies=[h["name"] for h in ctx["hobbies"]])
 
@@ -388,7 +388,8 @@ def select(data, v):
             "mock": ({"problem": tr(p["mock"].get("problem", ""), lang), "actions": tr(p["mock"].get("actions", []), lang), "result": tr(p["mock"].get("result", ""), lang)}
                      if p.get("mock") and not p.get("problem") or (p.get("mock") and str(p.get("problem", "")).startswith("TODO")) else None)}
            for p in rank(data.get("projects", [])) if match(p.get("tags"), want)][: v.get("max_projects", 99)]
-    focus = [{**f, **{k: tr(f.get(k, ""), lang) for k in ("short", "title", "desc")}} for f in data.get("focus", [])]
+    focus = [{**f, **{k: tr(f.get(k, ""), lang) for k in ("short", "title", "desc")},
+              "link": ({"label": tr(f["link"]["label"], lang), "url": f["link"]["url"]} if f.get("link") else None)} for f in data.get("focus", [])]
     story = build_story(data, exp, lang)
     has_mock = (any(x.get("impact_mock") or x.get("learned_mock") for x in story["entries"] if x["kind"] != "milestone")
                 or bool(story["snapshot"]["open_to_mock"] or story["snapshot"]["scope_mock"]) or any(p.get("mock") for p in prj))

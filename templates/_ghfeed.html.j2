@@ -1,0 +1,6 @@
+{% if gh_feeds %}
+<section class="ghfeed" id="gh-feed" data-feeds="{{ gh_feeds_json }}" data-ui="{{ gh_ui_json }}" data-lang="{{ lang }}">
+ <h2>{{ ui.gh_title }}</h2>
+ <div class="gh-body">{% for f in gh_feeds %}<p><a href="{{ f.site }}" target="_blank" rel="noopener">{{ f.label }} →</a></p>{% endfor %}</div>
+</section>
+{% endif %}

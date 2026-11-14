@@ -29,3 +29,5 @@ h2{font-size:15px;color:var(--ink2);margin:26px 0 10px;font-weight:600}
 .prep{font-size:13px;color:var(--ink2);border:1px dashed var(--line);border-radius:10px;padding:6px 10px;margin:10px 0 0}
 
 .item .flink{display:block;margin-top:2px}.item .flink a{color:var(--accent);font-weight:600}
+
+.top .topr{display:flex;gap:8px;align-items:center}

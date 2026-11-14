@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ lang }}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/doc.css') }}"><link rel="stylesheet" href="{{ link('assets/blog.css') }}">
+<link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
+<script defer src="{{ link('assets/blog.js') }}"></script>
+<title>{{ post.title | e }} · {{ b.name }}</title>
+<meta name="description" content="{{ post.summary | e }}">
+{{ jsonld }}
+</head><body class="doc blog post">
+{% include "_mockbar.html.j2" %}
+<nav class="docnav no-print"><a href="../">{{ ui.back_blog }}</a><span>{% if alt_path %}<a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a>{% endif %}</span></nav>
+<main class="sheet">
+ <article>
+  <header class="dh"><h1>{{ post.title | e }}</h1>
+   <p class="meta">{{ post.date_label }} · {{ ui.read_min.replace('{n}', post.minutes | string) }}</p>
+   <p class="tgs">{% for t in post.tags %}<span class="tg">{{ tag_map.get(t, t) }}</span>{% endfor %}</p></header>
+  <div class="prose">{{ post.html }}</div>
+ </article>
+ <nav class="postnav">{% if next_post %}<a href="../{{ next_post.slug }}/">{{ ui.next_post }}<b>{{ next_post.title | e }}</b></a>{% endif %}{% if prev_post %}<a href="../{{ prev_post.slug }}/">{{ ui.prev_post }}<b>{{ prev_post.title | e }}</b></a>{% endif %}</nav>
+ <aside id="related" data-src="../posts.json" data-slug="{{ post.slug }}" data-tags="{{ tag_labels_json }}" data-ui="{{ ui_json }}" data-tag-list="{{ post.tags | join(' ') }}"></aside>
+</main></body></html>

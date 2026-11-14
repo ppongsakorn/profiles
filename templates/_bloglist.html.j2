@@ -1,0 +1,10 @@
+{% if posts %}
+<ul class="posts" id="blog-list">
+{% for p in posts %}<li class="post-card" data-tags="{{ p.tags | join(' ') }}">
+ <span class="pd">{{ p.date_label }} · {{ ui.read_min.replace('{n}', p.minutes | string) }}{% if lang == 'th' and p.slug not in has_other %} · {{ ui.thai_only }}{% endif %}</span>
+ <h2><a href="{{ link(prefix ~ 'blog/' ~ p.slug ~ '/') }}">{{ p.title | e }}</a></h2>
+ <p>{{ p.summary | e }}</p>
+ <span class="tgs">{% for t in p.tags %}<span class="tg">{{ tag_map.get(t, t) }}</span>{% endfor %}</span>
+</li>{% endfor %}
+</ul>
+{% else %}<p class="prep"><b>{{ ui.prep }}</b> · {{ ui.blog_none }}</p>{% endif %}

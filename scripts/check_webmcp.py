@@ -4,7 +4,7 @@
 import functools, http.server, json, os, sys, threading
 from playwright.sync_api import sync_playwright
 
-EXPECTED = {"get_profile", "list_focus_areas", "get_experience", "list_projects", "get_skills", "get_tech_timeline", "list_resumes", "search_profile", "get_contact"}
+EXPECTED = {"get_profile", "list_focus_areas", "get_experience", "list_projects", "get_skills", "get_tech_timeline", "list_resumes", "search_profile", "search_posts", "get_post", "get_contact"}
 FAKE = "window.__tools={};document.modelContext={registerTool:async(t)=>{window.__tools[t.name]=t}};"
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dist")
 h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=ROOT); h.log_message = lambda *a: None

@@ -164,6 +164,58 @@ for l, name in (("th", "Thai"), ("en", "English")):
     if gaps[l]:
         W(f"i18n: {len(gaps[l])} text field(s) missing {name}: " + ", ".join(gaps[l][:6]) + (" ..." if len(gaps[l]) > 6 else ""))
 
+# ---- blog posts (blog/<slug>/index.<lang>.md) and GitHub feeds
+import datetime
+BLOG = os.environ.get("BLOG_DIR") or os.path.join(ROOT, "blog")
+if os.path.isdir(BLOG):
+    for slug in sorted(os.listdir(BLOG)):
+        d = os.path.join(BLOG, slug)
+        if not os.path.isdir(d):
+            continue
+        files = sorted(glob.glob(os.path.join(d, "index.*.md")))
+        if not files:
+            continue
+        if not KEBAB.match(slug):
+            E(f"blog/{slug}: folder name must be kebab-case")
+        langs = set()
+        for f in files:
+            lang = os.path.basename(f).split(".")[1]; langs.add(lang)
+            where = f"blog/{slug}/index.{lang}.md"
+            if lang not in ("th", "en"):
+                E(f"{where}: language must be th or en"); continue
+            txt = open(f, encoding="utf-8").read()
+            m = re.match(r"^---\n(.*?)\n---\n", txt, re.S)
+            if not m:
+                E(f"{where}: missing YAML front matter"); continue
+            try:
+                meta = yaml.safe_load(m.group(1)) or {}
+            except yaml.YAMLError as ex:
+                E(f"{where}: bad front matter ({ex})"); continue
+            if not str(meta.get("title", "")).strip():
+                E(f"{where}: title is required")
+            dt = str(meta.get("date", ""))
+            try:
+                datetime.date.fromisoformat(dt)
+            except ValueError:
+                E(f"{where}: date must be YYYY-MM-DD, got {dt!r}")
+            status(where, meta)
+            tags(where, meta)
+            if "TODO" in txt:
+                W(f"{where}: contains TODO")
+            for img in re.findall(r"!\[[^\]]*\]\(([^)\s]+)\)", txt):
+                if not re.match(r"^(https?:)?//", img) and not os.path.isfile(os.path.join(d, img)):
+                    E(f"{where}: image {img} not found next to the post")
+        if len(langs) == 1:
+            W(f"blog/{slug}: only in {next(iter(langs))}; the other language shows it as 'Thai only' or hides it")
+for i, fd in enumerate((data.get("github") or {}).get("feeds", [])):
+    if not re.match(r"^[\w.-]+/[\w.-]+$", str(fd.get("repo", ""))):
+        E(f"github.feeds[{i}].repo must be owner/name")
+    if not re.match(r"^[\w./-]+\.json$", str(fd.get("path", ""))) or ".." in str(fd.get("path", "")):
+        E(f"github.feeds[{i}].path must be a relative .json path")
+    if not str(fd.get("site", "https://")).startswith("https://"):
+        E(f"github.feeds[{i}].site must be https")
+    lang_gap(f"github.feeds[{i}].label", fd.get("label"))
+
 mock_n = open(os.path.join(ROOT, "data/profile.yaml"), encoding="utf-8").read().count("# MOCK") + sum(1 for p in data.get("projects", []) if p.get("mock"))
 if mock_n:
     W(f"{mock_n} MOCK block(s) in data: sample content, labelled on the site; replace with real data")

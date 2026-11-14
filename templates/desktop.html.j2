@@ -6,18 +6,18 @@
 <meta name="description" content="{{ hero_text | truncate(150) }}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/desktop.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/blog.css') }}">
 {{ jsonld }}
 <link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
 <script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
-<script defer src="{{ link('assets/timeline.js') }}"></script>
+<script defer src="{{ link('assets/timeline.js') }}"></script><script defer src="{{ link('assets/blog.js') }}"></script>
 <link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
 </head><body>
 {% include "_mockbar.html.j2" %}
 <header class="site-header"><div class="wrap">
  <a class="brand" href="#top">{{ b.name }}</a>
  <nav class="nav">
-  <a href="#focus">{{ ui.nav_focus }}</a><a href="#experience">{{ ui.experience }}</a><a href="#stack">{{ ui.stack_title }}</a><a href="#projects">{{ ui.projects }}</a><a href="#resume">{{ ui.resume }}</a><a href="#contact">{{ ui.contact }}</a>
+  <a href="#focus">{{ ui.nav_focus }}</a><a href="#experience">{{ ui.experience }}</a><a href="#stack">{{ ui.stack_title }}</a><a href="#projects">{{ ui.projects }}</a><a href="{{ link(prefix ~ 'blog/') }}">{{ ui.blog }}</a><a href="#resume">{{ ui.resume }}</a><a href="#contact">{{ ui.contact }}</a>
   <a class="to-mobile" href="{{ link(prefix ~ 'm/') }}" onclick="try{localStorage.removeItem('fullweb')}catch(e){}">{{ ui.mobile_ver }}</a>
   <a class="lang" href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a>
  </nav></div></header>
@@ -36,6 +36,7 @@
  {% if projects %}<section id="projects"><h2>{{ ui.projects }}</h2><div class="grid3">
   {% for p in projects %}<div class="card proj{% if p.in_preparation %} coming{% endif %}"><h3>{{ p.name }}</h3>{% if p.in_preparation %}<span class="badge soft">{{ ui.prep }}</span>{% endif %}<p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  </div></section>{% endif %}
+ <section id="github" class="wrap-gh">{% include "_ghfeed.html.j2" %}</section>
  <section id="resume"><h2>{{ ui.resume }}</h2><div class="card">
   {% for r in resumes %}<div class="resume-row"><b>{{ r.title }}</b><span>{% for f in r.formats %}<a href="{{ link(r.slug ~ '/resume.' ~ f) }}">{{ f | upper }}</a>{% endfor %}</span></div>{% endfor %}
  </div></section>

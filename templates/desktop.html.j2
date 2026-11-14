@@ -28,7 +28,7 @@
   {{ wheel }}
  </div>
  <section id="focus"><h2>{{ ui.focus }}</h2><div class="grid3">
-  {% for f in focus %}<div class="focus-card f{{ loop.index }}" id="f-{{ f.slug }}"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p></div>{% endfor %}
+  {% for f in focus %}<div class="focus-card f{{ loop.index }}" id="f-{{ f.slug }}"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p>{% if f.link %}<p class="flink"><a href="{{ f.link.url }}" target="_blank" rel="noopener">{{ f.link.label }} →</a></p>{% endif %}</div>{% endfor %}
  </div></section>
  <section id="snapshot"><h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}{% include "_docs_links.html.j2" %}</section>
  <section id="experience"><h2>{{ ui.story }}</h2><p class="sub">{{ ui.story_sub }}</p>{% include "_story.html.j2" %}</section>

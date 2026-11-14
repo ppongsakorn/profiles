@@ -73,6 +73,8 @@ with sync_playwright() as p:
     check("Data & AI Lead" not in htxt and "Team Lead" not in htxt and "หัวหน้าทีม Data" not in htxt, "hero does not name the current position")
     check(pg.locator(".hero > div:first-child p:not(.role)").count() == 1, "hero tells the story in one paragraph")
     check(pg.locator(".wheel a").count() == 7, "wheel shows 7 interest areas")
+    mgmt = pg.locator("#f-management")
+    check(mgmt.locator("a[href='https://ppongsakorn.github.io/management-framework/']").count() == 1 and "Agentic SDLC" in mgmt.inner_text() and "Scrum" not in mgmt.inner_text(), "management card: new wording and a clickable Management Framework link")
     check("Creativity" in (pg.text_content(".wheel") or "") and "แกนกลาง" not in (pg.text_content(".wheel") or ""), "wheel centre reads Creativity with no sub-caption")
     check(pg.locator("#stack .sm-row").count() >= 7 and pg.locator("#stack .sm-t").count() >= 30, "technology timeline renders (rows and technologies)")
     first = lambda: pg.evaluate("[...document.querySelectorAll('#stack .sm-cell.h')].sort((a,b)=>a.getBoundingClientRect().left-b.getBoundingClientRect().left)[0].querySelector('b').textContent")

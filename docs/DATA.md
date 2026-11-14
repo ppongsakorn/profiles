@@ -17,7 +17,7 @@
 |---|---|
 | `basics` | name, label, email, location, links[{label,url}] |
 | `summaries` | key → ข้อความ (variant เลือกด้วย `summary:`) |
-| `focus` (6) | slug, short, title, desc |
+| `focus` (7) | slug, short, title, desc, link (ไม่บังคับ: label, url) |
 | `skills` | group, tags, items[] |
 | `experience` | company, role, location, start, end, tags, status, bullets[{text, tags, status}] |
 | `projects` | **slug** (kebab-case, ไม่ซ้ำ), name, period, role, tags, summary, problem, actions[], result, metrics[{label,value}], stack[], links[{label,url}], **sanitized**, status |

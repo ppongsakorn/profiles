@@ -34,7 +34,8 @@ focus:
   - slug: management
     short: {en: Management, th: บริหารทีม}
     title: {en: Management, th: การบริหารทีม}
-    desc: {en: "Leading teams since 2016: Scrum, sprint planning, resource management and committed SLAs.", th: "นำทีมมาตั้งแต่ปี 2016 ด้วย Scrum การวางแผน sprint การบริหารทรัพยากร และ SLA ที่ตกลงไว้"}
+    desc: {en: "Leading teams since 2016 with Agile and an agentic SDLC, and collecting and publishing a Management Framework.", th: "นำทีมมาตั้งแต่ปี 2016 ด้วย Agile / Agentic SDLC รวบรวมและเผยแพร่ Management Framework"}
+    link: {label: {en: "Open the Management Framework", th: "เปิดดู Management Framework"}, url: "https://ppongsakorn.github.io/management-framework/"}
   - slug: cloud
     short: {en: Cloud, th: คลาวด์}
     title: {en: Cloud, th: คลาวด์}

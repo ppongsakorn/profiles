@@ -50,3 +50,5 @@ body{overflow-x:clip}
 .proj .badge{margin-left:0}
 
 .focus-card:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+
+.flink{margin:8px 0 0!important;font-size:14px!important}.flink a{color:var(--accent);font-weight:600}

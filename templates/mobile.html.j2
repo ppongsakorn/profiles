@@ -18,7 +18,7 @@
 {% if screen == 'home' %}
  <h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p>{% for t in hero_paras %}<p class="lead">{{ t }}</p>{% endfor %}
  <h2>{{ ui.focus }}</h2>
- <div class="list">{% for f in focus %}<div class="item f{{ loop.index }}"><span class="bar"></span><span><b>{{ f.title }}</b><small>{{ f.desc }}</small></span></div>{% endfor %}</div>
+ <div class="list">{% for f in focus %}<div class="item f{{ loop.index }}"><span class="bar"></span><span><b>{{ f.title }}</b><small>{{ f.desc }}</small>{% if f.link %}<small class="flink"><a href="{{ f.link.url }}" target="_blank" rel="noopener">{{ f.link.label }} →</a></small>{% endif %}</span></div>{% endfor %}</div>
  <h2>{{ ui.snapshot }}</h2>{% include "_snapshot.html.j2" %}
  <p><a class="pill" href="{{ link(prefix ~ 'm/resume/') }}">{{ ui.cta_resume }}</a><a class="pill" href="{{ link(prefix ~ 'm/contact/') }}">{{ ui.cta_contact }}</a></p>
 {% elif screen == 'work' %}

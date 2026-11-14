@@ -1,6 +1,6 @@
-# Blog (บันทึก / Blog)
+# Blog (บล็อก / Blog)
 
-Thai label **บันทึก**, English label **Blog**, URL `/blog/` (`/en/blog/`, mobile `/m/blog/`).
+Thai label **บล็อก**, English label **Blog**, URL `/blog/` (`/en/blog/`, mobile `/m/blog/`).
 
 ## Write a post
 1. Make `blog/<slug>/` (kebab-case) and add `index.th.md` and/or `index.en.md`.

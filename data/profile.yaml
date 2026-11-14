@@ -18,9 +18,9 @@ basics:
 
 site_url: "https://ppongsakorn.github.io/profiles/"   # ใช้ในฟีด RSS และข้อมูลสำหรับเครื่องอ่าน
 
-# บล็อก (ไทย: "บันทึก", อังกฤษ: "Blog", ลิงก์ /blog/): เขียนเป็น Markdown ที่ blog/<slug>/index.th.md (และ index.en.md ถ้ามี) · คู่มือ docs/BLOG.md
+# บล็อก (ไทย: "บล็อก", อังกฤษ: "Blog", ลิงก์ /blog/): เขียนเป็น Markdown ที่ blog/<slug>/index.th.md (และ index.en.md ถ้ามี) · คู่มือ docs/BLOG.md
 blog:
-  title: {en: Blog, th: บันทึก}
+  title: {en: Blog, th: บล็อก}
   intro: {en: "Notes on what I build and learn: data, AI, cloud, teams, mobile and the web.", th: "บันทึกสิ่งที่ผมสร้างและเรียนรู้ ทั้งเรื่องข้อมูล AI คลาวด์ การบริหารทีม มือถือ และเว็บ"}
 
 # ฟีดจาก GitHub ที่ JavaScript ดึงสดมาแสดง (allowlist: ใส่เฉพาะ repo สาธารณะที่ต้องการแสดง; ไฟล์ต้องเป็น JSON แบบ changelog)

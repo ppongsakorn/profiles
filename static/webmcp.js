@@ -103,7 +103,7 @@
     },
     {
       name: "search_posts", title: "Search blog posts",
-      description: "List blog posts (บันทึก), newest first. Optionally filter by a topic slug (management, cloud, data, ai, ux, mobile, web) and/or words that must all appear in the title or summary.",
+      description: "List blog posts (บล็อก), newest first. Optionally filter by a topic slug (management, cloud, data, ai, ux, mobile, web) and/or words that must all appear in the title or summary.",
       inputSchema: { type: "object", properties: Object.assign({ query: { type: "string", description: "Words to look for." }, tag: { type: "string", description: "Topic slug." } }, langProp) },
       annotations: RO,
       execute: function (i) { var l = pick({ langs: { th: 1, en: 1 } }, i).l, pre = l === "th" ? "" : l + "/";

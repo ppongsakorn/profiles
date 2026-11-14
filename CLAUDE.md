@@ -29,7 +29,7 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   update `EXPECTED` in `scripts/check_webmcp.py` and the list above.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
 
-## Blog (บันทึก / Blog, `/blog/`)
+## Blog (บล็อก / Blog, `/blog/`)
 - Posts: `blog/<slug>/index.<th|en>.md` with YAML front matter (`title`, `date` YYYY-MM-DD, `tags` = focus slugs, `summary`, `status`). Quote titles containing `:`. Drafts and future-dated posts are not built. Images sit next to the post. Details: `docs/BLOG.md`.
 - Build-time: HTML pages, `posts.json`, `<slug>/post.json`, `feed.xml` (RSS). Run time (`static/blog.js`): topic filter, search, sort, load more, related posts, and a live GitHub feed (`github.feeds` in the data, raw.githubusercontent JSON, cached 1h, fails soft). Everything works without JS.
 - Jinja autoescape is OFF in `build.py`: always pipe user/post text through `| e` in blog templates; JS writes outside data with `textContent` only.

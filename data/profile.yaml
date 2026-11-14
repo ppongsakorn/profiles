@@ -39,7 +39,7 @@ focus:
   - slug: cloud
     short: {en: Cloud, th: คลาวด์}
     title: {en: Cloud, th: คลาวด์}
-    desc: {en: "Azure infrastructure (AKS, App Service, Redis, Container Registry) and AWS, with cost and performance kept visible.", th: "โครงสร้างบน Azure (AKS, App Service, Redis, Container Registry) และ AWS พร้อมดูแลต้นทุนและประสิทธิภาพให้มองเห็นได้"}
+    desc: {en: "Azure and AWS infrastructure, with cost, performance and security kept visible and under control.", th: "วางโครงสร้างบน Azure และ AWS พร้อมดูแลให้ต้นทุน ประสิทธิภาพ และความปลอดภัยมองเห็นและควบคุมได้"}
   - slug: data
     short: {en: Data, th: ข้อมูล}
     title: {en: Data, th: ข้อมูล}

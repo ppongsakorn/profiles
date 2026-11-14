@@ -1,4 +1,4 @@
-{% macro ico(n) %}<svg viewBox="0 0 24 24" aria-hidden="true">{% if n=='home' %}<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>{% elif n=='work' %}<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>{% elif n=='resume' %}<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>{% elif n=='contact' %}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>{% else %}<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>{% endif %}</svg>{% endmacro %}
+{% macro ico(n) %}<svg viewBox="0 0 24 24" aria-hidden="true">{% if n=='home' %}<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>{% elif n=='work' %}<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>{% elif n=='resume' %}<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>{% elif n=='blog' %}<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>{% elif n=='contact' %}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>{% else %}<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>{% endif %}</svg>{% endmacro %}
 <!doctype html>
 <html lang="{{ lang }}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -6,14 +6,14 @@
 <title>{{ b.name }} — {{ ui[screen] }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/mobile.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/mobile.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/blog.css') }}">
 {{ jsonld }}
 <link rel="alternate" type="application/json" href="{{ link('profile.json') }}">
 <script defer src="{{ link('assets/webmcp.js') }}" data-profile="{{ link('profile.json') }}"></script>
-<script defer src="{{ link('assets/timeline.js') }}"></script>
+<script defer src="{{ link('assets/timeline.js') }}"></script><script defer src="{{ link('assets/blog.js') }}"></script>
 <link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
 </head><body>
-{% include "_mockbar.html.j2" %}<div class="top"><span>{{ b.name }}</span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></div>
+{% include "_mockbar.html.j2" %}<div class="top"><span>{{ b.name }}</span><span class="topr"><a href="{{ link(prefix) }}" onclick="try{localStorage.setItem('fullweb','1')}catch(e){}">{{ ui.full }}</a><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></span></div>
 <main>
 {% if screen == 'home' %}
  <h1>{{ b.name }}</h1><p class="role">{{ hero_line }}</p>{% for t in hero_paras %}<p class="lead">{{ t }}</p>{% endfor %}
@@ -28,6 +28,10 @@
  {% for p in projects %}<div class="block{% if p.in_preparation %} coming{% endif %}"><h3>{{ p.name }}</h3>{% if p.in_preparation %}<span class="badge soft">{{ ui.prep }}</span>{% endif %}<p>{{ p.summary }}</p>{% if p.mock %}<div class="mock-block"><span class="badge mock">{{ ui.mock }}</span>{% if p.mock.problem %}<p><b>{{ ui.f_problem }}</b> {{ p.mock.problem }}</p>{% endif %}{% if p.mock.actions %}<ul>{% for a in p.mock.actions %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}{% if p.mock.result %}<p><b>{{ ui.impact }}</b> {{ p.mock.result }}</p>{% endif %}</div>{% endif %}{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endfor %}
  <h2>{{ ui.interests }}</h2><p>{% for i in interests %}<span class="chip">{{ i }}</span>{% endfor %}</p>
  {% if hobbies %}<h2>{{ ui.hobbies }}</h2><p>{% include "_hobbies.html.j2" %}</p>{% endif %}
+{% elif screen == 'blog' %}
+ <h2>{{ blog_title }}</h2><p class="lead">{{ blog_intro }}</p>
+ <div id="blog-app" data-src="{{ link(prefix ~ 'blog/posts.json') }}" data-tags="{{ tag_labels_json }}" data-ui="{{ ui_json }}" data-page="10" data-lang="{{ lang }}">{% include "_bloglist.html.j2" %}</div>
+ {% include "_ghfeed.html.j2" %}
 {% elif screen == 'resume' %}
  <h2>{{ ui.docs_title }}</h2>{% include "_docs_links.html.j2" %}
  <h2>{{ ui.resume }}</h2>
@@ -38,7 +42,6 @@
 {% endif %}
 </main>
 <nav class="tabs" aria-label="menu">
- {% for key, sub in [('home',''),('work','work/'),('resume','resume/'),('contact','contact/')] %}
+ {% for key, sub in [('home',''),('work','work/'),('blog','blog/'),('resume','resume/'),('contact','contact/')] %}
  <a href="{{ link(prefix ~ 'm/' ~ sub) }}" {% if screen == key %}aria-current="page"{% endif %}>{{ ico(key) }}{{ ui['tab_' ~ key] }}</a>{% endfor %}
- <a href="{{ link(prefix) }}" onclick="try{localStorage.setItem('fullweb','1')}catch(e){}">{{ ico('full') }}{{ ui.full }}</a>
 </nav></body></html>

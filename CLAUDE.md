@@ -22,12 +22,18 @@ Audience: employers, colleagues, people looking for collaborators. See `ROADMAP.
   before paint unless `localStorage.fullweb === '1'`.
 - CSS is plain, in `static/` (`base.css` tokens + dark mode, `desktop.css`, `mobile.css`). No CSS framework.
 - Colour policy: content first. Text is always `--ink`/`--ink2`; the seven area colours `--c1..c7` are markers only (dot, wheel rim, mobile side bar), big fills use the tints `--b1..b7`. Never use `--cN` as text colour. Check contrast of any new pair (text >= 4.5:1, graphics >= 3:1).
-- AI-readable surface (WebMCP + fallbacks): `static/webmcp.js` registers 9 read-only tools on `document.modelContext`
-  (get_profile, list_focus_areas, get_experience, list_projects, get_skills, get_tech_timeline, list_resumes, search_profile, get_contact),
+- AI-readable surface (WebMCP + fallbacks): `static/webmcp.js` registers 11 read-only tools on `document.modelContext`
+  (get_profile, list_focus_areas, get_experience, list_projects, get_skills, get_tech_timeline, list_resumes, search_profile, search_posts, get_post, get_contact),
   fetching `profile.json` lazily. `build.py` also emits `profile.json`, `llms.txt` and a schema.org `Person` JSON-LD block.
   All of it is public page content only: never add private or non-displayed data there. When adding/removing a tool,
   update `EXPECTED` in `scripts/check_webmcp.py` and the list above.
 - Keep README.md / about.md / skills.md etc. consistent with `data/profile.yaml` (they are the GitHub-facing copy).
+
+## Blog (บันทึก / Blog, `/blog/`)
+- Posts: `blog/<slug>/index.<th|en>.md` with YAML front matter (`title`, `date` YYYY-MM-DD, `tags` = focus slugs, `summary`, `status`). Quote titles containing `:`. Drafts and future-dated posts are not built. Images sit next to the post. Details: `docs/BLOG.md`.
+- Build-time: HTML pages, `posts.json`, `<slug>/post.json`, `feed.xml` (RSS). Run time (`static/blog.js`): topic filter, search, sort, load more, related posts, and a live GitHub feed (`github.feeds` in the data, raw.githubusercontent JSON, cached 1h, fails soft). Everything works without JS.
+- Jinja autoescape is OFF in `build.py`: always pipe user/post text through `| e` in blog templates; JS writes outside data with `textContent` only.
+- Never invent posts. Test fixtures live in `tests/fixtures/blog` (`python scripts/check_blog.py`); real posts only when the owner writes or approves them.
 
 ## Design intent
 - **Never name the intended audience on the site** (no "for employers / recruiters / headhunters / hiring" in page text, data, JSON-LD, llms.txt or WebMCP). The audience and goals are the design brief, not copy. Write in plain, human, first-person Thai (short sentences, jargon only where needed), not report language.

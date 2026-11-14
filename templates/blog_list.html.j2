@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ lang }}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ link('assets/base.css') }}"><link rel="stylesheet" href="{{ link('assets/timeline.css') }}"><link rel="stylesheet" href="{{ link('assets/doc.css') }}"><link rel="stylesheet" href="{{ link('assets/blog.css') }}">
+<link rel="icon" type="image/svg+xml" href="{{ link('assets/favicon.svg') }}">
+<script defer src="{{ link('assets/blog.js') }}"></script>
+<title>{{ blog_title }} · {{ b.name }}</title>
+<meta name="description" content="{{ blog_intro }}">
+<link rel="alternate" type="application/rss+xml" title="{{ blog_title }}" href="feed.xml">
+</head><body class="doc blog">
+{% include "_mockbar.html.j2" %}
+<nav class="docnav no-print"><a href="{{ link(prefix) }}">← {{ b.name }}</a><span><a href="{{ link(alt_path) }}" hreflang="{{ alt_lang }}">{{ alt_lang | upper }}</a></span></nav>
+<main class="sheet">
+ <header class="dh"><h1>{{ blog_title }}</h1><p class="sum">{{ blog_intro }}</p></header>
+ <div id="blog-app" data-src="posts.json" data-tags="{{ tag_labels_json }}" data-ui="{{ ui_json }}" data-page="10" data-lang="{{ lang }}">
+  {% include "_bloglist.html.j2" %}
+ </div>
+ {% include "_ghfeed.html.j2" %}
+</main></body></html>

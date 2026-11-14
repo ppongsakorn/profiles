@@ -1,0 +1,39 @@
+/* Blog (บันทึก): list, post, GitHub feed. Same tokens as the rest of the site. */
+.blog .dh{margin-bottom:6px}
+.posts{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.post-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 18px;min-width:0}
+.post-card .pd{font-size:13px;color:var(--ink2)}
+.post-card h2{margin:2px 0 4px;font-size:20px;line-height:1.35;border:0;padding:0;text-transform:none;letter-spacing:0;color:var(--ink)}
+.post-card h2 a{color:var(--ink);text-decoration:none}.post-card h2 a:hover{color:var(--accent);text-decoration:underline}
+.post-card p{margin:0 0 8px;color:var(--ink2);font-size:15px;line-height:1.6}
+.tgs{display:flex;gap:6px;flex-wrap:wrap;margin:0}
+.tg{font-size:12px;padding:1px 9px;border-radius:99px;border:1px solid var(--line);color:var(--ink2);background:var(--bg)}
+.bl-tools{display:grid;gap:10px;margin-top:14px}
+.bl-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.bl-row input[type=search],.bl-row select{font:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);min-width:0}
+.bl-row input[type=search]{flex:1 1 220px}
+.bl-count{font-size:13px;color:var(--ink2);margin:0}
+.bl-more{margin:14px auto 0;display:block}
+.bl-more[hidden]{display:none}
+/* post page */
+.post .prose{font-size:17.5px;line-height:1.9;max-width:42em}
+.post .prose h2{font-size:22px;margin:30px 0 8px;border:0;padding:0;text-transform:none;letter-spacing:0;color:var(--ink)}
+.post .prose h3{font-size:18px;margin:22px 0 6px}
+.post .prose p,.post .prose ul,.post .prose ol{margin:0 0 14px}
+.post .prose img{max-width:100%;height:auto;border-radius:10px}
+.post .prose pre{overflow-x:auto;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.6}
+.post .prose code{font-size:.92em;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:0 5px}.post .prose pre code{border:0;padding:0;background:none}
+.post .prose table{display:block;overflow-x:auto;border-collapse:collapse}.post .prose th,.post .prose td{border:1px solid var(--line);padding:6px 10px}
+.post .prose blockquote{margin:0 0 14px;padding:2px 16px;border-left:3px solid var(--accent);color:var(--ink2)}
+.postnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:26px}
+.postnav a{display:block;text-decoration:none;color:var(--ink2);font-size:13px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--paper)}.postnav a b{display:block;color:var(--ink);font-size:15px}
+#related:not(:empty){margin-top:26px}#related h2{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px}
+/* GitHub feed */
+.ghfeed{margin-top:30px}.ghfeed h2{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.gh-item{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;min-width:0}
+.gh-item .gd{font-size:12.5px;color:var(--ink2);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.gh-item b{display:block;font-size:16px;line-height:1.4}.gh-item ul{margin:4px 0 0 1.1rem;padding:0;font-size:14px;color:var(--ink2)}
+.gh-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}.gh-head a{color:var(--accent);font-weight:600}
+.gh-note{font-size:12.5px;color:var(--ink2)}
+/* desktop home: the GitHub section sits between projects and resume */
+#github{padding:36px 0}

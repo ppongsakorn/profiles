@@ -5,12 +5,12 @@
   python build.py --pdf      # also PDF (needs: pip install playwright; Chromium)
   python build.py --only ai-lead-th
 """
-import argparse, glob, os, re, shutil, sys
+import argparse, glob, html as htmllib, json, os, re, shutil, sys
 import yaml
 from jinja2 import Environment, FileSystemLoader
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DIST = os.path.join(ROOT, "dist")
+DIST = os.environ.get("DIST_DIR") or os.path.join(ROOT, "dist")
 LABELS = {
     "en": dict(summary="Summary", skills="Skills", experience="Experience", projects="Projects", interests="Currently exploring"),
     "th": dict(summary="สรุป", skills="ทักษะ", experience="ประสบการณ์", projects="ผลงาน", interests="สิ่งที่สนใจ"),
@@ -28,6 +28,8 @@ UI = {
                f_now="ตอนนี้", f_years="ประสบการณ์", years="ปี", since="ตั้งแต่", f_stack="เทคโนโลยีหลัก", f_open="เปิดรับ", f_scope="ขอบเขต",
                f_edu="การศึกษา", f_cert="ใบรับรอง", f_lang="ภาษา", f_loc="ที่ตั้ง", one_page="One Page", full_profile="ฉบับเต็ม", pdf="PDF",
                docs_title="โปรไฟล์ให้โหลดและพิมพ์", paper="งานวิจัย", cred="ใบรับรองและสิทธิบัตร", patent="สิทธิบัตร", now_word="ปัจจุบัน",
+               blog="บันทึก", blog_none="ยังไม่มีบทความ", search="ค้นหา", search_ph="ค้นหาจากชื่อหรือเนื้อหา", sort_new="ใหม่สุดก่อน", sort_old="เก่าสุดก่อน", all_tags="ทุกหัวข้อ", results="บทความ", load_more="ดูเพิ่ม", read_min="อ่าน {n} นาที", related="บทความที่เกี่ยวข้อง", back_blog="← กลับไปบันทึก", prev_post="บทความก่อนหน้า", next_post="บทความถัดไป", tab_blog="บันทึก", thai_only="มีเฉพาะภาษาไทย",
+               gh_loading="กำลังโหลดจาก GitHub…", gh_error="ตอนนี้ยังโหลดข้อมูลจาก GitHub ไม่ได้ ลองใหม่ภายหลังครับ", gh_source="ข้อมูลสดจาก GitHub", gh_open="เปิดเว็บ", k_launch="เปิดตัว", k_content="เนื้อหา", k_feature="ฟีเจอร์", k_fix="แก้ไข", gh_title="อัปเดตล่าสุดจาก GitHub",
                hobbies="นอกเวลางาน", stack_title="เทคโนโลยีที่ผ่านมา", stack_sub="แต่ละคอลัมน์คือช่วงหนึ่งของเส้นทาง อ่านจากซ้ายไปขวาคือจากปัจจุบันย้อนไปในอดีต จุดสีหน้าชื่อหมายถึงใช้ต่อเนื่องมาจากช่วงก่อนหน้า",
                sm_carry="ใช้ต่อมาจากช่วงก่อนหน้า", sm_new="เริ่มใช้ในช่วงนี้", sm_rev="ปัจจุบัน → อดีต", sm_fwd="อดีต → ปัจจุบัน", sm_now="ยังใช้อยู่", sm_mock="MOCK (ตัวอย่าง)", sm_eras="ช่วงอาชีพ", sm_list="ดูเป็นรายช่วง", prep="ข้อมูลกำลังเตรียมอยู่", f_problem="โจทย์:", mock="MOCK · ข้อมูลตัวอย่าง", mock_banner="บางส่วนของหน้านี้เป็นข้อมูลตัวอย่าง (MOCK) ที่ Claude ร่างให้ระหว่างรอข้อมูลจริง ส่วนที่ติดป้าย MOCK อย่าถือเป็นข้อเท็จจริง", mock_note="ข้อมูลตัวอย่าง รอเจ้าของแทนด้วยข้อมูลจริง", prep_label="กำลังเตรียมข้อมูล", m_impact="ผลลัพธ์ที่วัดได้", m_learned="ความรู้ที่ได้รับ", m_built="สิ่งที่ได้สร้าง",
                m_open="งานที่เปิดรับ", m_scope="ขอบเขตงาน", m_email="อีเมลติดต่อ", m_school="ชื่อสถาบัน", contact_prep="ระหว่างนี้ติดต่อผ่านลิงก์ด้านบนได้", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="อ่านฉบับเต็ม", glance="เส้นทางโดยสรุป",
@@ -42,13 +44,15 @@ UI = {
                f_now="Now", f_years="Experience", years="years", since="since", f_stack="Core stack", f_open="Open to", f_scope="Scope",
                f_edu="Education", f_cert="Certifications", f_lang="Languages", f_loc="Based in", one_page="One Page", full_profile="Full profile", pdf="PDF",
                docs_title="Profiles to download and print", paper="Paper", cred="Certifications and patents", patent="Patent", now_word="Present",
+               blog="Blog", blog_none="No posts yet", search="Search", search_ph="Search titles and text", sort_new="Newest first", sort_old="Oldest first", all_tags="All topics", results="posts", load_more="Show more", read_min="{n} min read", related="Related posts", back_blog="← Back to the blog", prev_post="Previous post", next_post="Next post", tab_blog="Blog", thai_only="Thai only",
+               gh_loading="Loading from GitHub…", gh_error="GitHub data cannot be loaded right now. Please try again later.", gh_source="Live from GitHub", gh_open="Open site", k_launch="Launch", k_content="Content", k_feature="Feature", k_fix="Fix", gh_title="Latest from GitHub",
                hobbies="Outside work", stack_title="Technology timeline", stack_sub="Each column is one stage of the path, read left to right from today back into the past. A coloured dot means the technology carried over from the previous stage.",
                sm_carry="Carried over from the previous stage", sm_new="Started in this stage", sm_rev="Today → past", sm_fwd="Past → today", sm_now="Still in use", sm_mock="MOCK (sample)", sm_eras="Career stages", sm_list="View by stage", prep="Content in preparation", f_problem="Problem:", mock="MOCK · sample data", mock_banner="Parts of this page are sample data (MOCK) drafted by Claude while the real details are prepared. Anything labelled MOCK is not a statement of fact.", mock_note="Sample data, to be replaced by the owner", prep_label="In preparation", m_impact="Measured impact", m_learned="What I learned", m_built="What I built",
                m_open="Open to", m_scope="Scope", m_email="Contact e-mail", m_school="School name", contact_prep="Meanwhile, reach me through the links above.", tag_leadership="Leadership", tag_software="Software", tag_teaching="Teaching", read_full="Read the full profile", glance="Career at a glance",
                skills_short="Key skills", contact_short="Contact"),
 }
 SITE_LANGS = ["th", "en"]  # th lives at the site root, others under /<lang>/
-MOBILE_SCREENS = {"home": "", "work": "work/", "resume": "resume/", "contact": "contact/"}
+MOBILE_SCREENS = {"home": "", "work": "work/", "blog": "blog/", "resume": "resume/", "contact": "contact/"}
 
 
 def wheel_svg(focus, ui):
@@ -84,8 +88,9 @@ def favicon_svg():
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' + "".join(segs) + "</svg>"
 
 
-def build_site(env, data, resumes, pdf_built=False):
+def build_site(env, data, resumes, pdf_built=False, drafts=False):
     pdfs = []
+    blog_ctx_cache = {}
     for lang in SITE_LANGS:
         ctx = select(data, dict(lang=lang, summary="default", max_bullets=99, max_projects=9))
         ui = UI[lang]; prefix = "" if lang == "th" else f"{lang}/"
@@ -97,6 +102,7 @@ def build_site(env, data, resumes, pdf_built=False):
             up = "../" * path.count("/")
             link = lambda t, up=up: (up + t) or "./"
             sctx = ctx if screen != "full" else {**ctx, "story": {**ctx["story"], "open_all": True, "static": True}}
+            sctx = {**sctx, **blog_ctx_cache.setdefault(lang, blog_context(data, ctx, lang, drafts))}
             html = env.get_template(tpl).render(**sctx, ui=ui, prefix=prefix, screen=screen, link=link, alt_lang=alt_lang, pdf_built=pdf_built, mode=screen,
                                                 doc_title=ui["one_page"] if screen == "one" else ui["full_profile"],
                                                 alt_path=alt_prefix + sub, wheel=wheel_svg(ctx["focus"], ui), resumes=resumes, jsonld=jsonld(ctx))
@@ -149,7 +155,8 @@ def build_agent_files(data, resumes):
         lines += ["## Notice", "- Some sections are labelled MOCK (sample data drafted by an AI assistant). Do not treat them as facts about the owner.", ""]
     lines += ["## Machine-readable", "- ./profile.json: full profile in every language (JSON)",
               "- Resumes: " + ", ".join(f"./{r['slug']}/resume.md" for r in resumes),
-              "- WebMCP: read-only tools on document.modelContext (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, get_contact)", ""]
+              "- WebMCP: read-only tools on document.modelContext (get_profile, list_focus_areas, get_experience, list_projects, get_skills, list_resumes, search_profile, search_posts, get_post, get_contact)",
+              f"- Blog ({UI['en']['blog']}): ./blog/ (th), ./en/blog/ (en); index ./blog/posts.json, feed ./blog/feed.xml", ""]
     open(os.path.join(DIST, "llms.txt"), "w", encoding="utf-8").write("\n".join(lines))
 
 
@@ -334,6 +341,107 @@ def build_story(data, exp, lang):
     return dict(stackmap=stackmap, entries=items, eras=eras, filters=filters, cred=cred, snapshot=snapshot, open_all=False, static=False)
 
 
+MONTH_DAY = {"th": "ม.ค. ก.พ. มี.ค. เม.ย. พ.ค. มิ.ย. ก.ค. ส.ค. ก.ย. ต.ค. พ.ย. ธ.ค.".split(), "en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()}
+
+
+def fmt_day(d, lang):
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", str(d))
+    return f"{int(m.group(3))} {MONTH_DAY[lang][int(m.group(2)) - 1]} {m.group(1)}" if m else str(d)
+
+
+def parse_front(raw):
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n(.*)$", raw, re.S)
+    return ((yaml.safe_load(m.group(1)) or {}), m.group(2)) if m else ({}, raw)
+
+
+def load_posts(lang, drafts=False):
+    """blog/<slug>/index.<lang>.md -> posts (published, dated today or earlier) newest first."""
+    import datetime
+    import markdown
+    base = os.environ.get("BLOG_DIR") or os.path.join(ROOT, "blog")
+    posts, today = [], datetime.date.today().isoformat()
+    if not os.path.isdir(base):
+        return posts
+    for slug in sorted(os.listdir(base)):
+        d, f = os.path.join(base, slug), os.path.join(base, slug, f"index.{lang}.md")
+        if not os.path.isfile(f):
+            continue
+        meta, body = parse_front(open(f, encoding="utf-8").read())
+        status, date = meta.get("status", "published"), str(meta.get("date", ""))
+        if not drafts and (status != "published" or not date or date > today):
+            continue
+        html = markdown.markdown(body, extensions=["fenced_code", "tables", "sane_lists"])
+        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
+        mins = max(1, round(len(text) / 800)) if lang == "th" else max(1, round(len(text.split()) / 200))
+        posts.append(dict(slug=slug, lang=lang, title=str(meta.get("title", slug)), date=date, date_label=fmt_day(date, lang), tags=list(meta.get("tags", []) or []),
+                          summary=str(meta.get("summary", "") or text[:160]), status=status, html=html, text=text, minutes=mins, dir=d))
+    posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
+    return posts
+
+
+def rss(posts, bc, lang, site_url, prefix, name):
+    from email.utils import format_datetime
+    import datetime
+    from xml.sax.saxutils import escape
+    items = "".join(
+        f"<item><title>{escape(p['title'])}</title><link>{site_url}{prefix}blog/{p['slug']}/</link><guid>{site_url}{prefix}blog/{p['slug']}/</guid>"
+        f"<pubDate>{format_datetime(datetime.datetime.strptime(p['date'], '%Y-%m-%d').replace(tzinfo=datetime.timezone.utc))}</pubDate><description>{escape(p['summary'])}</description></item>" for p in posts)
+    return (f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{escape(name)} · {escape(bc["blog_title"])}</title>'
+            f'<link>{site_url}{prefix}blog/</link><description>{escape(bc["blog_intro"])}</description><language>{lang}</language>{items}</channel></rss>')
+
+
+def blog_context(data, ctx, lang, drafts=False):
+    ui = UI[lang]
+    alt_lang = next(l for l in SITE_LANGS if l != lang)
+    tag_labels = [dict(slug=f["slug"], label=f["short"]) for f in ctx["focus"]]
+    ui_keys = ("all_tags", "search", "search_ph", "sort_new", "sort_old", "results", "load_more", "read_min", "blog_none", "related", "thai_only", "prep")
+    return dict(posts=load_posts(lang, drafts), has_other={p["slug"] for p in load_posts(alt_lang, drafts)}, tag_labels=tag_labels,
+                tag_labels_json=htmllib.escape(json.dumps(tag_labels, ensure_ascii=False), quote=True),
+                ui_json=htmllib.escape(json.dumps({k: ui[k] for k in ui_keys}, ensure_ascii=False), quote=True),
+                blog_title=tr(data["blog"]["title"], lang), blog_intro=tr(data["blog"]["intro"], lang))
+
+
+def build_blog(env, data, drafts=False):
+    """Blog pages (list, posts), JSON index, post JSON and RSS feed for each language."""
+    out = {}
+    site_url = data.get("site_url", "").rstrip("/") + "/"
+    for lang in SITE_LANGS:
+        ctx = select(data, dict(lang=lang, summary="default", max_bullets=99, max_projects=9))
+        ui = UI[lang]; prefix = "" if lang == "th" else f"{lang}/"
+        alt_lang = next(l for l in SITE_LANGS if l != lang); alt_prefix = "" if alt_lang == "th" else f"{alt_lang}/"
+        bc = blog_context(data, ctx, lang, drafts)
+        posts, alt_posts = bc["posts"], bc["has_other"]
+        out[lang] = posts
+        base = os.path.join(DIST, prefix, "blog")
+        os.makedirs(base, exist_ok=True)
+        index = [dict(slug=p["slug"], title=p["title"], date=p["date"], date_label=p["date_label"], tags=p["tags"], summary=p["summary"],
+                      minutes=p["minutes"], url=f"{p['slug']}/", other=(p["slug"] in alt_posts)) for p in posts]
+        open(os.path.join(base, "posts.json"), "w", encoding="utf-8").write(json.dumps(index, ensure_ascii=False))
+        open(os.path.join(base, "feed.xml"), "w", encoding="utf-8").write(rss(posts, bc, lang, site_url, prefix, ctx["b"]["name"]))
+        common = dict(**ctx, **bc, ui=ui, prefix=prefix, alt_lang=alt_lang, pdf_built=False)
+        depth = 2 if prefix else 1
+        link = lambda t, up="../" * depth: (up + t) or "./"
+        html = env.get_template("blog_list.html.j2").render(**common, link=link, alt_path=alt_prefix + "blog/", mode="blog", jsonld="", doc_title=ui["blog"])
+        open(os.path.join(base, "index.html"), "w", encoding="utf-8").write(html)
+        for i, p in enumerate(posts):
+            pd = os.path.join(base, p["slug"]); os.makedirs(pd, exist_ok=True)
+            link2 = lambda t, up="../" * (depth + 1): (up + t) or "./"
+            prev_p = posts[i + 1] if i + 1 < len(posts) else None; next_p = posts[i - 1] if i > 0 else None
+            ld = json.dumps({"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"], "datePublished": p["date"],
+                             "author": {"@type": "Person", "name": ctx["b"]["name"]}, "inLanguage": lang, "description": p["summary"],
+                             "url": f"{site_url}{prefix}blog/{p['slug']}/"}, ensure_ascii=False).replace("</", "<\\/")
+            html = env.get_template("blog_post.html.j2").render(**common, link=link2, post=p, prev_post=prev_p, next_post=next_p, mode="post", doc_title=p["title"],
+                                                              alt_path=(alt_prefix + f"blog/{p['slug']}/") if p["slug"] in alt_posts else None,
+                                                              jsonld=f'<script type="application/ld+json">{ld}</script>')
+            open(os.path.join(pd, "index.html"), "w", encoding="utf-8").write(html)
+            open(os.path.join(pd, "post.json"), "w", encoding="utf-8").write(json.dumps(
+                dict(slug=p["slug"], title=p["title"], date=p["date"], tags=p["tags"], summary=p["summary"], text=p["text"], url=f"{p['slug']}/"), ensure_ascii=False))
+            for fn in os.listdir(p["dir"]):
+                if re.search(r"\.(png|jpe?g|gif|webp|svg)$", fn, re.I):
+                    shutil.copy(os.path.join(p["dir"], fn), os.path.join(pd, fn))
+    return out
+
+
 def tr(x, lang):
     """Resolve {en:..., th:...} to a string, falling back to en then any value."""
     if isinstance(x, dict) and x and set(x) <= {"en", "th"}:
@@ -398,7 +506,12 @@ def select(data, v):
     hero_text = hero_paras[0] if hero_paras else ""
     hero_line = " · ".join(f["short"] for f in focus)
     hobbies = [dict(slug=h["slug"], name=tr(h["name"], lang)) for h in data.get("hobbies", []) if h.get("public", True)]
-    return dict(hero_paras=hero_paras, hero_text=hero_text, hero_line=hero_line, has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
+    gh_feeds = [dict(repo=f["repo"], branch=f.get("branch", "main"), path=f["path"], site=f.get("site", ""), label=tr(f.get("label", f["repo"]), lang))
+                for f in data.get("github", {}).get("feeds", [])]
+    gh_ui = {k: UI[lang][k] for k in ("gh_loading", "gh_error", "gh_source", "gh_open", "k_launch", "k_content", "k_feature", "k_fix")}
+    return dict(gh_feeds=gh_feeds, gh_feeds_json=htmllib.escape(json.dumps(gh_feeds, ensure_ascii=False), quote=True),
+                gh_ui_json=htmllib.escape(json.dumps(gh_ui, ensure_ascii=False), quote=True), tag_map={f["slug"]: f["short"] for f in focus},
+                hero_paras=hero_paras, hero_text=hero_text, hero_line=hero_line, has_mock=has_mock, hobbies=hobbies, story=story, focus=focus, b=b, summary=summary, skills=skills, experience=exp, projects=prj,
                 interests=tr(data.get("interests", []), lang), v=v, lang=lang, L=LABELS.get(lang, LABELS["en"]))
 
 
@@ -446,7 +559,8 @@ def main():
             pdfs.append((os.path.join(out, "resume.html"), os.path.join(out, "resume.pdf")))
         resumes.append(dict(slug=slug, title=v["title"], lang=v.get("lang", "en"), formats=[x for x in ["html", "pdf", "md"] if x in fmts]))
     if not a.only:
-        pdfs += build_site(env, data, resumes, pdf_built=a.pdf)
+        pdfs += build_site(env, data, resumes, pdf_built=a.pdf, drafts=a.drafts)
+        build_blog(env, data, drafts=a.drafts)
         build_agent_files(data, resumes)
         shutil.copytree(os.path.join(ROOT, "static"), os.path.join(DIST, "assets"))
         open(os.path.join(DIST, "assets", "favicon.svg"), "w", encoding="utf-8").write(favicon_svg())

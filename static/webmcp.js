@@ -29,7 +29,7 @@
 
   function pages(d, l, screen) {
     var pre = l === "th" ? "" : l + "/";
-    var m = { home: "", work: "work/", resume: "resume/", contact: "contact/" };
+    var m = { home: "", work: "work/", blog: "blog/", resume: "resume/", contact: "contact/" };
     return {
       desktop: abs(pre) + (screen === "home" ? "" : "#" + screen),
       mobile: abs(pre + d.site.mobile_path + (m[screen] || ""))
@@ -100,6 +100,27 @@
           s[1].forEach(function (it) { var h = hay(it); if (words.every(function (w) { return h.indexOf(w) >= 0; })) out.push({ section: s[0], item: it }); });
         });
         return { count: out.length, results: out.slice(0, 20) }; }); }
+    },
+    {
+      name: "search_posts", title: "Search blog posts",
+      description: "List blog posts (บันทึก), newest first. Optionally filter by a topic slug (management, cloud, data, ai, ux, mobile, web) and/or words that must all appear in the title or summary.",
+      inputSchema: { type: "object", properties: Object.assign({ query: { type: "string", description: "Words to look for." }, tag: { type: "string", description: "Topic slug." } }, langProp) },
+      annotations: RO,
+      execute: function (i) { var l = pick({ langs: { th: 1, en: 1 } }, i).l, pre = l === "th" ? "" : l + "/";
+        return fetch(abs(pre + "blog/posts.json")).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }).then(function (all) {
+          var words = str(i && i.query).toLowerCase().split(/\s+/).filter(Boolean), tag = str(i && i.tag).toLowerCase();
+          var r = all.filter(function (p) { var h = (p.title + " " + p.summary).toLowerCase();
+            return (!tag || (p.tags || []).indexOf(tag) >= 0) && words.every(function (x) { return h.indexOf(x) >= 0; }); });
+          return { count: r.length, posts: r.slice(0, 20).map(function (p) { return { slug: p.slug, title: p.title, date: p.date, tags: p.tags, summary: p.summary, url: abs(pre + "blog/" + p.url) }; }), url: abs(pre + "blog/") }; }); }
+    },
+    {
+      name: "get_post", title: "Get blog post",
+      description: "Full plain text of one blog post by slug (from search_posts).",
+      inputSchema: { type: "object", required: ["slug"], properties: Object.assign({ slug: { type: "string", description: "Post slug." } }, langProp) },
+      annotations: RO,
+      execute: function (i) { var l = pick({ langs: { th: 1, en: 1 } }, i).l, pre = l === "th" ? "" : l + "/", slug = str(i && i.slug);
+        if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return Promise.resolve({ error: "invalid slug" });
+        return fetch(abs(pre + "blog/" + slug + "/post.json")).then(function (r) { if (!r.ok) return { error: "post not found in this language" }; return r.json().then(function (p) { p.url = abs(pre + "blog/" + slug + "/"); return p; }); }); }
     },
     {
       name: "get_contact", title: "Get contact details",
